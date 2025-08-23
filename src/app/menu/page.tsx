@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Link from 'next/link';
 import { MenuCard } from '@/components/menu-card';
+import { WhatsAppOrder } from '@/components/whatsapp-order';
 
 const menuItems = {
   pizzas: [
@@ -306,15 +307,34 @@ export default function MenuPage() {
           </TabsContent>
         </Tabs>
 
-        {/* CTA Section */}
-        <div className="text-center mt-20 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl">
-          <h3 className="text-2xl font-bold mb-4">Ready to Order?</h3>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Can't decide? Let us surprise you with our chef's recommendations!
-          </p>
+        {/* WhatsApp Order Section */}
+        <div className="mt-20">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4">Ready to Order?</h3>
+            <p className="text-muted-foreground max-w-md mx-auto">
+              Order directly through WhatsApp for quick and easy service!
+            </p>
+          </div>
+          
+          <div className="max-w-2xl mx-auto">
+            <WhatsAppOrder 
+              cart={cart}
+              menuItems={menuItems}
+              customerInfo={{
+                name: "Customer",
+                phone: "+91 98765 43210",
+                tableNumber: "Any"
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Additional CTA Section */}
+        <div className="text-center mt-12 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl">
+          <h3 className="text-xl font-bold mb-4">Other Ways to Order</h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="btn-modern bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Link href="/order">Order via WhatsApp</Link>
+              <Link href="/order">Order Online</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="btn-modern">
               <Link href="/contact">Visit Our Cafe</Link>

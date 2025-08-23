@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { WhatsAppOrder } from '@/components/whatsapp-order';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -470,6 +471,25 @@ function OrderPageContent() {
                   >
                     Place Order - ₹{getTotalPrice()}
                   </Button>
+                  
+                  {/* WhatsApp Order Option */}
+                  <div className="pt-4 border-t">
+                    <p className="text-sm text-muted-foreground mb-3 text-center">
+                      Or order directly via WhatsApp
+                    </p>
+                    <WhatsAppOrder 
+                      cart={cart.reduce((acc, item) => ({ ...acc, [item.name]: item.quantity }), {})}
+                      menuItems={{
+                        pizzas: menuItems.filter(item => item.category === 'Pizza'),
+                        waffles: menuItems.filter(item => item.category === 'Dessert')
+                      }}
+                      customerInfo={{
+                        name: customerName,
+                        phone: customerPhone,
+                        tableNumber: tableNumber || undefined
+                      }}
+                    />
+                  </div>
                 </div>
               )}
             </div>
