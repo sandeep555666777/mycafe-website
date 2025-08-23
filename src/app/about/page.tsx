@@ -4,6 +4,30 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { useState } from 'react';
+
+// Safe Image Component with Error Handling
+function SafeImage({ src, alt, className, fallbackSrc = "/images/margherita.jpg", ...props }: any) {
+  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    if (!hasError) {
+      setImgSrc(fallbackSrc);
+      setHasError(true);
+    }
+  };
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      className={className}
+      onError={handleError}
+      {...props}
+    />
+  );
+}
 
 export default function AboutPage() {
   const features = [
@@ -56,15 +80,24 @@ export default function AboutPage() {
     {
       name: "Rahil",
       role: "Founder & Creative Director",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+      image: "/images/event-art.jpg",
       description: "The visionary behind our creative concept, passionate about bringing art and community together."
     },
     {
       name: "Shabina",
       role: "Founder & Operations Manager",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=1887&auto=format&fit=crop",
+      image: "/images/event-mic.jpg",
       description: "Ensuring every detail is perfect, from the coffee beans to the customer experience."
     }
+  ];
+
+  const galleryImages = [
+    "/images/margherita.jpg",
+    "/images/pepperoni.jpg", 
+    "/images/veggie.jpg",
+    "/images/waffle-berry.jpg",
+    "/images/waffle-chocolate.jpg",
+    "/images/waffle-classic.jpg"
   ];
 
   return (
@@ -76,6 +109,11 @@ export default function AboutPage() {
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
+        </div>
+        
+        {/* Decorative Coffee Cup */}
+        <div className="absolute top-20 right-20 w-24 h-24 text-amber-600/20">
+          <Coffee className="w-full h-full" />
         </div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -152,17 +190,17 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="w-full h-48 relative rounded-2xl overflow-hidden shadow-lg">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1887&auto=format&fit=crop" 
-                      alt="Cafe interior" 
+                    <SafeImage 
+                      src={galleryImages[0]} 
+                      alt="Delicious Margherita Pizza" 
                       fill 
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="w-full h-32 relative rounded-2xl overflow-hidden shadow-lg">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1887&auto=format&fit=crop" 
-                      alt="Coffee art" 
+                    <SafeImage 
+                      src={galleryImages[1]} 
+                      alt="Pepperoni Pizza" 
                       fill 
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
@@ -170,17 +208,17 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="w-full h-32 relative rounded-2xl overflow-hidden shadow-lg">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1887&auto=format&fit=crop" 
-                      alt="Cafe atmosphere" 
+                    <SafeImage 
+                      src={galleryImages[2]} 
+                      alt="Veggie Pizza" 
                       fill 
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="w-full h-48 relative rounded-2xl overflow-hidden shadow-lg">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cce?q=80&w=1887&auto=format&fit=crop" 
-                      alt="Creative space" 
+                    <SafeImage 
+                      src={galleryImages[3]} 
+                      alt="Berry Waffle" 
                       fill 
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
@@ -210,7 +248,7 @@ export default function AboutPage() {
               <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 border-primary/10 hover:border-primary/30">
                 <CardContent className="p-8 text-center">
                   <div className="w-32 h-32 relative mx-auto mb-6 group-hover:scale-105 transition-transform duration-500">
-                    <Image 
+                    <SafeImage 
                       src={member.image} 
                       alt={member.name} 
                       fill 
