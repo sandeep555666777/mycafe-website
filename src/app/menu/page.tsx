@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -70,6 +73,42 @@ const categories = [
 ];
 
 export default function MenuPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [cart, setCart] = useState<{[key: string]: number}>({});
+
+  const addToCart = (itemName: string) => {
+    setCart(prev => ({
+      ...prev,
+      [itemName]: (prev[itemName] || 0) + 1
+    }));
+  };
+
+  const removeFromCart = (itemName: string) => {
+    setCart(prev => {
+      const newCart = { ...prev };
+      if (newCart[itemName] > 0) {
+        newCart[itemName] -= 1;
+        if (newCart[itemName] === 0) {
+          delete newCart[itemName];
+        }
+      }
+      return newCart;
+    });
+  };
+
+  const getCartCount = (itemName: string) => cart[itemName] || 0;
+
+  const allItems = [...menuItems.pizzas, ...menuItems.waffles];
+  const filteredItems = allItems.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || 
+                           (selectedCategory === 'pizzas' && menuItems.pizzas.includes(item)) ||
+                           (selectedCategory === 'waffles' && menuItems.waffles.includes(item));
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="bg-background text-foreground font-body min-h-screen">
       {/* Hero Header */}
@@ -114,6 +153,8 @@ export default function MenuPage() {
               <Input
                 placeholder="Search menu items..."
                 className="pl-10 pr-4 py-3 form-input-modern"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             
@@ -130,7 +171,7 @@ export default function MenuPage() {
         </div>
 
         {/* Menu Tabs */}
-        <Tabs defaultValue="all" className="w-full">
+        <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
           <TabsList className="grid w-full grid-cols-3 mb-8">
             {categories.map((category) => (
               <TabsTrigger 
@@ -161,6 +202,18 @@ export default function MenuPage() {
                       key={item.name}
                       {...item}
                       category="pizza"
+                      quantity={getCartCount(item.name)}
+                      onQuantityChange={(change) => {
+                        if (change > 0) {
+                          addToCart(item.name);
+                        } else {
+                          removeFromCart(item.name);
+                        }
+                      }}
+                      onOrder={() => {
+                        // Navigate to order page with this item
+                        window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
+                      }}
                     />
                   ))}
                 </div>
@@ -177,6 +230,18 @@ export default function MenuPage() {
                       key={item.name}
                       {...item}
                       category="waffle"
+                      quantity={getCartCount(item.name)}
+                      onQuantityChange={(change) => {
+                        if (change > 0) {
+                          addToCart(item.name);
+                        } else {
+                          removeFromCart(item.name);
+                        }
+                      }}
+                      onOrder={() => {
+                        // Navigate to order page with this item
+                        window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
+                      }}
                     />
                   ))}
                 </div>
@@ -196,6 +261,17 @@ export default function MenuPage() {
                   key={item.name}
                   {...item}
                   category="pizza"
+                  quantity={getCartCount(item.name)}
+                  onQuantityChange={(change) => {
+                    if (change > 0) {
+                      addToCart(item.name);
+                    } else {
+                      removeFromCart(item.name);
+                    }
+                  }}
+                  onOrder={() => {
+                    window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
+                  }}
                 />
               ))}
             </div>
@@ -213,6 +289,17 @@ export default function MenuPage() {
                   key={item.name}
                   {...item}
                   category="waffle"
+                  quantity={getCartCount(item.name)}
+                  onQuantityChange={(change) => {
+                    if (change > 0) {
+                      addToCart(item.name);
+                    } else {
+                      removeFromCart(item.name);
+                    }
+                  }}
+                  onOrder={() => {
+                    window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
+                  }}
                 />
               ))}
             </div>
