@@ -50,7 +50,7 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
 
   const formatWhatsAppMessage = () => {
     const cafeName = "The Crafty Bean";
-    const phoneNumber = "+91 98765 43210"; // Your cafe's WhatsApp number
+    const phoneNumber = "+91 87701 49314"; // Your cafe's WhatsApp number
     
     let message = `🍽️ *${cafeName} - New Order*\n\n`;
     
@@ -91,7 +91,7 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
     setIsOrdering(true);
     
     const message = formatWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/919876543210?text=${message}`;
+    const whatsappUrl = `https://wa.me/918770149314?text=${message}`;
     
     // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
@@ -103,7 +103,7 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
   };
 
   const handleCallOrder = () => {
-    window.location.href = 'tel:+919876543210';
+    window.location.href = 'tel:+918770149314';
   };
 
   if (cartItems.length === 0) {
