@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { MenuQR } from '@/components/menu-qr';
-import { WhatsAppOrder } from '@/components/whatsapp-order';
 
 export default function Home() {
   return (
@@ -332,44 +331,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WhatsApp Order Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-muted/30 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="mb-3 bg-green-500/10 text-green-600 border-green-500/20">
-              📱 WhatsApp Ordering
-            </Badge>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3">
-              Order Directly via WhatsApp
-            </h2>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              Quick and easy ordering through WhatsApp. Just add items to your cart and send us your order!
-            </p>
-          </div>
-          <div className="max-w-2xl mx-auto">
-            <WhatsAppOrder 
-              cart={{}}
-              menuItems={{
-                pizzas: [
-                  { name: 'Margherita Pizza', price: '₹350', description: 'Classic delight with 100% real mozzarella cheese' },
-                  { name: 'Pepperoni Pizza', price: '₹400', description: 'A classic American taste!' },
-                  { name: 'Veggie Supreme Pizza', price: '₹380', description: 'A supreme combination of vegetables' }
-                ],
-                waffles: [
-                  { name: 'Classic Waffle', price: '₹180', description: 'A simple, elegant waffle served with maple syrup' },
-                  { name: 'Chocolate Overload Waffle', price: '₹250', description: 'For the chocolate lovers!' },
-                  { name: 'Berry Blast Waffle', price: '₹220', description: 'A fruity delight with fresh berries' }
-                ]
-              }}
-              customerInfo={{
-                name: "Customer",
-                phone: "+91 98765 43210",
-                tableNumber: "Any"
-              }}
-            />
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA Section */}
       <section className="py-12 md:py-16 text-center">
