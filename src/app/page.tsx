@@ -362,39 +362,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Info */}
-      <section className="py-10 md:py-12 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 text-center">
-            <div className="space-y-3 p-4 bg-white/50 rounded-xl backdrop-blur-sm">
-              <MapPin className="w-6 h-6 text-primary mx-auto" />
-              <h3 className="font-semibold">Location</h3>
-              <p className="text-muted-foreground text-sm">
-                Gobrahwa Bazar Road<br />
-                Near Hotel Aashiyana<br />
-                Siddharth Nagar, UP
-              </p>
-            </div>
-            <div className="space-y-3 p-4 bg-white/50 rounded-xl backdrop-blur-sm">
-              <Clock className="w-6 h-6 text-primary mx-auto" />
-              <h3 className="font-semibold">Hours</h3>
-              <p className="text-muted-foreground text-sm">
-                Mon - Fri: 8AM - 8PM<br />
-                Sat - Sun: 9AM - 10PM
-              </p>
-            </div>
-            <div className="space-y-3 p-4 bg-white/50 rounded-xl backdrop-blur-sm">
-              <Phone className="w-6 h-6 text-primary mx-auto" />
-              <h3 className="font-semibold">Contact</h3>
-              <p className="text-muted-foreground text-sm">
-                <a href="tel:918770149314" className="hover:text-primary transition-colors">
-                  +91 8770149314
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Modern Enhanced Footer */}
       <footer className="relative py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
