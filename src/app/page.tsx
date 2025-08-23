@@ -41,28 +41,22 @@ export default function Home() {
           </div>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex justify-center mb-12">
             <Button asChild size="lg" className="btn-modern bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
               <Link href="/menu" className="flex items-center gap-2">
                 Explore Menu
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="btn-modern px-8 py-4 text-lg">
-              <Link href="/events">View Events</Link>
-            </Button>
           </div>
           
           {/* Quick Access */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button asChild size="sm" className="btn-modern bg-muted hover:bg-muted/80">
               <Link href="/menu" className="flex items-center gap-2">
                 <Pizza className="w-4 h-4" />
                 Quick Menu Access
               </Link>
-            </Button>
-            <Button asChild size="sm" variant="outline" className="btn-modern">
-              <Link href="/menu">View Menu</Link>
             </Button>
           </div>
         </div>
