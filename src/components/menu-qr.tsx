@@ -5,22 +5,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Download, Printer, QrCode, Smartphone, ExternalLink, Share2, Copy, Check, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export function MenuQR() {
   const [copied, setCopied] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
+  const [menuUrl, setMenuUrl] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
   
-  // Use the actual menu URL
-  const menuUrl = `${window.location.origin}/menu`;
-  const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(
-    `🍽️ *The Crafty Bean - Menu Access*\n\n` +
-    `Hi! I'd like to view your menu and place an order.\n\n` +
-    `📍 *Location:* The Crafty Bean Cafe\n` +
-    `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
-    `Please share your menu and help me place an order. Thank you! 🙏`
-  )}`;
+  useEffect(() => {
+    // Set URLs only on client side
+    setMenuUrl(`${window.location.origin}/menu`);
+    setWhatsappUrl(`https://wa.me/918770149314?text=${encodeURIComponent(
+      `🍽️ *The Crafty Bean - Menu Access*\n\n` +
+      `Hi! I'd like to view your menu and place an order.\n\n` +
+      `📍 *Location:* The Crafty Bean Cafe\n` +
+      `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+      `Please share your menu and help me place an order. Thank you! 🙏`
+    )}`);
+  }, []);
 
   const downloadQR = () => {
     const canvas = document.createElement('canvas');
@@ -143,6 +147,21 @@ export function MenuQR() {
       copyMenuUrl();
     }
   };
+
+  // Don't render until URLs are set (client-side only)
+  if (!menuUrl) {
+    return (
+      <Card className="max-w-md mx-auto bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary/20">
+        <CardContent className="p-8 text-center">
+          <div className="animate-pulse">
+            <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-300 rounded w-3/4 mx-auto mb-2"></div>
+            <div className="h-3 bg-gray-300 rounded w-1/2 mx-auto"></div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className="max-w-md mx-auto bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary/20">
