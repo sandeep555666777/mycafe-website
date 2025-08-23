@@ -396,28 +396,125 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-10 bg-card border-t">
-        <div className="container mx-auto text-center">
-          <div className="mb-5">
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center mx-auto mb-3">
-              <span className="text-primary-foreground font-bold text-lg">☕</span>
-            </div>
-            <h3 className="text-lg font-bold mb-2">The Crafty Bean</h3>
-            <p className="text-muted-foreground text-sm">
-              Art in Every Sip. Soul in Every Bite.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5 mb-5">
-            <Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link>
-            <Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link>
-            <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-            <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
-          </div>
-          <p className="text-muted-foreground text-xs">
-            &copy; {new Date().getFullYear()} The Crafty Bean. All Rights Reserved.
-          </p>
+      {/* Modern Enhanced Footer */}
+      <footer className="relative py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
         </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+            {/* Brand Section */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center space-x-3 mb-4 group">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg">
+                  <span className="text-white font-bold text-xl">☕</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                    The Crafty Bean
+                  </h3>
+                  <p className="text-slate-300 text-sm">
+                    Where Creativity Brews
+                  </p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-base leading-relaxed max-w-md">
+                Experience the perfect blend of art, culture, and culinary excellence. 
+                A place where every sip inspires and every bite delights.
+              </p>
+              
+              {/* Social Links */}
+              <div className="flex space-x-4 mt-6">
+                <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+                  <span className="text-slate-300 group-hover:text-white text-lg">📱</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+                  <span className="text-slate-300 group-hover:text-white text-lg">📷</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+                  <span className="text-slate-300 group-hover:text-white text-lg">📘</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-amber-400">Quick Links</h4>
+              <div className="space-y-3">
+                {[
+                  { name: 'Menu', href: '/menu', icon: '🍽️' },
+                  { name: 'Events', href: '/events', icon: '🎭' },
+                  { name: 'About', href: '/about', icon: 'ℹ️' },
+                  { name: 'Contact', href: '/contact', icon: '📞' },
+                ].map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href}
+                    className="flex items-center space-x-2 text-slate-300 hover:text-amber-400 transition-all duration-300 hover:translate-x-1 group"
+                  >
+                    <span className="text-sm group-hover:scale-110 transition-transform duration-300">{link.icon}</span>
+                    <span className="text-sm">{link.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-amber-400">Get In Touch</h4>
+              <div className="space-y-3">
+                <div className="flex items-start space-x-3 text-slate-300">
+                  <span className="text-amber-400 mt-1">📍</span>
+                  <div className="text-sm">
+                    <p>Gobrahwa Bazar Road</p>
+                    <p>Near Hotel Aashiyana</p>
+                    <p>Siddharth Nagar, UP</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 text-slate-300">
+                  <span className="text-amber-400">📞</span>
+                  <a href="tel:918770149314" className="text-sm hover:text-amber-400 transition-colors">
+                    +91 8770149314
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3 text-slate-300">
+                  <span className="text-amber-400">⏰</span>
+                  <div className="text-sm">
+                    <p>Open Daily</p>
+                    <p>8AM - 8PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-slate-700 mb-8">
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto -mt-0.5 rounded-full"></div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-slate-400 text-sm">
+              <p>&copy; {new Date().getFullYear()} The Crafty Bean. All Rights Reserved.</p>
+            </div>
+            
+            <div className="flex items-center space-x-6 text-sm text-slate-400">
+              <a href="#" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-amber-400 transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-amber-400 transition-colors">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-10 right-10 w-20 h-20 bg-amber-500/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl"></div>
       </footer>
     </div>
   );
