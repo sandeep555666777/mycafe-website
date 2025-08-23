@@ -164,10 +164,10 @@ export default function Home() {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1887&auto=format&fit=crop", alt: "Latte art" },
-                { src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1887&auto=format&fit=crop", alt: "Person enjoying coffee" },
-                { src: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop", alt: "Pizza slice" },
-                { src: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2070&auto=format&fit=crop", alt: "Person reading a book" },
+                { src: "/images/cafe-interior-1.jpg", alt: "Delicious Margherita Pizza - Our Signature Dish" },
+                { src: "/images/cafe-interior-2.jpg", alt: "Spicy Pepperoni Pizza - Classic American Taste" },
+                { src: "/images/cafe-interior-3.jpg", alt: "Classic Waffle - Perfect Breakfast Choice" },
+                { src: "/images/cafe-interior-4.jpg", alt: "Chocolate Overload Waffle - Sweet Indulgence" },
               ].map((image, index) => (
                 <div key={index} className="h-60 w-full relative rounded-xl overflow-hidden shadow-soft group">
                   <img 
