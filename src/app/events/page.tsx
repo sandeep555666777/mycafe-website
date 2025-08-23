@@ -194,7 +194,7 @@ export default function EventsPage() {
                                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                                     <div className="flex items-center gap-1">
                                         <Calendar className="w-4 h-4" />
-                                        {event.date}
+                                    {event.date}
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <Clock className="w-4 h-4" />
@@ -307,8 +307,8 @@ export default function EventsPage() {
                         </div>
                     </div>
                     <p className="text-muted-foreground mt-6">
-                        &copy; {new Date().getFullYear()} The Crafty Bean. All Rights Reserved.
-                    </p>
+                    &copy; {new Date().getFullYear()} The Crafty Bean. All Rights Reserved.
+                  </p>
                 </div>
             </footer>
         </div>

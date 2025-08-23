@@ -256,7 +256,7 @@
 
 /* Menu item animations */
 .menu-item-enter {
-  opacity: 0;
+      opacity: 0;
   transform: translateY(20px);
 }
 

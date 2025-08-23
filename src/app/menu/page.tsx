@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp } from 'lucide-react';
+import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { MenuCard } from '@/components/menu-card';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
@@ -76,29 +77,19 @@ const categories = [
 export default function MenuPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [cart, setCart] = useState<{[key: string]: number}>({});
 
-  const addToCart = (itemName: string) => {
-    setCart(prev => ({
-      ...prev,
-      [itemName]: (prev[itemName] || 0) + 1
-    }));
+  const handleWhatsAppOrder = (item: any) => {
+    const message = `🍽️ *The Crafty Bean - Quick Order*\n\n` +
+                   `📋 *Item:* ${item.name}\n` +
+                   `💰 *Price:* ${item.price}\n` +
+                   `📝 *Description:* ${item.description}\n\n` +
+                   `📍 *Location:* The Crafty Bean Cafe\n` +
+                   `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                   `Please confirm this order and provide your delivery address. Thank you! 🙏`;
+    
+    const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
-
-  const removeFromCart = (itemName: string) => {
-    setCart(prev => {
-      const newCart = { ...prev };
-      if (newCart[itemName] > 0) {
-        newCart[itemName] -= 1;
-        if (newCart[itemName] === 0) {
-          delete newCart[itemName];
-        }
-      }
-      return newCart;
-    });
-  };
-
-  const getCartCount = (itemName: string) => cart[itemName] || 0;
 
   const allItems = [...menuItems.pizzas, ...menuItems.waffles];
   const filteredItems = allItems.filter(item => {
@@ -203,18 +194,7 @@ export default function MenuPage() {
                       key={item.name}
                       {...item}
                       category="pizza"
-                      quantity={getCartCount(item.name)}
-                      onQuantityChange={(change) => {
-                        if (change > 0) {
-                          addToCart(item.name);
-                        } else {
-                          removeFromCart(item.name);
-                        }
-                      }}
-                      onOrder={() => {
-                        // Navigate to order page with this item
-                        window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
-                      }}
+                      onOrder={() => handleWhatsAppOrder(item)}
                     />
                   ))}
                 </div>
@@ -231,18 +211,7 @@ export default function MenuPage() {
                       key={item.name}
                       {...item}
                       category="waffle"
-                      quantity={getCartCount(item.name)}
-                      onQuantityChange={(change) => {
-                        if (change > 0) {
-                          addToCart(item.name);
-                        } else {
-                          removeFromCart(item.name);
-                        }
-                      }}
-                      onOrder={() => {
-                        // Navigate to order page with this item
-                        window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
-                      }}
+                      onOrder={() => handleWhatsAppOrder(item)}
                     />
                   ))}
                 </div>
@@ -262,17 +231,7 @@ export default function MenuPage() {
                   key={item.name}
                   {...item}
                   category="pizza"
-                  quantity={getCartCount(item.name)}
-                  onQuantityChange={(change) => {
-                    if (change > 0) {
-                      addToCart(item.name);
-                    } else {
-                      removeFromCart(item.name);
-                    }
-                  }}
-                  onOrder={() => {
-                    window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
-                  }}
+                  onOrder={() => handleWhatsAppOrder(item)}
                 />
               ))}
             </div>
@@ -290,17 +249,7 @@ export default function MenuPage() {
                   key={item.name}
                   {...item}
                   category="waffle"
-                  quantity={getCartCount(item.name)}
-                  onQuantityChange={(change) => {
-                    if (change > 0) {
-                      addToCart(item.name);
-                    } else {
-                      removeFromCart(item.name);
-                    }
-                  }}
-                  onOrder={() => {
-                    window.location.href = `/order?item=${encodeURIComponent(item.name)}`;
-                  }}
+                  onOrder={() => handleWhatsAppOrder(item)}
                 />
               ))}
             </div>
@@ -310,31 +259,61 @@ export default function MenuPage() {
         {/* WhatsApp Order Section */}
         <div className="mt-20">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-4">Ready to Order?</h3>
+            <h3 className="text-2xl font-bold mb-4">Want to Order Multiple Items?</h3>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Order directly through WhatsApp for quick and easy service!
+              Order multiple items or customize your order through WhatsApp!
             </p>
           </div>
           
           <div className="max-w-2xl mx-auto">
-            <WhatsAppOrder 
-              cart={cart}
-              menuItems={menuItems}
-              customerInfo={{
-                name: "Customer",
-                phone: "+91 98765 43210",
-                tableNumber: "Any"
-              }}
-            />
+            <Card className="border-primary/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <MessageCircle className="w-5 h-5 text-green-600" />
+                  WhatsApp Order
+                </CardTitle>
+                <CardDescription>
+                  Order multiple items or customize your order through WhatsApp
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-center p-6">
+                  <MessageCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">Order via WhatsApp</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Click below to open WhatsApp and place your order
+                  </p>
+                  <Button 
+                    onClick={() => {
+                      const message = `🍽️ *The Crafty Bean - Menu Inquiry*\n\n` +
+                                    `Hi! I'd like to see your menu and place an order.\n\n` +
+                                    `📍 *Location:* The Crafty Bean Cafe\n` +
+                                    `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                                    `Please share your menu and help me place an order. Thank you! 🙏`;
+                      
+                      const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+                      window.open(whatsappUrl, '_blank');
+                    }}
+                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Open WhatsApp
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
         {/* Additional CTA Section */}
         <div className="text-center mt-12 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl">
-          <h3 className="text-xl font-bold mb-4">Other Ways to Order</h3>
+          <h3 className="text-xl font-bold mb-4">Other Ways to Connect</h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="btn-modern bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Link href="/order">Order Online</Link>
+            <Button asChild size="lg" className="btn-modern bg-green-600 hover:bg-green-700 text-white">
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                WhatsApp Us
+              </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="btn-modern">
               <Link href="/contact">Visit Our Cafe</Link>

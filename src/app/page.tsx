@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Coffee, Pizza, Book, Wifi, Mic, Star, Clock, MapPin, Phone, ArrowRight } from 'lucide-react';
+import { Coffee, Pizza, Book, Wifi, Mic, Star, Clock, MapPin, Phone, ArrowRight, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import { HeroSection } from '@/components/hero-section';
 import { Badge } from '@/components/ui/badge';
@@ -311,8 +311,11 @@ export default function Home() {
                 and get it delivered right to your doorstep.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="btn-modern bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
-                  <Link href="/order">Order via WhatsApp</Link>
+                <Button asChild size="lg" className="btn-modern bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
+                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Order via WhatsApp
+                  </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="btn-modern px-8 py-4 text-lg">
                   <Link href="/contact">Visit Us</Link>

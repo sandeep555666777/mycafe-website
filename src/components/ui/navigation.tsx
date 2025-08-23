@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Menu, X, ShoppingCart, Phone, MapPin, Mail, Pizza, Clock } from 'lucide-react';
+import { Search, Menu, X, ShoppingCart, Phone, MapPin, Mail, Pizza, Clock, MessageCircle } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -14,7 +14,7 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const pathname = usePathname();
+    const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +42,7 @@ export function Navigation() {
     }
   };
 
-  return (
+    return (
     <>
       {/* Top Bar */}
       <div className="bg-primary/10 border-b border-border/50">
@@ -94,9 +94,9 @@ export function Navigation() {
               }`}>
                 The Crafty Bean
               </span>
-            </Link>
+                </Link>
 
-            {/* Desktop Navigation */}
+                {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navigation.map((item) => (
                 <Link
@@ -126,11 +126,25 @@ export function Navigation() {
                 }`}
               >
                 <Search className="w-4 h-4" />
+                        </Button>
+              <Button 
+                size="sm" 
+                className="btn-modern bg-green-600 text-white hover:bg-green-700"
+                onClick={() => {
+                  const message = `🍽️ *The Crafty Bean - Quick Order*\n\n` +
+                                `Hi! I'd like to place an order.\n\n` +
+                                `📍 *Location:* The Crafty Bean Cafe\n` +
+                                `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                                `Please help me place an order. Thank you! 🙏`;
+                  
+                  const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+                  window.open(whatsappUrl, '_blank');
+                }}
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Order via WhatsApp
               </Button>
-              <Button asChild size="sm" className="btn-modern bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="/order">Order Now</Link>
-              </Button>
-            </div>
+                </div>
 
             {/* Mobile menu button */}
             <Sheet>
@@ -141,7 +155,7 @@ export function Navigation() {
                   className="md:hidden p-2"
                 >
                   <Menu className="w-6 h-6" />
-                </Button>
+                    </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
@@ -183,13 +197,13 @@ export function Navigation() {
                   {/* Mobile Actions */}
                   <div className="mt-auto space-y-4">
                     <Button asChild className="w-full btn-modern bg-primary text-primary-foreground hover:bg-primary/90">
-                      <Link href="/order">Order Now</Link>
-                    </Button>
+                            <Link href="/order">Order Now</Link>
+                        </Button>
                     <div className="text-center text-sm text-muted-foreground">
                       <p>Open Daily: 8AM - 10PM</p>
                       <p>Call: +91 8770149314</p>
                     </div>
-                  </div>
+                    </div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -216,10 +230,10 @@ export function Navigation() {
                   Search
                 </Button>
               </form>
-            </div>
-          )}
+                </div>
+            )}
         </div>
-      </nav>
+        </nav>
     </>
-  );
+    );
 }

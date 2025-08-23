@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Star, Heart, ShoppingCart, Plus, Minus } from 'lucide-react';
+import { Star, Heart, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MenuItemProps {
@@ -17,6 +17,7 @@ interface MenuItemProps {
   popular?: boolean;
   spicy?: boolean;
   vegetarian?: boolean;
+  onOrder?: () => void;
 }
 
 export function MenuCard({ 
@@ -28,19 +29,26 @@ export function MenuCard({
   rating = 4.5, 
   popular = false,
   spicy = false,
-  vegetarian = false
+  vegetarian = false,
+  onOrder
 }: MenuItemProps) {
   const [isLiked, setIsLiked] = useState(false);
-  const [quantity, setQuantity] = useState(0);
-
-  const handleQuantityChange = (change: number) => {
-    setQuantity(Math.max(0, quantity + change));
-  };
 
   const handleOrder = () => {
-    if (quantity > 0) {
-      // Implement order logic
-      console.log(`Ordering ${quantity} ${name}`);
+    if (onOrder) {
+      onOrder();
+    } else {
+      // Default WhatsApp order
+      const message = `🍽️ *The Crafty Bean - Quick Order*\n\n` +
+                     `📋 *Item:* ${name}\n` +
+                     `💰 *Price:* ${price}\n` +
+                     `📝 *Description:* ${description}\n\n` +
+                     `📍 *Location:* The Crafty Bean Cafe\n` +
+                     `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                     `Please confirm this order and provide your delivery address. Thank you! 🙏`;
+      
+      const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
     }
   };
 
@@ -135,53 +143,15 @@ export function MenuCard({
 
       {/* Action Section */}
       <CardContent className="pt-0">
-        <div className="flex items-center justify-between">
-          {/* Quantity Controls */}
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-8 h-8 p-0"
-              onClick={() => handleQuantityChange(-1)}
-              disabled={quantity === 0}
-            >
-              <Minus className="w-3 h-3" />
-            </Button>
-            
-            <span className="w-8 text-center font-medium">
-              {quantity}
-            </span>
-            
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-8 h-8 p-0"
-              onClick={() => handleQuantityChange(1)}
-            >
-              <Plus className="w-3 h-3" />
-            </Button>
-          </div>
-
-          {/* Order Button */}
+        <div className="flex justify-end">
+          {/* WhatsApp Order Button */}
           <Button
             size="sm"
-            className={cn(
-              "transition-all duration-200",
-              quantity > 0 
-                ? "bg-primary hover:bg-primary/90" 
-                : "bg-muted text-muted-foreground"
-            )}
+            className="bg-green-600 hover:bg-green-700 text-white transition-all duration-200"
             onClick={handleOrder}
-            disabled={quantity === 0}
           >
-            {quantity > 0 ? (
-              <>
-                <ShoppingCart className="w-4 h-4 mr-1" />
-                Order
-              </>
-            ) : (
-              "Add to Cart"
-            )}
+            <MessageCircle className="w-4 h-4 mr-2" />
+            Order via WhatsApp
           </Button>
         </div>
       </CardContent>
