@@ -4,26 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useState } from 'react';
 
 // Safe Image Component with Error Handling
 function SafeImage({ src, alt, className, fallbackSrc = "/images/margherita.jpg", ...props }: any) {
-  const [imgSrc, setImgSrc] = useState(src);
-  const [hasError, setHasError] = useState(false);
-
-  const handleError = () => {
-    if (!hasError) {
-      setImgSrc(fallbackSrc);
-      setHasError(true);
-    }
-  };
-
   return (
     <Image
-      src={imgSrc}
+      src={src}
       alt={alt}
       className={className}
-      onError={handleError}
       {...props}
     />
   );
