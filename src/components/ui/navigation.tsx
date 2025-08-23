@@ -44,44 +44,8 @@ export function Navigation() {
 
   return (
     <>
-      {/* Top Bar - Fixed at top */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-primary/10 border-b border-border/50">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">+91 8770149314</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">hello@craftybean.com</span>
-              </div>
-            </div>
-            
-            {/* Quick Menu Access */}
-            <div className="flex items-center gap-4">
-              <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="/menu" className="flex items-center gap-2">
-                  <Pizza className="w-4 h-4" />
-                  View Menu
-                </Link>
-              </Button>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">Open Daily 8AM-8PM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation - Fixed below top bar */}
-      <nav className={`fixed top-12 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-lg border-b' 
-          : 'bg-background/90 backdrop-blur-sm'
-      }`}>
+      {/* Fixed Navigation Bar - Always Visible */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -229,8 +193,40 @@ export function Navigation() {
         </div>
       </nav>
 
+      {/* Top Info Bar - Fixed below navigation */}
+      <div className="fixed top-16 left-0 right-0 z-40 bg-primary/10 border-b border-border/50">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-primary" />
+                <span className="text-muted-foreground">+91 8770149314</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-primary" />
+                <span className="text-muted-foreground">hello@craftybean.com</span>
+              </div>
+            </div>
+            
+            {/* Quick Menu Access */}
+            <div className="flex items-center gap-4">
+              <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Link href="/menu" className="flex items-center gap-2">
+                  <Pizza className="w-4 h-4" />
+                  View Menu
+                </Link>
+              </Button>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-primary" />
+                <span className="text-muted-foreground">Open Daily 8AM-8PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Spacer to prevent content from hiding behind fixed navigation */}
-      <div className="h-28"></div>
+      <div className="h-32"></div>
     </>
   );
 }
