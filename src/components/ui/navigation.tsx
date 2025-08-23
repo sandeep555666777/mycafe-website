@@ -14,7 +14,7 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-    const pathname = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,16 +42,16 @@ export function Navigation() {
     }
   };
 
-    return (
+  return (
     <>
-      {/* Top Bar */}
-      <div className="bg-primary/10 border-b border-border/50">
+      {/* Top Bar - Fixed at top */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-primary/10 border-b border-border/50">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">+91 98765 43210</span>
+                <span className="text-muted-foreground">+91 8770149314</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
@@ -69,18 +69,18 @@ export function Navigation() {
               </Button>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">Open Daily 7AM-11PM</span>
+                <span className="text-muted-foreground">Open Daily 8AM-8PM</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main navigation */}
-      <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+      {/* Main navigation - Fixed below top bar */}
+      <nav className={`fixed top-12 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-soft border-b' 
-          : 'bg-transparent'
+          ? 'bg-background/95 backdrop-blur-md shadow-lg border-b' 
+          : 'bg-background/90 backdrop-blur-sm'
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -89,14 +89,12 @@ export function Navigation() {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <span className="text-primary-foreground font-bold text-xl">☕</span>
               </div>
-              <span className={`font-bold text-xl transition-colors duration-300 ${
-                isScrolled ? 'text-foreground' : 'text-primary-foreground'
-              }`}>
+              <span className="font-bold text-xl text-foreground">
                 The Crafty Bean
               </span>
-                </Link>
+            </Link>
 
-                {/* Desktop Navigation */}
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navigation.map((item) => (
                 <Link
@@ -105,9 +103,7 @@ export function Navigation() {
                   className={`nav-link text-sm font-medium transition-colors duration-200 ${
                     pathname === item.href
                       ? 'text-primary'
-                      : isScrolled
-                      ? 'text-foreground hover:text-primary'
-                      : 'text-primary-foreground hover:text-primary-foreground/80'
+                      : 'text-foreground hover:text-primary'
                   }`}
                 >
                   {item.name}
@@ -121,12 +117,10 @@ export function Navigation() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className={`transition-colors duration-200 ${
-                  isScrolled ? 'text-foreground hover:text-primary' : 'text-primary-foreground hover:text-primary-foreground/80'
-                }`}
+                className="text-foreground hover:text-primary transition-colors duration-200"
               >
                 <Search className="w-4 h-4" />
-                        </Button>
+              </Button>
               <Button 
                 size="sm" 
                 className="btn-modern bg-green-600 text-white hover:bg-green-700"
@@ -144,7 +138,7 @@ export function Navigation() {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Order via WhatsApp
               </Button>
-                </div>
+            </div>
 
             {/* Mobile menu button */}
             <Sheet>
@@ -155,7 +149,7 @@ export function Navigation() {
                   className="md:hidden p-2"
                 >
                   <Menu className="w-6 h-6" />
-                    </Button>
+                </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
@@ -197,13 +191,13 @@ export function Navigation() {
                   {/* Mobile Actions */}
                   <div className="mt-auto space-y-4">
                     <Button asChild className="w-full btn-modern bg-primary text-primary-foreground hover:bg-primary/90">
-                            <Link href="/order">Order Now</Link>
-                        </Button>
+                      <Link href="/order">Order Now</Link>
+                    </Button>
                     <div className="text-center text-sm text-muted-foreground">
-                      <p>Open Daily: 8AM - 10PM</p>
+                      <p>Open Daily: 8AM - 8PM</p>
                       <p>Call: +91 8770149314</p>
                     </div>
-                    </div>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -225,15 +219,18 @@ export function Navigation() {
                 <Button
                   type="submit"
                   size="sm"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 px-3"
+                  className="absolute right-2 top-2 h-8 px-3"
                 >
                   Search
                 </Button>
               </form>
-                </div>
-            )}
+            </div>
+          )}
         </div>
-        </nav>
+      </nav>
+
+      {/* Spacer to prevent content from hiding behind fixed navigation */}
+      <div className="h-28"></div>
     </>
-    );
+  );
 }
