@@ -33,9 +33,16 @@ export function MenuCard({
   onOrder
 }: MenuItemProps) {
   const [isLiked, setIsLiked] = useState(false);
+  const [showAddressForm, setShowAddressForm] = useState(false);
+  const [customerName, setCustomerName] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
 
   const handleOrder = () => {
-    if (onOrder) {
+    if (showAddressForm) {
+      // Show address form
+      setShowAddressForm(true);
+    } else if (onOrder) {
       onOrder();
     } else {
       // Default WhatsApp order
@@ -50,6 +57,35 @@ export function MenuCard({
       const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
     }
+  };
+
+  const handleWhatsAppOrder = () => {
+    if (!customerName || !customerPhone || !customerAddress) {
+      alert('Please fill in all fields: Name, Phone, and Address');
+      return;
+    }
+
+    const message = `🍽️ *The Crafty Bean - Order with Delivery*\n\n` +
+                   `👤 *Customer Details:*\n` +
+                   `   Name: ${customerName}\n` +
+                   `   Phone: ${customerPhone}\n` +
+                   `   Address: ${customerAddress}\n\n` +
+                   `📋 *Order Details:*\n` +
+                   `   Item: ${name}\n` +
+                   `   Price: ${price}\n` +
+                   `   Description: ${description}\n\n` +
+                   `📍 *Delivery Location:* ${customerAddress}\n` +
+                   `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                   `Please confirm this order and provide estimated delivery time. Thank you! 🙏`;
+    
+    const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    // Reset form
+    setShowAddressForm(false);
+    setCustomerName('');
+    setCustomerPhone('');
+    setCustomerAddress('');
   };
 
   return (
@@ -143,17 +179,62 @@ export function MenuCard({
 
       {/* Action Section */}
       <CardContent className="pt-0">
-        <div className="flex justify-end">
-          {/* WhatsApp Order Button */}
-          <Button
-            size="sm"
-            className="bg-green-600 hover:bg-green-700 text-white transition-all duration-200"
-            onClick={handleOrder}
-          >
-            <MessageCircle className="w-4 h-4 mr-2" />
-            Order via WhatsApp
-          </Button>
-        </div>
+        {showAddressForm ? (
+          <div className="space-y-3">
+            <div className="grid grid-cols-1 gap-2">
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={customerPhone}
+                onChange={(e) => setCustomerPhone(e.target.value)}
+                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+              <textarea
+                placeholder="Delivery Address (Full address with landmarks)"
+                value={customerAddress}
+                onChange={(e) => setCustomerAddress(e.target.value)}
+                rows={2}
+                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                className="bg-green-600 hover:bg-green-700 text-white flex-1"
+                onClick={handleWhatsAppOrder}
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Order with Address
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setShowAddressForm(false)}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex justify-end">
+            {/* WhatsApp Order Button */}
+            <Button
+              size="sm"
+              className="bg-green-600 hover:bg-green-700 text-white transition-all duration-200"
+              onClick={() => setShowAddressForm(true)}
+            >
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Order via WhatsApp
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

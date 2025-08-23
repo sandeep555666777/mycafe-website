@@ -91,6 +91,17 @@ export default function MenuPage() {
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleWhatsAppOrderWithAddress = () => {
+    const message = `🍽️ *The Crafty Bean - Menu Inquiry*\n\n` +
+                   `Hi! I'd like to see your menu and place an order with delivery.\n\n` +
+                   `📍 *Location:* The Crafty Bean Cafe\n` +
+                   `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                   `Please share your menu and help me place an order with delivery address. Thank you! 🙏`;
+    
+    const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const allItems = [...menuItems.pizzas, ...menuItems.waffles];
   const filteredItems = allItems.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -283,22 +294,32 @@ export default function MenuPage() {
                   <p className="text-muted-foreground mb-4">
                     Click below to open WhatsApp and place your order
                   </p>
-                  <Button 
-                    onClick={() => {
-                      const message = `🍽️ *The Crafty Bean - Menu Inquiry*\n\n` +
-                                    `Hi! I'd like to see your menu and place an order.\n\n` +
-                                    `📍 *Location:* The Crafty Bean Cafe\n` +
-                                    `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
-                                    `Please share your menu and help me place an order. Thank you! 🙏`;
-                      
-                                             const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
-                      window.open(whatsappUrl, '_blank');
-                    }}
-                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
-                  >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Open WhatsApp
-                  </Button>
+                                    <div className="space-y-3">
+                    <Button 
+                      onClick={handleWhatsAppOrderWithAddress}
+                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 w-full"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Order with Delivery
+                    </Button>
+                    <Button 
+                      onClick={() => {
+                        const message = `🍽️ *The Crafty Bean - Menu Inquiry*\n\n` +
+                                      `Hi! I'd like to see your menu and place an order.\n\n` +
+                                      `📍 *Location:* The Crafty Bean Cafe\n` +
+                                      `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
+                                      `Please share your menu and help me place an order. Thank you! 🙏`;
+                        
+                        const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+                        window.open(whatsappUrl, '_blank');
+                      }}
+                      variant="outline"
+                      className="px-8 py-3 w-full"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      View Menu Only
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>

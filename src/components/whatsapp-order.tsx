@@ -22,11 +22,15 @@ interface WhatsAppOrderProps {
     name?: string;
     phone?: string;
     tableNumber?: string;
+    address?: string;
   };
 }
 
 export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderProps) {
   const [isOrdering, setIsOrdering] = useState(false);
+  const [customerName, setCustomerName] = useState(customerInfo?.name || '');
+  const [customerPhone, setCustomerPhone] = useState(customerInfo?.phone || '');
+  const [customerAddress, setCustomerAddress] = useState(customerInfo?.address || '');
 
   const allItems = [...menuItems.pizzas, ...menuItems.waffles];
   
@@ -54,13 +58,15 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
     
     let message = `🍽️ *${cafeName} - New Order*\n\n`;
     
-    if (customerInfo?.name) {
-      message += `👤 *Customer:* ${customerInfo.name}\n`;
+    if (customerName) {
+      message += `👤 *Customer:* ${customerName}\n`;
     }
-    if (customerInfo?.phone) {
-      message += `📱 *Phone:* ${customerInfo.phone}\n`;
+    if (customerPhone) {
+      message += `📱 *Phone:* ${customerPhone}\n`;
     }
-    if (customerInfo?.tableNumber) {
+    if (customerAddress) {
+      message += `📍 *Delivery Address:* ${customerAddress}\n`;
+    } else if (customerInfo?.tableNumber) {
       message += `🪑 *Table:* ${customerInfo.tableNumber}\n`;
     }
     
@@ -85,6 +91,11 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
   const handleWhatsAppOrder = () => {
     if (cartItems.length === 0) {
       alert('Please add items to your cart first!');
+      return;
+    }
+
+    if (!customerName.trim() || !customerPhone.trim() || !customerAddress.trim()) {
+      alert('Please fill in all required fields: Name, Phone, and Delivery Address');
       return;
     }
 
@@ -156,20 +167,40 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
         </div>
 
         {/* Customer Info */}
-        <div className="space-y-2">
+        <div className="space-y-4">
           <h4 className="font-semibold">Customer Information:</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+          
+          {/* Input Fields */}
+          <div className="space-y-3">
             <div>
-              <span className="text-muted-foreground">Name:</span>
-              <span className="ml-2">{customerInfo?.name || 'Not provided'}</span>
+              <label className="text-sm text-muted-foreground">Name *</label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 mt-1"
+              />
             </div>
             <div>
-              <span className="text-muted-foreground">Phone:</span>
-              <span className="ml-2">{customerInfo?.phone || 'Not provided'}</span>
+              <label className="text-sm text-muted-foreground">Phone *</label>
+              <input
+                type="tel"
+                placeholder="Enter your phone number"
+                value={customerPhone}
+                onChange={(e) => setCustomerPhone(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 mt-1"
+              />
             </div>
             <div>
-              <span className="text-muted-foreground">Table:</span>
-              <span className="ml-2">{customerInfo?.tableNumber || 'Not specified'}</span>
+              <label className="text-sm text-muted-foreground">Delivery Address *</label>
+              <textarea
+                placeholder="Enter your full delivery address with landmarks"
+                value={customerAddress}
+                onChange={(e) => setCustomerAddress(e.target.value)}
+                rows={3}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 mt-1 resize-none"
+              />
             </div>
           </div>
         </div>
