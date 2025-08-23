@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Coffee, Pizza, Book, Wifi, Mic, Star, Clock, MapPin, Phone, ArrowRight, MessageCircle } from 'lucide-react';
+import { Coffee, Pizza, Book, Wifi, Mic, Star, Clock, MapPin, Phone, ArrowRight, MessageCircle, Heart, Users, Award, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground font-body flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,10 +26,10 @@ export default function Home() {
           <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
             ☕ First Artistic Café in Siddharth Nagar
           </Badge>
-          <h1 className="text-responsive-xl font-bold mb-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
             Where <span className="text-primary">Creativity</span> Brews
           </h1>
-          <p className="text-responsive-md text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Experience the perfect blend of art, culture, and culinary excellence. 
             A place where every sip inspires and every bite delights.
           </p>
@@ -41,11 +41,17 @@ export default function Home() {
           </div>
           
           {/* CTA Buttons */}
-          <div className="flex justify-center mb-12">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <Button asChild size="lg" className="btn-modern bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
               <Link href="/menu" className="flex items-center gap-2">
                 Explore Menu
                 <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="btn-modern px-8 py-4 text-lg">
+              <Link href="/events" className="flex items-center gap-2">
+                <Mic className="w-5 h-5" />
+                View Events
               </Link>
             </Button>
           </div>
@@ -62,22 +68,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Menu Preview */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+      {/* Stats Section - Mobile Friendly */}
+      <section className="py-8 md:py-12 bg-primary/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {[
+              { icon: Users, number: "500+", label: "Happy Customers" },
+              { icon: Star, number: "4.9", label: "Rating" },
+              { icon: Award, number: "3+", label: "Years Experience" },
+              { icon: Heart, number: "100%", label: "Fresh Ingredients" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center p-4 bg-white/50 rounded-xl backdrop-blur-sm">
+                <stat.icon className="w-8 h-8 text-primary mx-auto mb-2" />
+                <div className="text-2xl md:text-3xl font-bold text-primary">{stat.number}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Menu Preview */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 md:mb-16">
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
               🍽️ Popular Items
             </Badge>
-            <h2 className="text-responsive-lg font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Taste Our Best Sellers
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Discover our most loved dishes that keep customers coming back for more
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
             {/* Margherita Pizza */}
             <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
               <div className="relative h-48 mb-4 overflow-hidden rounded-xl">
@@ -127,7 +153,7 @@ export default function Home() {
             </div>
 
             {/* Classic Waffle */}
-            <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 md:col-span-2 lg:col-span-1">
               <div className="relative h-48 mb-4 overflow-hidden rounded-xl">
                 <img 
                   src="/images/waffle-classic.jpg" 
@@ -163,13 +189,13 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
               ✨ Why Choose Us
             </Badge>
-            <h2 className="text-responsive-lg font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               A Vibe Like No Other
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -177,14 +203,14 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               { icon: Wifi, title: 'Free High-Speed WiFi', description: 'Stay connected with complimentary high-speed internet' },
               { icon: Book, title: 'Cozy Book Nook', description: 'Perfect reading spot with curated collection' },
               { icon: Pizza, title: 'Delicious Food & Coffee', description: 'Fresh ingredients, artisanal preparation' },
               { icon: Mic, title: 'Open Mic Nights', description: 'Showcase your talent or enjoy live performances' },
             ].map((feature, index) => (
-              <div key={feature.title} className="text-center group">
+              <div key={feature.title} className="text-center group p-6 bg-white/50 rounded-2xl backdrop-blur-sm hover:bg-white/80 transition-all duration-300">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-primary" />
                 </div>
@@ -197,13 +223,13 @@ export default function Home() {
       </section>
 
       {/* Food Gallery Section */}
-      <section className="py-20">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
               🍽️ Food Gallery
             </Badge>
-            <h2 className="text-responsive-lg font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Our Delicious Creations
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -211,14 +237,14 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
               { src: "/images/margherita.jpg", alt: "Delicious Margherita Pizza - Our Signature Dish" },
               { src: "/images/pepperoni.jpg", alt: "Spicy Pepperoni Pizza - Classic American Taste" },
               { src: "/images/waffle-classic.jpg", alt: "Classic Waffle - Perfect Breakfast Choice" },
               { src: "/images/waffle-chocolate.jpg", alt: "Chocolate Overload Waffle - Sweet Indulgence" },
             ].map((image, index) => (
-              <div key={index} className="h-60 w-full relative rounded-xl overflow-hidden shadow-soft group">
+              <div key={index} className="h-48 md:h-60 w-full relative rounded-xl overflow-hidden shadow-soft group">
                 <img 
                   src={image.src} 
                   alt={image.alt} 
@@ -232,14 +258,14 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-card rounded-3xl mx-4 md:mx-8 lg:mx-16">
+      <section className="py-16 md:py-20 bg-card rounded-3xl mx-2 md:mx-8 lg:mx-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-primary/10 text-primary border-primary/20">
                 🏆 Our Story
               </Badge>
-              <h2 className="text-responsive-lg font-bold">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                 Siddharth Nagar's First Artistic Café
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
@@ -247,7 +273,7 @@ export default function Home() {
                 where every cup of coffee is brewed with passion, and every corner inspires 
                 you to create, relax, and connect.
               </p>
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Star className="w-4 h-4 text-amber-500 fill-current" />
                   <span>4.9/5 Rating</span>
@@ -267,8 +293,8 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="relative">
-              <div className="relative h-80 w-full rounded-2xl overflow-hidden shadow-strong">
+            <div className="relative order-first lg:order-last">
+              <div className="relative h-64 md:h-80 w-full rounded-2xl overflow-hidden shadow-strong">
                 <img 
                   src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070&auto=format&fit=crop" 
                   alt="Interior of the cafe" 
@@ -287,13 +313,13 @@ export default function Home() {
       </section>
 
       {/* Menu QR Code Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50 to-orange-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
               📱 Scan & Order
             </Badge>
-            <h2 className="text-responsive-lg font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Quick Menu Access
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -307,13 +333,13 @@ export default function Home() {
       </section>
 
       {/* WhatsApp Order Section */}
-      <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-green-500/10 text-green-600 border-green-500/20">
               📱 WhatsApp Ordering
             </Badge>
-            <h2 className="text-responsive-lg font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Order Directly via WhatsApp
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -346,13 +372,13 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-center">
+      <section className="py-16 md:py-20 text-center">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
               🚀 Ready to Experience?
             </Badge>
-            <h2 className="text-responsive-lg font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Hungry? Thirsty? Creative?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
@@ -375,10 +401,10 @@ export default function Home() {
       </section>
 
       {/* Contact Info */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-12 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
+            <div className="space-y-3 p-4 bg-white/50 rounded-xl backdrop-blur-sm">
               <MapPin className="w-8 h-8 text-primary mx-auto" />
               <h3 className="font-semibold">Location</h3>
               <p className="text-muted-foreground text-sm">
@@ -387,7 +413,7 @@ export default function Home() {
                 Siddharth Nagar, UP
               </p>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-3 p-4 bg-white/50 rounded-xl backdrop-blur-sm">
               <Clock className="w-8 h-8 text-primary mx-auto" />
               <h3 className="font-semibold">Hours</h3>
               <p className="text-muted-foreground text-sm">
@@ -395,7 +421,7 @@ export default function Home() {
                 Sat - Sun: 9AM - 10PM
               </p>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-3 p-4 bg-white/50 rounded-xl backdrop-blur-sm">
               <Phone className="w-8 h-8 text-primary mx-auto" />
               <h3 className="font-semibold">Contact</h3>
               <p className="text-muted-foreground text-sm">
@@ -420,7 +446,7 @@ export default function Home() {
               Art in Every Sip. Soul in Every Bite.
             </p>
           </div>
-          <div className="flex justify-center space-x-6 mb-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-6">
             <Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link>
             <Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link>
             <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
