@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Coffee, Pizza, Book, Wifi, Mic, Star, Clock, MapPin, Phone, ArrowRight, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
-import { HeroSection } from '@/components/hero-section';
+
 import { Badge } from '@/components/ui/badge';
 import { MenuQR } from '@/components/menu-qr';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
@@ -10,7 +10,63 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground font-body flex flex-col min-h-screen">
       {/* Hero Section */}
-      <HeroSection />
+      <section className="relative py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/margherita.jpg" 
+            alt="Cafe atmosphere background" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+            ☕ First Artistic Café in Siddharth Nagar
+          </Badge>
+          <h1 className="text-responsive-xl font-bold mb-4">
+            Where <span className="text-primary">Creativity</span> Brews
+          </h1>
+          <p className="text-responsive-md text-muted-foreground max-w-2xl mx-auto mb-8">
+            Experience the perfect blend of art, culture, and culinary excellence. 
+            A place where every sip inspires and every bite delights.
+          </p>
+          
+          {/* Feature Badge */}
+          <div className="inline-flex items-center gap-2 bg-muted/50 px-4 py-2 rounded-full mb-8">
+            <Wifi className="w-4 h-4 text-green-500" />
+            <span className="text-sm font-medium">Free WiFi</span>
+          </div>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button asChild size="lg" className="btn-modern bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
+              <Link href="/menu" className="flex items-center gap-2">
+                Explore Menu
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="btn-modern px-8 py-4 text-lg">
+              <Link href="/events">View Events</Link>
+            </Button>
+          </div>
+          
+          {/* Quick Access */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="sm" className="btn-modern bg-muted hover:bg-muted/80">
+              <Link href="/menu" className="flex items-center gap-2">
+                <Pizza className="w-4 h-4" />
+                Quick Menu Access
+              </Link>
+            </Button>
+            <Button asChild size="sm" variant="outline" className="btn-modern">
+              <Link href="/menu">View Menu</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Quick Menu Preview */}
       <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
