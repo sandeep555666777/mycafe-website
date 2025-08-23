@@ -341,7 +341,7 @@ function OrderPageContent() {
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-900">{item.name}</h3>
                         <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                      </div>
+                          </div>
                       <div className="text-right ml-2">
                         <p className="font-semibold text-amber-600">₹{item.price}</p>
                         <div className="flex items-center gap-1 mt-1">
@@ -493,9 +493,9 @@ function OrderPageContent() {
                 </div>
               )}
             </div>
-          </div>
+                 </div>
         )}
-      </div>
+            </div>
     </div>
   );
 }

@@ -115,7 +115,7 @@ export default function Home() {
       <main className="flex-grow">
         {/* Features Section */}
         <section className="py-20 bg-gradient-to-b from-background to-muted/30">
-          <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
                 ✨ Why Choose Us
@@ -144,30 +144,30 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+            </div>
+          </section>
 
-        {/* Gallery Section */}
+        {/* Food Gallery Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                📸 Gallery
+                🍽️ Food Gallery
               </Badge>
               <h2 className="text-responsive-lg font-bold mb-4">
-                A Glimpse Inside
+                Our Delicious Creations
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Take a peek at the warm, inviting atmosphere that makes The Crafty Bean special
+                Take a peek at our mouthwatering pizzas and waffles that keep customers coming back
               </p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { src: "/images/cafe-interior-1.jpg", alt: "Delicious Margherita Pizza - Our Signature Dish" },
-                { src: "/images/cafe-interior-2.jpg", alt: "Spicy Pepperoni Pizza - Classic American Taste" },
-                { src: "/images/cafe-interior-3.jpg", alt: "Classic Waffle - Perfect Breakfast Choice" },
-                { src: "/images/cafe-interior-4.jpg", alt: "Chocolate Overload Waffle - Sweet Indulgence" },
+                { src: "/images/margherita.jpg", alt: "Delicious Margherita Pizza - Our Signature Dish" },
+                { src: "/images/pepperoni.jpg", alt: "Spicy Pepperoni Pizza - Classic American Taste" },
+                { src: "/images/waffle-classic.jpg", alt: "Classic Waffle - Perfect Breakfast Choice" },
+                { src: "/images/waffle-chocolate.jpg", alt: "Chocolate Overload Waffle - Sweet Indulgence" },
               ].map((image, index) => (
                 <div key={index} className="h-60 w-full relative rounded-xl overflow-hidden shadow-soft group">
                   <img 
@@ -207,7 +207,7 @@ export default function Home() {
                     <Clock className="w-4 h-4 text-primary" />
                     <span>Open Daily</span>
                   </div>
-                </div>
+              </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg" className="btn-modern">
                     <Link href="/about">Learn More</Link>
@@ -215,7 +215,7 @@ export default function Home() {
                   <Button asChild variant="outline" size="lg" className="btn-modern">
                     <Link href="/events">View Events</Link>
                   </Button>
-                </div>
+              </div>
               </div>
               
               <div className="relative">
@@ -233,9 +233,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
         {/* Menu QR Code Section */}
         <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
@@ -250,11 +250,11 @@ export default function Home() {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Scan our QR code to instantly view our complete menu and place your order
               </p>
-            </div>
+                      </div>
             <div className="flex justify-center">
               <MenuQR />
-            </div>
-          </div>
+                      </div>
+                    </div>
         </section>
 
         {/* WhatsApp Order Section */}
@@ -270,7 +270,7 @@ export default function Home() {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Quick and easy ordering through WhatsApp. Just add items to your cart and send us your order!
               </p>
-            </div>
+                </div>
             <div className="max-w-2xl mx-auto">
               <WhatsAppOrder 
                 cart={{}}
@@ -292,9 +292,9 @@ export default function Home() {
                   tableNumber: "Any"
                 }}
               />
-            </div>
-          </div>
-        </section>
+                </div>
+             </div>
+          </section>
 
         {/* CTA Section */}
         <section className="py-20 text-center">
@@ -319,11 +319,11 @@ export default function Home() {
                 </Button>
                 <Button asChild variant="outline" size="lg" className="btn-modern px-8 py-4 text-lg">
                   <Link href="/contact">Visit Us</Link>
-                </Button>
+              </Button>
               </div>
             </div>
           </div>
-        </section>
+          </section>
 
         {/* Contact Info */}
         <section className="py-16 bg-muted/30">
@@ -356,7 +356,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
+        </div>
         </section>
       </main>
 
