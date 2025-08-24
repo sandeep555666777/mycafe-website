@@ -143,7 +143,7 @@ const menuItems = {
       name: 'Paneer Burger', 
       price: '₹200', 
       description: 'Paneer lovers paradise - Juicy paneer patty in soft buns.', 
-      image: '/images/veggie.jpg', // Using veggie image for paneer burger
+      image: '/images/Paneer Burger.jpg', // Perfect match - actual paneer burger image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -152,7 +152,7 @@ const menuItems = {
       name: 'Chicken Patty Burger', 
       price: '₹220', 
       description: 'For the meat lovers - Classic chicken burger with sauces.', 
-      image: '/images/pepperoni.jpg', // Using pepperoni for meat-based burger
+      image: '/images/Chicken Patty Burger.jpg', // Perfect match - actual chicken patty burger image
       rating: 4.6,
       popular: false,
       vegetarian: false
@@ -161,7 +161,7 @@ const menuItems = {
       name: 'Crispy Burger', 
       price: '₹170', 
       description: 'Crunch that speaks louder - Crispy patty, fresh veggies & mayo.', 
-      image: '/images/veggie.jpg', // Using veggie image for crispy burger
+      image: '/images/Crispy Burger.jpg', // Perfect match - actual crispy burger image
       rating: 4.5,
       popular: false,
       vegetarian: false
@@ -172,7 +172,7 @@ const menuItems = {
       name: 'Cappuccino', 
       price: '₹120', 
       description: 'Foam that feels like a hug - Espresso with steamed milk & foam.', 
-      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for coffee drinks
+      image: '/images/Cappuccino.jpg', // Perfect match - actual cappuccino image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -181,7 +181,7 @@ const menuItems = {
       name: 'Latte', 
       price: '₹130', 
       description: 'Smoothness in every sip - Espresso & steamed milk.', 
-      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for coffee drinks
+      image: '/images/Latte.jpg', // Perfect match - actual latte image
       rating: 4.6,
       vegetarian: true
     },
@@ -189,7 +189,7 @@ const menuItems = {
       name: 'Mocha', 
       price: '₹140', 
       description: 'Chocolates coffee affair - Espresso with cocoa & milk.', 
-      image: '/images/waffle-chocolate.jpg', // Perfect match - chocolate mocha with chocolate waffle
+      image: '/images/Mocha.jpg', // Perfect match - actual mocha image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -198,7 +198,7 @@ const menuItems = {
       name: 'Americano', 
       price: '₹100', 
       description: 'For the bold & strong - Espresso with hot water.', 
-      image: '/images/waffle-classic.jpg', // Using classic waffle for black coffee
+      image: '/images/Americano.jpg', // Perfect match - actual americano image
       rating: 4.5,
       vegetarian: true
     },
@@ -206,7 +206,7 @@ const menuItems = {
       name: 'Espresso', 
       price: '₹80', 
       description: 'Small shot, big kick - Pure intense coffee shot.', 
-      image: '/images/waffle-classic.jpg', // Using classic waffle for strong coffee
+      image: '/images/Espresso.jpg', // Perfect match - actual espresso image
       rating: 4.4,
       vegetarian: true
     },
@@ -216,7 +216,7 @@ const menuItems = {
       name: 'Cold Coffee', 
       price: '₹140', 
       description: 'Chill, sip, repeat - Classic iced cold coffee.', 
-      image: '/images/waffle-berry.jpg', // Using berry waffle for cold drinks
+      image: '/images/Cold Coffee.jpg', // Perfect match - actual cold coffee image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -225,7 +225,7 @@ const menuItems = {
       name: 'Cold Coffee with Ice Cream', 
       price: '₹180', 
       description: 'The creamy upgrade - Coffee topped with a scoop of ice cream.', 
-      image: '/images/waffle-berry.jpg', // Using berry waffle for ice cream coffee
+      image: '/images/Cold Coffee with Ice Cream.jpg', // Perfect match - actual cold coffee with ice cream image
       rating: 4.9,
       popular: true,
       vegetarian: true
@@ -234,7 +234,7 @@ const menuItems = {
       name: 'Butterscotch Cold Coffee', 
       price: '₹160', 
       description: 'Nutty-sweet delight - Icy coffee with butterscotch flavor.', 
-      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for butterscotch
+      image: '/images/Butterscotch Cold Coffee.jpg', // Perfect match - actual butterscotch cold coffee image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -243,7 +243,7 @@ const menuItems = {
       name: 'Vanilla Cold Coffee', 
       price: '₹150', 
       description: 'Smooth, subtle, sweet - Coffee with vanilla twist.', 
-      image: '/images/waffle-classic.jpg', // Using classic waffle for vanilla
+      image: '/images/Vanilla Cold Coffee.jpg', // Perfect match - actual vanilla cold coffee image
       rating: 4.6,
       vegetarian: true
     },
@@ -251,7 +251,7 @@ const menuItems = {
       name: 'Hazelnut Cold Coffee', 
       price: '₹160', 
       description: 'Nutty meets creamy - Hazelnut flavored chilled coffee.', 
-      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for hazelnut
+      image: '/images/Hazelnut Cold Coffee,jpg.jfif', // Perfect match - actual hazelnut cold coffee image
       rating: 4.7,
       vegetarian: true
     },
@@ -261,7 +261,7 @@ const menuItems = {
       name: 'Ice Tea', 
       price: '₹80', 
       description: 'Coolness in a glass - Refreshing chilled tea.', 
-      image: '/images/waffle-berry.jpg', // Using berry waffle for refreshing tea
+      image: '/images/Ice Tea.jpg', // Perfect match - actual ice tea image
       rating: 4.5,
       vegetarian: true
     },
