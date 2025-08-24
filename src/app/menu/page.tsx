@@ -17,7 +17,7 @@ const menuItems = {
       name: 'Onion Pakoda', 
       price: '₹120', 
       description: 'Crispy bites of tradition - Golden-fried onion fritters with spices.', 
-      image: '/images/onion-pakoda.jpg', // Perfect match - actual onion pakoda image
+      image: '/images/Onion Pakoda.jpg', // Perfect match - actual onion pakoda image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -26,7 +26,7 @@ const menuItems = {
       name: 'Paneer Pakoda', 
       price: '₹150', 
       description: 'Soft inside, crunchy outside - Juicy paneer cubes in spiced batter, deep-fried.', 
-      image: '/images/paneer-pakoda.jpg', // Perfect match - actual paneer pakoda image
+      image: '/images/Paneer Pakoda.jpg', // Perfect match - actual paneer pakoda image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -37,7 +37,7 @@ const menuItems = {
       name: 'Plain Maggi', 
       price: '₹80', 
       description: 'Simple, soulful & satisfying - Classic comfort noodles cooked to perfection.', 
-      image: '/images/plain-maggi.jpg', // Perfect match - actual plain maggi image
+      image: '/images/Plain Maggi.jpg', // Perfect match - actual plain maggi image
       rating: 4.5,
       vegetarian: true
     },
