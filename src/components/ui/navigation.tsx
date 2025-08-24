@@ -30,6 +30,8 @@ export function Navigation() {
     { name: 'Events', href: '/events' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'QR Scanner', href: '/scanner' },
+    { name: 'Staff', href: '/staff' },
   ];
 
   const handleSearch = (e: React.FormEvent) => {

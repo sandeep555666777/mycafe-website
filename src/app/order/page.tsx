@@ -24,7 +24,10 @@ import {
   Coffee,
   Pizza,
   Dessert,
-  GlassWater
+  GlassWater,
+  Table,
+  QrCode,
+  CheckCircle
 } from 'lucide-react';
 
 interface MenuItem {
@@ -245,9 +248,7 @@ function OrderPageContent() {
         <Card className="w-full max-w-md text-center">
           <CardContent className="pt-6">
             <div className="text-green-600 mb-4">
-              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+              <CheckCircle className="w-16 h-16 mx-auto" />
             </div>
             <h2 className="text-2xl font-bold text-green-800 mb-2">Order Placed Successfully!</h2>
             <p className="text-green-700 mb-4">Your order has been received and is being prepared.</p>
@@ -273,7 +274,7 @@ function OrderPageContent() {
         <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-xl font-bold text-amber-900">MyCafe</h1>
+              <h1 className="text-xl font-bold text-amber-900">The Crafty Bean</h1>
               {tableNumber && (
                 <p className="text-sm text-amber-700">Table {tableNumber}</p>
               )}
@@ -294,6 +295,22 @@ function OrderPageContent() {
           </div>
         </div>
       </header>
+
+      {/* Table Banner */}
+      {tableNumber && (
+        <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3">
+          <div className="max-w-md mx-auto px-4">
+            <div className="flex items-center justify-center gap-2">
+              <Table className="w-5 h-5" />
+              <span className="font-semibold">Table {tableNumber}</span>
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                <QrCode className="w-3 h-3 mr-1" />
+                QR Connected
+              </Badge>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="max-w-md mx-auto">
         {/* Search and Filters */}
