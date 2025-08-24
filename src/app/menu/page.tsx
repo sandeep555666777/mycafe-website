@@ -17,7 +17,7 @@ const menuItems = {
       name: 'Onion Pakoda', 
       price: '₹120', 
       description: 'Crispy bites of tradition - Golden-fried onion fritters with spices.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual pakoda image
+      image: '/images/veggie.jpg', // Using veggie image as it's food-related
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -26,7 +26,7 @@ const menuItems = {
       name: 'Paneer Pakoda', 
       price: '₹150', 
       description: 'Soft inside, crunchy outside - Juicy paneer cubes in spiced batter, deep-fried.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual paneer pakoda image
+      image: '/images/veggie.jpg', // Using veggie image as it's food-related
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -37,7 +37,7 @@ const menuItems = {
       name: 'Plain Maggi', 
       price: '₹80', 
       description: 'Simple, soulful & satisfying - Classic comfort noodles cooked to perfection.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual maggi image
+      image: '/images/veggie.jpg', // Using veggie image for noodles
       rating: 4.5,
       vegetarian: true
     },
@@ -45,7 +45,7 @@ const menuItems = {
       name: 'Veg Maggi', 
       price: '₹100', 
       description: 'A healthy twist on nostalgia - Loaded with fresh vegetables.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual veg maggi image
+      image: '/images/veggie.jpg', // Perfect match - veg maggi with veggie image
       rating: 4.6,
       vegetarian: true
     },
@@ -53,7 +53,7 @@ const menuItems = {
       name: 'Cheese Maggi', 
       price: '₹120', 
       description: 'Cheese makes everything better - Creamy cheesy goodness with Maggi.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual cheese maggi image
+      image: '/images/margherita.jpg', // Using margherita for cheesy dishes
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -62,7 +62,7 @@ const menuItems = {
       name: 'White Sauce Pasta', 
       price: '₹180', 
       description: 'Silky, creamy, dreamy - Pasta in rich white sauce.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual white sauce pasta image
+      image: '/images/margherita.jpg', // Using margherita for pasta dishes
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -71,7 +71,7 @@ const menuItems = {
       name: 'Red Sauce Pasta', 
       price: '₹160', 
       description: 'A tangy Italian romance - Tomato-based pasta with herbs.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual red sauce pasta image
+      image: '/images/veggie.jpg', // Using veggie for tomato-based pasta
       rating: 4.6,
       vegetarian: true
     },
@@ -79,7 +79,7 @@ const menuItems = {
       name: 'Cheese Baked Pasta', 
       price: '₹200', 
       description: 'Cheese lava on your plate - Baked till golden, oozing with cheese.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual baked pasta image
+      image: '/images/margherita.jpg', // Using margherita for cheesy baked dishes
       rating: 4.9,
       popular: true,
       vegetarian: true
@@ -118,7 +118,7 @@ const menuItems = {
       name: 'Aloo Tikki Burger', 
       price: '₹150', 
       description: 'Street-style desi bite - Crispy potato patty with tangy sauces.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual aloo tikki burger image
+      image: '/images/veggie.jpg', // Using veggie image for potato-based burger
       rating: 4.6,
       vegetarian: true
     },
@@ -126,7 +126,7 @@ const menuItems = {
       name: 'Veg Patty Burger', 
       price: '₹160', 
       description: 'Classic, hearty & filling - Veg patty with cheese & lettuce.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual veg burger image
+      image: '/images/veggie.jpg', // Perfect match - veg burger with veggie image
       rating: 4.5,
       vegetarian: true
     },
@@ -134,7 +134,7 @@ const menuItems = {
       name: 'Cheese Veg Grilled Burger', 
       price: '₹180', 
       description: 'Melted cheese magic - Grilled to perfection with gooey cheese.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual grilled burger image
+      image: '/images/margherita.jpg', // Using margherita for cheesy burger
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -143,7 +143,7 @@ const menuItems = {
       name: 'Paneer Burger', 
       price: '₹200', 
       description: 'Paneer lovers paradise - Juicy paneer patty in soft buns.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual paneer burger image
+      image: '/images/veggie.jpg', // Using veggie image for paneer burger
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -152,7 +152,7 @@ const menuItems = {
       name: 'Chicken Patty Burger', 
       price: '₹220', 
       description: 'For the meat lovers - Classic chicken burger with sauces.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual chicken burger image
+      image: '/images/pepperoni.jpg', // Using pepperoni for meat-based burger
       rating: 4.6,
       popular: false,
       vegetarian: false
@@ -161,7 +161,7 @@ const menuItems = {
       name: 'Crispy Burger', 
       price: '₹170', 
       description: 'Crunch that speaks louder - Crispy patty, fresh veggies & mayo.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual crispy burger image
+      image: '/images/veggie.jpg', // Using veggie image for crispy burger
       rating: 4.5,
       popular: false,
       vegetarian: false
@@ -172,7 +172,7 @@ const menuItems = {
       name: 'Cappuccino', 
       price: '₹120', 
       description: 'Foam that feels like a hug - Espresso with steamed milk & foam.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual cappuccino image
+      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for coffee drinks
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -181,7 +181,7 @@ const menuItems = {
       name: 'Latte', 
       price: '₹130', 
       description: 'Smoothness in every sip - Espresso & steamed milk.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual latte image
+      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for coffee drinks
       rating: 4.6,
       vegetarian: true
     },
@@ -189,7 +189,7 @@ const menuItems = {
       name: 'Mocha', 
       price: '₹140', 
       description: 'Chocolates coffee affair - Espresso with cocoa & milk.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual mocha image
+      image: '/images/waffle-chocolate.jpg', // Perfect match - chocolate mocha with chocolate waffle
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -198,7 +198,7 @@ const menuItems = {
       name: 'Americano', 
       price: '₹100', 
       description: 'For the bold & strong - Espresso with hot water.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual americano image
+      image: '/images/waffle-classic.jpg', // Using classic waffle for black coffee
       rating: 4.5,
       vegetarian: true
     },
@@ -206,7 +206,7 @@ const menuItems = {
       name: 'Espresso', 
       price: '₹80', 
       description: 'Small shot, big kick - Pure intense coffee shot.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual espresso image
+      image: '/images/waffle-classic.jpg', // Using classic waffle for strong coffee
       rating: 4.4,
       vegetarian: true
     },
@@ -216,7 +216,7 @@ const menuItems = {
       name: 'Cold Coffee', 
       price: '₹140', 
       description: 'Chill, sip, repeat - Classic iced cold coffee.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual cold coffee image
+      image: '/images/waffle-berry.jpg', // Using berry waffle for cold drinks
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -225,7 +225,7 @@ const menuItems = {
       name: 'Cold Coffee with Ice Cream', 
       price: '₹180', 
       description: 'The creamy upgrade - Coffee topped with a scoop of ice cream.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual cold coffee with ice cream image
+      image: '/images/waffle-berry.jpg', // Using berry waffle for ice cream coffee
       rating: 4.9,
       popular: true,
       vegetarian: true
@@ -234,7 +234,7 @@ const menuItems = {
       name: 'Butterscotch Cold Coffee', 
       price: '₹160', 
       description: 'Nutty-sweet delight - Icy coffee with butterscotch flavor.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual butterscotch coffee image
+      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for butterscotch
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -243,7 +243,7 @@ const menuItems = {
       name: 'Vanilla Cold Coffee', 
       price: '₹150', 
       description: 'Smooth, subtle, sweet - Coffee with vanilla twist.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual vanilla coffee image
+      image: '/images/waffle-classic.jpg', // Using classic waffle for vanilla
       rating: 4.6,
       vegetarian: true
     },
@@ -251,7 +251,7 @@ const menuItems = {
       name: 'Hazelnut Cold Coffee', 
       price: '₹160', 
       description: 'Nutty meets creamy - Hazelnut flavored chilled coffee.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual hazelnut coffee image
+      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for hazelnut
       rating: 4.7,
       vegetarian: true
     },
@@ -261,7 +261,7 @@ const menuItems = {
       name: 'Ice Tea', 
       price: '₹80', 
       description: 'Coolness in a glass - Refreshing chilled tea.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual ice tea image
+      image: '/images/waffle-berry.jpg', // Using berry waffle for refreshing tea
       rating: 4.5,
       vegetarian: true
     },
@@ -269,7 +269,7 @@ const menuItems = {
       name: 'Peach Ice Tea', 
       price: '₹100', 
       description: 'Fruity, tangy, peachy - Perfect summer sip.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual peach tea image
+      image: '/images/waffle-berry.jpg', // Perfect match - peach tea with berry waffle
       rating: 4.6,
       vegetarian: true
     },
@@ -277,7 +277,7 @@ const menuItems = {
       name: 'Lemon Ice Tea', 
       price: '₹90', 
       description: 'Citrus chill - Lemon twist with iced tea.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual lemon tea image
+      image: '/images/waffle-berry.jpg', // Using berry waffle for citrus tea
       rating: 4.5,
       vegetarian: true
     },
@@ -285,7 +285,7 @@ const menuItems = {
       name: 'Sparkling Ice Tea (Orange/Cranberry)', 
       price: '₹120', 
       description: 'Fizz that refreshes - Iced tea with sparkling water & fruity zest.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual sparkling tea image
+      image: '/images/waffle-berry.jpg', // Perfect match - fruity tea with berry waffle
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -294,7 +294,7 @@ const menuItems = {
       name: 'Boba Tea', 
       price: '₹150', 
       description: 'Fun in every bubble - Sweet milk tea with tapioca pearls.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual boba tea image
+      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for sweet tea
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -303,7 +303,7 @@ const menuItems = {
       name: 'Matcha Tea', 
       price: '₹130', 
       description: 'The green powerhouse - Earthy Japanese green tea.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual matcha tea image
+      image: '/images/waffle-classic.jpg', // Using classic waffle for green tea
       rating: 4.6,
       vegetarian: true
     },
@@ -313,7 +313,7 @@ const menuItems = {
       name: 'Blue Tea', 
       price: '₹140', 
       description: 'Sip the sky - Butterfly pea flowers brewed into calming tea.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual blue tea image
+      image: '/images/waffle-berry.jpg', // Using berry waffle for blue tea
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -322,7 +322,7 @@ const menuItems = {
       name: 'Red Hibiscus Tea', 
       price: '₹130', 
       description: 'Tangy & refreshing - A ruby-red herbal infusion.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual hibiscus tea image
+      image: '/images/waffle-berry.jpg', // Perfect match - red tea with berry waffle
       rating: 4.6,
       vegetarian: true
     },
@@ -330,7 +330,7 @@ const menuItems = {
       name: 'Butterfly Pea Tea (Purple)', 
       price: '₹150', 
       description: 'Magic in your cup - Color-changing tea with lemon drops.', 
-      image: '/images/event-art.jpg', // Placeholder - can be replaced with actual butterfly pea tea image
+      image: '/images/waffle-berry.jpg', // Using berry waffle for colorful tea
       rating: 4.8,
       popular: true,
       vegetarian: true
