@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle } from 'lucide-react';
+import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle, Coffee, Utensils, Sandwich, CupSoda, Flame, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -12,30 +12,327 @@ import { MenuCard } from '@/components/menu-card';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
 
 const menuItems = {
+  desiBites: [
+    { 
+      name: 'Onion Pakoda', 
+      price: '₹120', 
+      description: 'Crispy bites of tradition - Golden-fried onion fritters with spices.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Paneer Pakoda', 
+      price: '₹150', 
+      description: 'Soft inside, crunchy outside - Juicy paneer cubes in spiced batter, deep-fried.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+  ],
+  maggiPasta: [
+    { 
+      name: 'Plain Maggi', 
+      price: '₹80', 
+      description: 'Simple, soulful & satisfying - Classic comfort noodles cooked to perfection.', 
+      image: '/images/event-art.jpg',
+      rating: 4.5,
+      vegetarian: true
+    },
+    { 
+      name: 'Veg Maggi', 
+      price: '₹100', 
+      description: 'A healthy twist on nostalgia - Loaded with fresh vegetables.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Cheese Maggi', 
+      price: '₹120', 
+      description: 'Cheese makes everything better - Creamy cheesy goodness with Maggi.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'White Sauce Pasta', 
+      price: '₹180', 
+      description: 'Silky, creamy, dreamy - Pasta in rich white sauce.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Red Sauce Pasta', 
+      price: '₹160', 
+      description: 'A tangy Italian romance - Tomato-based pasta with herbs.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Cheese Baked Pasta', 
+      price: '₹200', 
+      description: 'Cheese lava on your plate - Baked till golden, oozing with cheese.', 
+      image: '/images/event-art.jpg',
+      rating: 4.9,
+      popular: true,
+      vegetarian: true
+    },
+  ],
   pizzas: [
     { 
       name: 'Margherita Pizza', 
       price: '₹350', 
-      description: 'Classic delight with 100% real mozzarella cheese, fresh basil, and our signature tomato sauce', 
+      description: 'Simplicity at its cheesiest - Tomato, mozzarella & basil.', 
       image: '/images/margherita.jpg',
       rating: 4.8,
       popular: true,
       vegetarian: true
     },
     { 
-      name: 'Pepperoni Pizza', 
-      price: '₹400', 
-      description: 'A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese', 
-      image: '/images/pepperoni.jpg',
-      rating: 4.6,
-      popular: true
-    },
-    { 
-      name: 'Veggie Supreme Pizza', 
+      name: 'Veggie Overload Pizza', 
       price: '₹380', 
-      description: 'A supreme combination of black olives, onion, capsicum, grilled mushroom, corn, tomato & jalapeno', 
+      description: 'Every bite, a garden party - Bell peppers, onions, corn & olives.', 
       image: '/images/veggie.jpg',
       rating: 4.7,
+      vegetarian: true
+    },
+    { 
+      name: 'Paneer Tikka Pizza', 
+      price: '₹400', 
+      description: 'When Italy meets India - Tikka-flavored paneer on a cheesy base.', 
+      image: '/images/event-art.jpg',
+      rating: 4.9,
+      popular: true,
+      vegetarian: true
+    },
+  ],
+  burgers: [
+    { 
+      name: 'Aloo Tikki Burger', 
+      price: '₹150', 
+      description: 'Street-style desi bite - Crispy potato patty with tangy sauces.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Veg Patty Burger', 
+      price: '₹160', 
+      description: 'Classic, hearty & filling - Veg patty with cheese & lettuce.', 
+      image: '/images/event-art.jpg',
+      rating: 4.5,
+      vegetarian: true
+    },
+    { 
+      name: 'Cheese Veg Grilled Burger', 
+      price: '₹180', 
+      description: 'Melted cheese magic - Grilled to perfection with gooey cheese.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Paneer Burger', 
+      price: '₹200', 
+      description: 'Paneer lovers paradise - Juicy paneer patty in soft buns.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Chicken Patty Burger', 
+      price: '₹220', 
+      description: 'For the meat lovers - Classic chicken burger with sauces.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      popular: false,
+      vegetarian: false
+    },
+    { 
+      name: 'Crispy Burger', 
+      price: '₹170', 
+      description: 'Crunch that speaks louder - Crispy patty, fresh veggies & mayo.', 
+      image: '/images/event-art.jpg',
+      rating: 4.5,
+      popular: false,
+      vegetarian: false
+    },
+  ],
+  hotCoffee: [
+    { 
+      name: 'Cappuccino', 
+      price: '₹120', 
+      description: 'Foam that feels like a hug - Espresso with steamed milk & foam.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Latte', 
+      price: '₹130', 
+      description: 'Smoothness in every sip - Espresso & steamed milk.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Mocha', 
+      price: '₹140', 
+      description: 'Chocolates coffee affair - Espresso with cocoa & milk.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Americano', 
+      price: '₹100', 
+      description: 'For the bold & strong - Espresso with hot water.', 
+      image: '/images/event-art.jpg',
+      rating: 4.5,
+      vegetarian: true
+    },
+    { 
+      name: 'Espresso', 
+      price: '₹80', 
+      description: 'Small shot, big kick - Pure intense coffee shot.', 
+      image: '/images/event-art.jpg',
+      rating: 4.4,
+      vegetarian: true
+    },
+  ],
+  coldCoffee: [
+    { 
+      name: 'Cold Coffee', 
+      price: '₹140', 
+      description: 'Chill, sip, repeat - Classic iced cold coffee.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Cold Coffee with Ice Cream', 
+      price: '₹180', 
+      description: 'The creamy upgrade - Coffee topped with a scoop of ice cream.', 
+      image: '/images/event-art.jpg',
+      rating: 4.9,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Butterscotch Cold Coffee', 
+      price: '₹160', 
+      description: 'Nutty-sweet delight - Icy coffee with butterscotch flavor.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Vanilla Cold Coffee', 
+      price: '₹150', 
+      description: 'Smooth, subtle, sweet - Coffee with vanilla twist.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Hazelnut Cold Coffee', 
+      price: '₹160', 
+      description: 'Nutty meets creamy - Hazelnut flavored chilled coffee.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      vegetarian: true
+    },
+  ],
+  teaTime: [
+    { 
+      name: 'Ice Tea', 
+      price: '₹80', 
+      description: 'Coolness in a glass - Refreshing chilled tea.', 
+      image: '/images/event-art.jpg',
+      rating: 4.5,
+      vegetarian: true
+    },
+    { 
+      name: 'Peach Ice Tea', 
+      price: '₹100', 
+      description: 'Fruity, tangy, peachy - Perfect summer sip.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Lemon Ice Tea', 
+      price: '₹90', 
+      description: 'Citrus chill - Lemon twist with iced tea.', 
+      image: '/images/event-art.jpg',
+      rating: 4.5,
+      vegetarian: true
+    },
+    { 
+      name: 'Sparkling Ice Tea (Orange/Cranberry)', 
+      price: '₹120', 
+      description: 'Fizz that refreshes - Iced tea with sparkling water & fruity zest.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Boba Tea', 
+      price: '₹150', 
+      description: 'Fun in every bubble - Sweet milk tea with tapioca pearls.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Matcha Tea', 
+      price: '₹130', 
+      description: 'The green powerhouse - Earthy Japanese green tea.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+  ],
+  flowerTeas: [
+    { 
+      name: 'Blue Tea', 
+      price: '₹140', 
+      description: 'Sip the sky - Butterfly pea flowers brewed into calming tea.', 
+      image: '/images/event-art.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Red Hibiscus Tea', 
+      price: '₹130', 
+      description: 'Tangy & refreshing - A ruby-red herbal infusion.', 
+      image: '/images/event-art.jpg',
+      rating: 4.6,
+      vegetarian: true
+    },
+    { 
+      name: 'Butterfly Pea Tea (Purple)', 
+      price: '₹150', 
+      description: 'Magic in your cup - Color-changing tea with lemon drops.', 
+      image: '/images/event-art.jpg',
+      rating: 4.8,
+      popular: true,
       vegetarian: true
     },
   ],
@@ -69,8 +366,15 @@ const menuItems = {
 };
 
 const categories = [
-  { id: 'all', name: 'All Items', count: menuItems.pizzas.length + menuItems.waffles.length },
+  { id: 'all', name: 'All Items', count: Object.values(menuItems).flat().length },
+  { id: 'desiBites', name: 'Desi Twist Bites', count: menuItems.desiBites.length, icon: Flame },
+  { id: 'maggiPasta', name: 'Maggi & Pasta', count: menuItems.maggiPasta.length, icon: Utensils },
   { id: 'pizzas', name: 'Pizzas', count: menuItems.pizzas.length, icon: Pizza },
+  { id: 'burgers', name: 'Burgers', count: menuItems.burgers.length, icon: Sandwich },
+  { id: 'hotCoffee', name: 'Hot Coffee', count: menuItems.hotCoffee.length, icon: Coffee },
+  { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
+  { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
+  { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
   { id: 'waffles', name: 'Waffles', count: menuItems.waffles.length, icon: Cookie },
 ];
 
@@ -102,12 +406,19 @@ export default function MenuPage() {
     window.open(whatsappUrl, '_blank');
   };
 
-  const allItems = [...menuItems.pizzas, ...menuItems.waffles];
+  const allItems = Object.values(menuItems).flat();
   const filteredItems = allItems.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          item.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || 
+                           (selectedCategory === 'desiBites' && menuItems.desiBites.includes(item)) ||
+                           (selectedCategory === 'maggiPasta' && menuItems.maggiPasta.includes(item)) ||
                            (selectedCategory === 'pizzas' && menuItems.pizzas.includes(item)) ||
+                           (selectedCategory === 'burgers' && menuItems.burgers.includes(item)) ||
+                           (selectedCategory === 'hotCoffee' && menuItems.hotCoffee.includes(item)) ||
+                           (selectedCategory === 'coldCoffee' && menuItems.coldCoffee.includes(item)) ||
+                           (selectedCategory === 'teaTime' && menuItems.teaTime.includes(item)) ||
+                           (selectedCategory === 'flowerTeas' && menuItems.flowerTeas.includes(item)) ||
                            (selectedCategory === 'waffles' && menuItems.waffles.includes(item));
     return matchesSearch && matchesCategory;
   });
@@ -125,7 +436,8 @@ export default function MenuPage() {
             Handcrafted with Love
           </h1>
           <p className="text-responsive-md text-muted-foreground max-w-2xl mx-auto mb-8">
-            Discover our carefully curated selection of artisanal pizzas and delectable waffles, 
+            Discover our carefully curated selection of Desi Twist Bites, Maggi & Pasta, Pizzas, Burgers, 
+            Hot & Cold Coffee, Tea Time Bliss, Blooming Flower Teas, and delectable Waffles - 
             each crafted with the finest ingredients and a passion for flavor.
           </p>
           
@@ -175,12 +487,12 @@ export default function MenuPage() {
 
         {/* Menu Tabs */}
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-5 mb-8 overflow-x-auto">
             {categories.map((category) => (
               <TabsTrigger 
                 key={category.id} 
                 value={category.id}
-                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground whitespace-nowrap"
               >
                 {category.icon && <category.icon className="w-4 h-4" />}
                 {category.name}
@@ -196,11 +508,130 @@ export default function MenuPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Flame className="text-primary h-8 w-8" />
+                  Desi Twist Bites
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.desiBites.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Utensils className="text-primary h-8 w-8" />
+                  Maggi & Pasta Tales
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.maggiPasta.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
                   <Pizza className="text-primary h-8 w-8" />
                   Pizzas
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {menuItems.pizzas.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Sandwich className="text-primary h-8 w-8" />
+                  Bun & Fun - Burgers
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.burgers.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Coffee className="text-primary h-8 w-8" />
+                  Bloom in a Cup - Hot Coffee
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.hotCoffee.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Coffee className="text-primary h-8 w-8" />
+                  Cold Café Creations
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.coldCoffee.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <CupSoda className="text-primary h-8 w-8" />
+                  Tea Time Bliss
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.teaTime.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Leaf className="text-primary h-8 w-8" />
+                  Blooming Flower Teas
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.flowerTeas.map((item) => (
                     <MenuCard
                       key={item.name}
                       {...item}
@@ -260,6 +691,132 @@ export default function MenuPage() {
                   key={item.name}
                   {...item}
                   category="waffle"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Desi Twist Bites Only */}
+          <TabsContent value="desiBites" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Flame className="text-primary h-8 w-8" />
+              Desi Twist Bites
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.desiBites.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="desi"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Maggi & Pasta Only */}
+          <TabsContent value="maggiPasta" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Utensils className="text-primary h-8 w-8" />
+              Maggi & Pasta Tales
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.maggiPasta.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="pasta"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Burgers Only */}
+          <TabsContent value="burgers" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Sandwich className="text-primary h-8 w-8" />
+              Bun & Fun - Burgers
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.burgers.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="burger"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Hot Coffee Only */}
+          <TabsContent value="hotCoffee" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Coffee className="text-primary h-8 w-8" />
+              Bloom in a Cup - Hot Coffee
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.hotCoffee.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="coffee"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Cold Coffee Only */}
+          <TabsContent value="coldCoffee" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Coffee className="text-primary h-8 w-8" />
+              Cold Café Creations
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.coldCoffee.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="coffee"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Tea Time Only */}
+          <TabsContent value="teaTime" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <CupSoda className="text-primary h-8 w-8" />
+              Tea Time Bliss
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.teaTime.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="tea"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Flower Teas Only */}
+          <TabsContent value="flowerTeas" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Leaf className="text-primary h-8 w-8" />
+              Blooming Flower Teas
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.flowerTeas.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="tea"
                   onOrder={() => handleWhatsAppOrder(item)}
                 />
               ))}
