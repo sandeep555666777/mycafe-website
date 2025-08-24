@@ -222,21 +222,42 @@ function OrderPageContent() {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
-  const placeOrder = () => {
+  const placeOrder = async () => {
     if (cart.length === 0 || !customerName || !customerPhone) return;
     
-    // Here you would typically send the order to your backend
-    console.log('Order placed:', {
-      tableNumber,
-      customerName,
-      customerPhone,
-      items: cart,
-      total: getTotalPrice(),
-      timestamp: new Date().toISOString()
-    });
-    
-    setOrderPlaced(true);
-    setCart([]);
+    try {
+      const orderData = {
+        tableNumber: tableNumber ? parseInt(tableNumber) : null,
+        customerName,
+        customerPhone,
+        items: cart,
+        total: getTotalPrice(),
+        estimatedTime: '15-20 min'
+      };
+      
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Order placed successfully:', result);
+        setOrderPlaced(true);
+        setCart([]);
+        setCustomerName('');
+        setCustomerPhone('');
+      } else {
+        console.error('Failed to place order');
+        alert('Failed to place order. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error placing order:', error);
+      alert('Error placing order. Please try again.');
+    }
   };
 
   if (orderPlaced) {
