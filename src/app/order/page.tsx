@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
+import { ContactlessPayment } from '@/components/contactless-payment';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -182,6 +183,8 @@ function OrderPageContent() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
+  const [showPayment, setShowPayment] = useState(false);
+  const [currentOrderId, setCurrentOrderId] = useState('');
 
   const filteredItems = menuItems.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -246,10 +249,8 @@ function OrderPageContent() {
       if (response.ok) {
         const result = await response.json();
         console.log('Order placed successfully:', result);
-        setOrderPlaced(true);
-        setCart([]);
-        setCustomerName('');
-        setCustomerPhone('');
+        setCurrentOrderId(result.order.id);
+        setShowPayment(true);
       } else {
         console.error('Failed to place order');
         alert('Failed to place order. Please try again.');
@@ -257,6 +258,16 @@ function OrderPageContent() {
     } catch (error) {
       console.error('Error placing order:', error);
       alert('Error placing order. Please try again.');
+    }
+  };
+
+  const handlePaymentComplete = (success: boolean, paymentData?: any) => {
+    if (success) {
+      setOrderPlaced(true);
+      setCart([]);
+      setCustomerName('');
+      setCustomerPhone('');
+      setShowPayment(false);
     }
   };
 
@@ -491,6 +502,13 @@ function OrderPageContent() {
                     Place Order - ₹{getTotalPrice()}
                   </Button>
                   
+                  {/* Contactless Payment Option */}
+                  <div className="pt-4 border-t">
+                    <p className="text-sm text-muted-foreground mb-3 text-center">
+                      💳 Pay contactlessly after placing order
+                    </p>
+                  </div>
+                  
                   {/* WhatsApp Order Option */}
                   <div className="pt-4 border-t">
                     <p className="text-sm text-muted-foreground mb-3 text-center">
@@ -513,6 +531,32 @@ function OrderPageContent() {
               )}
             </div>
                  </div>
+        )}
+
+        {/* Contactless Payment Modal */}
+        {showPayment && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold">Contactless Payment</h2>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    onClick={() => setShowPayment(false)}
+                  >
+                    ×
+                  </Button>
+                </div>
+                <ContactlessPayment
+                  amount={getTotalPrice()}
+                  orderId={currentOrderId}
+                  customerPhone={customerPhone}
+                  onPaymentComplete={handlePaymentComplete}
+                />
+              </div>
+            </div>
+          </div>
         )}
             </div>
     </div>
