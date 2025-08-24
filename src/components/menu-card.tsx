@@ -12,7 +12,7 @@ interface MenuItemProps {
   price: string;
   description: string;
   image: string;
-  category: 'pizza' | 'waffle';
+  category: 'pizza' | 'waffle' | 'desi' | 'pasta' | 'burger' | 'coffee' | 'tea';
   rating?: number;
   popular?: boolean;
   spicy?: boolean;

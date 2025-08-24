@@ -39,6 +39,7 @@ const menuItems = {
       description: 'Simple, soulful & satisfying - Classic comfort noodles cooked to perfection.', 
       image: '/images/Plain Maggi.jpg', // Perfect match - actual plain maggi image
       rating: 4.5,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -47,6 +48,7 @@ const menuItems = {
       description: 'A healthy twist on nostalgia - Loaded with fresh vegetables.', 
       image: '/images/Veg Maggi.jpg', // Perfect match - actual veg maggi image
       rating: 4.6,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -73,6 +75,7 @@ const menuItems = {
       description: 'A tangy Italian romance - Tomato-based pasta with herbs.', 
       image: '/images/Red Sauce Pasta.jpg', // Perfect match - actual red sauce pasta image
       rating: 4.6,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -101,6 +104,7 @@ const menuItems = {
       description: 'Every bite, a garden party - Bell peppers, onions, corn & olives.', 
       image: '/images/veggie.jpg', // Perfect match - existing veggie pizza image
       rating: 4.7,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -120,6 +124,7 @@ const menuItems = {
       description: 'Street-style desi bite - Crispy potato patty with tangy sauces.', 
       image: '/images/Aloo Tikki Burger.jpg', // Perfect match - actual aloo tikki burger image
       rating: 4.6,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -128,6 +133,7 @@ const menuItems = {
       description: 'Classic, hearty & filling - Veg patty with cheese & lettuce.', 
       image: '/images/Veg Patty Burger.jpg', // Perfect match - actual veg patty burger image
       rating: 4.5,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -183,6 +189,7 @@ const menuItems = {
       description: 'Smoothness in every sip - Espresso & steamed milk.', 
       image: '/images/Latte.jpg', // Perfect match - actual latte image
       rating: 4.6,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -200,6 +207,7 @@ const menuItems = {
       description: 'For the bold & strong - Espresso with hot water.', 
       image: '/images/Americano.jpg', // Perfect match - actual americano image
       rating: 4.5,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -208,6 +216,7 @@ const menuItems = {
       description: 'Small shot, big kick - Pure intense coffee shot.', 
       image: '/images/Espresso.jpg', // Perfect match - actual espresso image
       rating: 4.4,
+      popular: false,
       vegetarian: true
     },
   ],
@@ -269,7 +278,7 @@ const menuItems = {
       name: 'Peach Ice Tea', 
       price: '₹100', 
       description: 'Fruity, tangy, peachy - Perfect summer sip.', 
-      image: '/images/waffle-berry.jpg', // Perfect match - peach tea with berry waffle
+      image: '/images/Peach Ice Tea.jpg', // Perfect match - actual peach ice tea image
       rating: 4.6,
       vegetarian: true
     },
@@ -277,7 +286,7 @@ const menuItems = {
       name: 'Lemon Ice Tea', 
       price: '₹90', 
       description: 'Citrus chill - Lemon twist with iced tea.', 
-      image: '/images/waffle-berry.jpg', // Using berry waffle for citrus tea
+      image: '/images/Lemon Ice Tea.jpg', // Perfect match - actual lemon ice tea image
       rating: 4.5,
       vegetarian: true
     },
@@ -285,7 +294,7 @@ const menuItems = {
       name: 'Sparkling Ice Tea (Orange/Cranberry)', 
       price: '₹120', 
       description: 'Fizz that refreshes - Iced tea with sparkling water & fruity zest.', 
-      image: '/images/waffle-berry.jpg', // Perfect match - fruity tea with berry waffle
+      image: '/images/Sparkling Ice Tea Orange Cranberry.jpg', // Perfect match - actual sparkling ice tea image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -294,7 +303,7 @@ const menuItems = {
       name: 'Boba Tea', 
       price: '₹150', 
       description: 'Fun in every bubble - Sweet milk tea with tapioca pearls.', 
-      image: '/images/waffle-chocolate.jpg', // Using chocolate waffle for sweet tea
+      image: '/images/Boba Tea.jpg', // Perfect match - actual boba tea image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -313,7 +322,7 @@ const menuItems = {
       name: 'Blue Tea', 
       price: '₹140', 
       description: 'Sip the sky - Butterfly pea flowers brewed into calming tea.', 
-      image: '/images/waffle-berry.jpg', // Using berry waffle for blue tea
+      image: '/images/Blue Tea.jpg', // Perfect match - actual blue tea image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -322,7 +331,7 @@ const menuItems = {
       name: 'Red Hibiscus Tea', 
       price: '₹130', 
       description: 'Tangy & refreshing - A ruby-red herbal infusion.', 
-      image: '/images/waffle-berry.jpg', // Perfect match - red tea with berry waffle
+      image: '/images/Red Hibiscus Tea.jpg', // Perfect match - actual red hibiscus tea image
       rating: 4.6,
       vegetarian: true
     },
@@ -330,7 +339,7 @@ const menuItems = {
       name: 'Butterfly Pea Tea (Purple)', 
       price: '₹150', 
       description: 'Magic in your cup - Color-changing tea with lemon drops.', 
-      image: '/images/waffle-berry.jpg', // Using berry waffle for colorful tea
+      image: '/images/Butterfly Pea Tea.jpg', // Perfect match - actual butterfly pea tea image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -341,7 +350,7 @@ const menuItems = {
       name: 'Classic Waffle', 
       price: '₹180', 
       description: 'A simple, elegant waffle served with maple syrup and butter. Perfect for a sweet breakfast or dessert.', 
-      image: '/images/waffle-classic.jpg', // Perfect match - existing classic waffle image
+      image: '/images/Classic Waffle.jpg', // Perfect match - actual classic waffle image
       rating: 4.5,
       vegetarian: true
     },
@@ -349,7 +358,7 @@ const menuItems = {
       name: 'Chocolate Overload Waffle', 
       price: '₹250', 
       description: 'For the chocolate lovers! A rich waffle with chocolate chips, chocolate sauce, and chocolate ice cream.', 
-      image: '/images/waffle-chocolate.jpg', // Perfect match - existing chocolate waffle image
+      image: '/images/Chocolate Overload Waffle.jpg', // Perfect match - actual chocolate overload waffle image
       rating: 4.9,
       popular: true,
       vegetarian: true
@@ -358,7 +367,7 @@ const menuItems = {
       name: 'Berry Blast Waffle', 
       price: '₹220', 
       description: 'A fruity delight with fresh berries, whipped cream, and a drizzle of berry coulis.', 
-      image: '/images/waffle-berry.jpg', // Perfect match - existing berry waffle image
+      image: '/images/Berry Blast Waffle.jpg', // Perfect match - actual berry blast waffle image
       rating: 4.6,
       vegetarian: true
     },
