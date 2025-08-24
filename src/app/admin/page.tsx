@@ -318,7 +318,7 @@ export default function AdminPage() {
   };
 
   const generateBulkQR = () => {
-    const newTables = [];
+    const newTables: TableQR[] = [];
     const startTable = tables.length + 1;
     for (let i = 0; i < 5; i++) {
       const tableNumber = startTable + i;
@@ -555,11 +555,12 @@ export default function AdminPage() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
             <TabsTrigger value="orders">Orders</TabsTrigger>
             <TabsTrigger value="payments">Payments</TabsTrigger>
             <TabsTrigger value="qr-generator">QR Generator</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
 
           <TabsContent value="dashboard" className="space-y-6">
@@ -1150,6 +1151,144 @@ export default function AdminPage() {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          <TabsContent value="analytics" className="space-y-6">
+            {/* Analytics Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BarChart3 className="w-5 h-5" />
+                    Daily Revenue
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-green-600">₹{stats.totalRevenue}</div>
+                  <p className="text-sm text-muted-foreground">Today's total revenue</p>
+                  <div className="mt-2 flex items-center gap-1 text-green-600">
+                    <TrendingUp className="w-4 h-4" />
+                    <span className="text-sm">+12% from yesterday</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="w-5 h-5" />
+                    Customer Traffic
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-blue-600">{stats.totalOrders}</div>
+                  <p className="text-sm text-muted-foreground">Orders today</p>
+                  <div className="mt-2 flex items-center gap-1 text-blue-600">
+                    <TrendingUp className="w-4 h-4" />
+                    <span className="text-sm">+8% from yesterday</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Timer className="w-5 h-5" />
+                    Average Order Time
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-purple-600">18 min</div>
+                  <p className="text-sm text-muted-foreground">Preparation time</p>
+                  <div className="mt-2 flex items-center gap-1 text-green-600">
+                    <TrendingUp className="w-4 h-4" />
+                    <span className="text-sm">-2 min from last week</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Popular Items */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Popular Menu Items</CardTitle>
+                <CardDescription>Most ordered items today</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center">
+                        <span className="text-amber-800 font-bold">1</span>
+                      </div>
+                      <div>
+                        <p className="font-medium">Margherita Pizza</p>
+                        <p className="text-sm text-muted-foreground">15 orders today</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold">₹4,485</p>
+                      <p className="text-sm text-muted-foreground">Revenue</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                        <span className="text-gray-800 font-bold">2</span>
+                      </div>
+                      <div>
+                        <p className="font-medium">Classic Waffle</p>
+                        <p className="text-sm text-muted-foreground">12 orders today</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold">₹2,388</p>
+                      <p className="text-sm text-muted-foreground">Revenue</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                        <span className="text-gray-800 font-bold">3</span>
+                      </div>
+                      <div>
+                        <p className="font-medium">Cappuccino</p>
+                        <p className="text-sm text-muted-foreground">10 orders today</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold">₹1,490</p>
+                      <p className="text-sm text-muted-foreground">Revenue</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Table Performance */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Table Performance</CardTitle>
+                <CardDescription>Order volume by table</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {tables.slice(0, 4).map((table) => (
+                    <div key={table.id} className="text-center p-4 border rounded-lg">
+                      <div className="text-2xl font-bold text-amber-600">Table {table.tableNumber}</div>
+                      <div className="text-sm text-muted-foreground">{table.totalOrders} orders</div>
+                      <div className={`mt-2 text-xs px-2 py-1 rounded-full ${
+                        table.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                      }`}>
+                        {table.status}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>
