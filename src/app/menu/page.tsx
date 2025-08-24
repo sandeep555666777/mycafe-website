@@ -45,7 +45,7 @@ const menuItems = {
       name: 'Veg Maggi', 
       price: '₹100', 
       description: 'A healthy twist on nostalgia - Loaded with fresh vegetables.', 
-      image: '/images/veggie.jpg', // Perfect match - veg maggi with veggie image
+      image: '/images/Veg Maggi.jpg', // Perfect match - actual veg maggi image
       rating: 4.6,
       vegetarian: true
     },
@@ -53,7 +53,7 @@ const menuItems = {
       name: 'Cheese Maggi', 
       price: '₹120', 
       description: 'Cheese makes everything better - Creamy cheesy goodness with Maggi.', 
-      image: '/images/margherita.jpg', // Using margherita for cheesy dishes
+      image: '/images/Cheese Maggi.jpg', // Perfect match - actual cheese maggi image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -62,7 +62,7 @@ const menuItems = {
       name: 'White Sauce Pasta', 
       price: '₹180', 
       description: 'Silky, creamy, dreamy - Pasta in rich white sauce.', 
-      image: '/images/margherita.jpg', // Using margherita for pasta dishes
+      image: '/images/White Sauce Pasta.jpg', // Perfect match - actual white sauce pasta image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -71,7 +71,7 @@ const menuItems = {
       name: 'Red Sauce Pasta', 
       price: '₹160', 
       description: 'A tangy Italian romance - Tomato-based pasta with herbs.', 
-      image: '/images/veggie.jpg', // Using veggie for tomato-based pasta
+      image: '/images/Red Sauce Pasta.jpg', // Perfect match - actual red sauce pasta image
       rating: 4.6,
       vegetarian: true
     },
@@ -79,7 +79,7 @@ const menuItems = {
       name: 'Cheese Baked Pasta', 
       price: '₹200', 
       description: 'Cheese lava on your plate - Baked till golden, oozing with cheese.', 
-      image: '/images/margherita.jpg', // Using margherita for cheesy baked dishes
+      image: '/images/Cheese Baked Pasta.jpg', // Perfect match - actual cheese baked pasta image
       rating: 4.9,
       popular: true,
       vegetarian: true
@@ -118,7 +118,7 @@ const menuItems = {
       name: 'Aloo Tikki Burger', 
       price: '₹150', 
       description: 'Street-style desi bite - Crispy potato patty with tangy sauces.', 
-      image: '/images/veggie.jpg', // Using veggie image for potato-based burger
+      image: '/images/Aloo Tikki Burger.jpg', // Perfect match - actual aloo tikki burger image
       rating: 4.6,
       vegetarian: true
     },
@@ -126,7 +126,7 @@ const menuItems = {
       name: 'Veg Patty Burger', 
       price: '₹160', 
       description: 'Classic, hearty & filling - Veg patty with cheese & lettuce.', 
-      image: '/images/veggie.jpg', // Perfect match - veg burger with veggie image
+      image: '/images/Veg Patty Burger.jpg', // Perfect match - actual veg patty burger image
       rating: 4.5,
       vegetarian: true
     },
@@ -134,7 +134,7 @@ const menuItems = {
       name: 'Cheese Veg Grilled Burger', 
       price: '₹180', 
       description: 'Melted cheese magic - Grilled to perfection with gooey cheese.', 
-      image: '/images/margherita.jpg', // Using margherita for cheesy burger
+      image: '/images/Cheese Veg Grilled Burger.jpg', // Perfect match - actual cheese veg grilled burger image
       rating: 4.7,
       popular: true,
       vegetarian: true
