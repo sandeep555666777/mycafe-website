@@ -693,7 +693,7 @@ export default function MenuPage() {
       const matchesVegetarian = !showVegetarianOnly || item.vegetarian;
       
       // Popular filter
-      const matchesPopular = !showPopularOnly || item.popular;
+      const matchesPopular = !showPopularOnly || (item as any).popular;
       
       return matchesSearch && matchesCategory && matchesPrice && matchesVegetarian && matchesPopular;
     });
@@ -716,8 +716,8 @@ export default function MenuPage() {
           bValue = b.rating;
           break;
         case 'popular':
-          aValue = a.popular ? 1 : 0;
-          bValue = b.popular ? 1 : 0;
+          aValue = (a as any).popular ? 1 : 0;
+          bValue = (b as any).popular ? 1 : 0;
           break;
         default:
           aValue = a.name.toLowerCase();
@@ -1017,15 +1017,246 @@ export default function MenuPage() {
                 </Button>
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredAndSortedItems.map((item) => (
-                  <MenuCard
-                    key={item.name}
-                    {...item}
-                    category="pizza"
-                    onOrder={() => handleWhatsAppOrder(item)}
-                  />
-                ))}
+              <div className="space-y-8">
+                {/* Desi Twist Bites */}
+                {getCategoryItems('desiBites').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Flame className="text-primary h-8 w-8" />
+                      Desi Twist Bites
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('desiBites').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...(item as any)}
+                          category="desi"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Maggi & Pasta */}
+                {getCategoryItems('maggiPasta').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Utensils className="text-primary h-8 w-8" />
+                      Maggi & Pasta Tales
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('maggiPasta').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...(item as any)}
+                          category="pasta"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Pizzas */}
+                {getCategoryItems('pizzas').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Pizza className="text-primary h-8 w-8" />
+                      Pizzas
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('pizzas').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="pizza"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Burgers */}
+                {getCategoryItems('burgers').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Sandwich className="text-primary h-8 w-8" />
+                      Bun & Fun - Burgers
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('burgers').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="burger"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Sandwiches */}
+                {getCategoryItems('sandwiches').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Sandwich className="text-primary h-8 w-8" />
+                      Between the Bread - Sandwiches
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('sandwiches').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="sandwich"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Fries */}
+                {getCategoryItems('fries').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Utensils className="text-primary h-8 w-8" />
+                      Crunchy Cravings - Fries
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('fries').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="fries"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Hot Coffee */}
+                {getCategoryItems('hotCoffee').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Coffee className="text-primary h-8 w-8" />
+                      Bloom in a Cup - Hot Coffee
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('hotCoffee').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="coffee"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Cold Coffee */}
+                {getCategoryItems('coldCoffee').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Coffee className="text-primary h-8 w-8" />
+                      Cold Café Creations
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('coldCoffee').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="coffee"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Tea Time */}
+                {getCategoryItems('teaTime').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <CupSoda className="text-primary h-8 w-8" />
+                      Tea Time Bliss
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('teaTime').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="tea"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Flower Teas */}
+                {getCategoryItems('flowerTeas').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Leaf className="text-primary h-8 w-8" />
+                      Blooming Flower Teas
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('flowerTeas').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="tea"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Waffles */}
+                {getCategoryItems('waffles').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Cookie className="text-primary h-8 w-8" />
+                      Waffles
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('waffles').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="waffle"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Student Offers */}
+                {getCategoryItems('studentOffers').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <GraduationCap className="text-primary h-8 w-8" />
+                      👨‍🎓 Student Saver Combos
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('studentOffers').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="combo"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </TabsContent>
