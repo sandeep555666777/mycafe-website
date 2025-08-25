@@ -107,7 +107,7 @@ const menuItems = {
       name: 'OTC Pizza (Onion, Tomato, Capsicum)', 
       price: '₹149', 
       description: 'A crunchy mix of fresh veggies with melted cheese. 👉 "The trio of taste!"', 
-      image: '/images/veggie.jpg', // Using veggie pizza image as placeholder
+      image: '/images/OTC Pizza Onion, Tomato.jpg', // Perfect match - actual OTC pizza image
       rating: 4.7,
       popular: false,
       vegetarian: true
@@ -116,7 +116,7 @@ const menuItems = {
       name: 'Veggie Delight Pizza', 
       price: '₹179', 
       description: 'Loaded with onion, capsicum, tomato, sweet corn & mushroom. 👉 "More veggies, more joy!"', 
-      image: '/images/veggie.jpg', // Perfect match - existing veggie pizza image
+      image: '/images/Veggie Delight Pizza.jpg', // Perfect match - actual veggie delight pizza image
       rating: 4.7,
       popular: false,
       vegetarian: true
@@ -125,7 +125,7 @@ const menuItems = {
       name: 'Farmhouse Pizza', 
       price: '₹179', 
       description: 'Topped with olives & jalapeños for a bold bite. 👉 "Where freshness meets spice!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/Farmhouse Pizza.jpg', // Perfect match - actual farmhouse pizza image
       rating: 4.6,
       popular: false,
       vegetarian: true
@@ -134,7 +134,7 @@ const menuItems = {
       name: 'India Peri Peri Spicy Pizza', 
       price: '₹199', 
       description: 'A fiery desi twist with peri peri magic. 👉 "Spice that ignites your soul!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/India Peri Peri Spicy Pizza.jpg', // Perfect match - actual peri peri pizza image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -143,7 +143,7 @@ const menuItems = {
       name: 'Paneer Pizza', 
       price: '₹149', 
       description: 'Soft paneer chunks with creamy cheese. 👉 "A paneer lover\'s dream!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder for paneer pizza
+      image: '/images/Paneer Pizza.jpg', // Perfect match - actual paneer pizza image
       rating: 4.9,
       popular: true,
       vegetarian: true
@@ -152,7 +152,7 @@ const menuItems = {
       name: 'Chicken Pizza', 
       price: '₹179', 
       description: 'Juicy chicken with melted cheese topping. 👉 "One bite = pure delight!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/Chicken Pizza.jpg', // Perfect match - actual chicken pizza image
       rating: 4.7,
       popular: true,
       vegetarian: false
@@ -161,7 +161,7 @@ const menuItems = {
       name: 'Kabab Pizza', 
       price: '₹149', 
       description: 'Smoky kebab chunks on a cheesy base. 👉 "Desi kebab meets Italian base!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/Kabab Pizza.jpg', // Perfect match - actual kabab pizza image
       rating: 4.6,
       popular: false,
       vegetarian: false
@@ -219,7 +219,7 @@ const menuItems = {
       name: 'Bombay Kaccha Sandwich', 
       price: '₹69', 
       description: 'Street-style flavors in every layer. 👉 "Mumbai\'s love in a bite!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Bombay Kaccha Sandwich.jpg', // Perfect match - actual bombay sandwich image
       rating: 4.6,
       popular: false,
       vegetarian: true
@@ -228,7 +228,7 @@ const menuItems = {
       name: 'Veg Cheese Sandwich', 
       price: '₹89', 
       description: 'Cheese-loaded classic veggie sandwich. 👉 "Cheesy & breezy!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Veg Cheese Sandwich.jpg', // Perfect match - actual veg cheese sandwich image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -237,7 +237,7 @@ const menuItems = {
       name: 'Aloo Masala Sandwich', 
       price: '₹69', 
       description: 'Spiced potato filling with buttered bread. 👉 "Simple, spicy, satisfying!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Aloo Masala Sandwich.jpg', // Perfect match - actual aloo masala sandwich image
       rating: 4.5,
       popular: false,
       vegetarian: true
@@ -246,7 +246,7 @@ const menuItems = {
       name: 'Cheese Chutney Sandwich', 
       price: '₹85', 
       description: 'Cheese paired with mint chutney. 👉 "Fresh zing meets cheese king!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Cheese Chutney Sandwich.jpg', // Perfect match - actual cheese chutney sandwich image
       rating: 4.6,
       popular: false,
       vegetarian: true
@@ -255,7 +255,7 @@ const menuItems = {
       name: 'Tandoori Sandwich', 
       price: '₹99', 
       description: 'Tandoori flavored filling with melted cheese. 👉 "Bold, smoky & irresistible!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Tandoori Sandwich.jpg', // Perfect match - actual tandoori sandwich image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -264,7 +264,7 @@ const menuItems = {
       name: 'Paneer Masala Sandwich', 
       price: '₹99', 
       description: 'Paneer chunks with desi masala twist. 👉 "The royal sandwich of India!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Paneer Masala Sandwich.jpg', // Perfect match - actual paneer masala sandwich image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -275,7 +275,7 @@ const menuItems = {
       name: 'French Fries (Plain Salted)', 
       price: '₹79', 
       description: 'Crispy golden fries, just right. 👉 "Simple but addictive!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/French Fries Plain Salted.jpg', // Perfect match - actual french fries image
       rating: 4.5,
       popular: false,
       vegetarian: true
@@ -284,7 +284,7 @@ const menuItems = {
       name: 'Cheese Fries', 
       price: '₹79', 
       description: 'Fries smothered with molten cheese. 👉 "Say cheese, eat fries!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Cheese Fries.jpg', // Perfect match - actual cheese fries image
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -293,7 +293,7 @@ const menuItems = {
       name: 'Baked Cheese Fries', 
       price: '₹95', 
       description: 'Oven-baked, cheesy & guilt-free. 👉 "Baked, not fried – pure delight!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Baked Cheese Fries.jpg', // Perfect match - actual baked cheese fries image
       rating: 4.6,
       popular: false,
       vegetarian: true
@@ -302,7 +302,7 @@ const menuItems = {
       name: 'Peri Peri Masala Fries', 
       price: '₹85', 
       description: 'Hot & spicy peri peri seasoning. 👉 "One bite, spice ignite!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Peri Peri Masala Fries.jpg', // Perfect match - actual peri peri fries image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -311,7 +311,7 @@ const menuItems = {
       name: 'Appam (6 pcs)', 
       price: '₹46', 
       description: 'Soft, fluffy South Indian snack. 👉 "Little clouds of joy!"', 
-      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      image: '/images/Appam.jpg', // Perfect match - actual appam image
       rating: 4.4,
       popular: false,
       vegetarian: true
@@ -384,10 +384,28 @@ const menuItems = {
       vegetarian: true
     },
     { 
-      name: 'Flavoured Cold Coffee (Butterscotch/Vanilla/Hazelnut)', 
+      name: 'Butterscotch Cold Coffee', 
       price: '₹115', 
-      description: 'Cold coffee with a twist of flavors. 👉 "Every sip a new story!"', 
+      description: 'Cold coffee with butterscotch flavor. 👉 "Every sip a new story!"', 
       image: '/images/Butterscotch Cold Coffee.jpg', // Perfect match - actual butterscotch cold coffee image
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Vanilla Cold Coffee', 
+      price: '₹115', 
+      description: 'Cold coffee with vanilla flavor. 👉 "Every sip a new story!"', 
+      image: '/images/Vanilla Cold Coffee.jpg', // Perfect match - actual vanilla cold coffee image
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Hazelnut Cold Coffee', 
+      price: '₹115', 
+      description: 'Cold coffee with hazelnut flavor. 👉 "Every sip a new story!"', 
+      image: '/images/Hazelnut Cold Coffee,jpg.jfif', // Perfect match - actual hazelnut cold coffee image
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -399,6 +417,24 @@ const menuItems = {
       price: '₹79', 
       description: 'Refreshing iced tea variants. 👉 "Cool down with a twist!"', 
       image: '/images/Ice Tea.jpg', // Perfect match - actual ice tea image
+      rating: 4.5,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Peach Ice Tea', 
+      price: '₹79', 
+      description: 'Refreshing peach iced tea. 👉 "Cool down with a twist!"', 
+      image: '/images/Peach Ice Tea.jpg', // Perfect match - actual peach ice tea image
+      rating: 4.5,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Lemon Ice Tea', 
+      price: '₹79', 
+      description: 'Refreshing lemon iced tea. 👉 "Cool down with a twist!"', 
+      image: '/images/Lemon Ice Tea.jpg', // Perfect match - actual lemon ice tea image
       rating: 4.5,
       popular: false,
       vegetarian: true
@@ -425,8 +461,9 @@ const menuItems = {
       name: 'Matcha Tea', 
       price: '₹129', 
       description: 'Earthy green tea packed with health. 👉 "Sip the Zen energy!"', 
-      image: '/images/matcha-tea.jpg', // Perfect match - actual matcha tea image
+      image: '/images/Matcha Tea.jpg', // Perfect match - actual matcha tea image
       rating: 4.6,
+      popular: false,
       vegetarian: true
     },
   ],
