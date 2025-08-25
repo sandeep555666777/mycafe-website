@@ -16,6 +16,8 @@ import Link from 'next/link';
 import { MenuCard } from '@/components/menu-card';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
 
+const cafeAddress = 'Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar';
+
 const menuItems = {
   desiBites: [
     { 
@@ -679,7 +681,7 @@ export default function MenuPage() {
                    `📋 *Item:* ${item.name}\n` +
                    `💰 *Price:* ${item.price}\n` +
                    `📝 *Description:* ${item.description}\n\n` +
-                   `📍 *Location:* The Crafty Bean Cafe\n` +
+                   `📍 *Address:* ${cafeAddress}\n` +
                    `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                    `Please confirm this order and provide your delivery address. Thank you! 🙏`;
     
@@ -690,7 +692,7 @@ export default function MenuPage() {
   const handleWhatsAppOrderWithAddress = () => {
     const message = `🍽️ *The Crafty Bean - Menu Inquiry*\n\n` +
                    `Hi! I'd like to see your menu and place an order with delivery.\n\n` +
-                   `📍 *Location:* The Crafty Bean Cafe\n` +
+                   `📍 *Address:* ${cafeAddress}\n` +
                    `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                    `Please share your menu and help me place an order with delivery address. Thank you! 🙏`;
     
@@ -1371,7 +1373,7 @@ export default function MenuPage() {
                       onClick={() => {
                         const message = `🍽️ *The Crafty Bean - Menu Inquiry*\n\n` +
                                       `Hi! I'd like to see your menu and place an order.\n\n` +
-                                      `📍 *Location:* The Crafty Bean Cafe\n` +
+                                      `📍 *Address:* ${cafeAddress}\n` +
                                       `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                                       `Please share your menu and help me place an order. Thank you! 🙏`;
                         
@@ -1419,6 +1421,9 @@ export default function MenuPage() {
             <p className="text-muted-foreground">
               Art in Every Sip. Soul in Every Bite.
             </p>
+            <p className="text-muted-foreground mt-2">
+             📍 {cafeAddress}
+           </p>
           </div>
           <div className="flex justify-center space-x-6 mb-6">
             <Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link>
