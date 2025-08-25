@@ -15,8 +15,9 @@ import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { MenuCard } from '@/components/menu-card';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
+import { cafeAddress } from '@/lib/config';
 
-const cafeAddress = 'Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar';
+// address comes from centralized config
 
 const menuItems = {
   desiBites: [

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star, Heart, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { cafeAddress } from '@/lib/config';
 
 interface MenuItemProps {
 	name: string;
@@ -52,7 +53,7 @@ export function MenuCard({
 							`📋 *Item:* ${name}\n` +
 							`💰 *Price:* ${price}\n` +
 							`📝 *Description:* ${description}\n\n` +
-							`📍 *Address:* Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar\n` +
+							`📍 *Address:* ${cafeAddress}\n` +
 							`⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
 							`Please confirm this order and provide your delivery address. Thank you! 🙏`;
 			

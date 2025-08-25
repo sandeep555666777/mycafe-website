@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { cafeAddress } from '@/lib/config';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -81,7 +82,7 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
     
     message += `━━━━━━━━━━━━━━━━━━━━\n`;
     message += `💰 *Total Amount: ₹${calculateTotal()}*\n\n`;
-    message += `📍 *Address:* Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar\n`;
+    message += `📍 *Address:* ${cafeAddress}\n`;
     message += `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n`;
     message += `Please confirm this order and provide estimated delivery time. Thank you! 🙏`;
     
