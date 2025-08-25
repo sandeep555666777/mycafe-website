@@ -81,7 +81,7 @@ export function WhatsAppOrder({ cart, menuItems, customerInfo }: WhatsAppOrderPr
     
     message += `━━━━━━━━━━━━━━━━━━━━\n`;
     message += `💰 *Total Amount: ₹${calculateTotal()}*\n\n`;
-    message += `📍 *Location:* The Crafty Bean Cafe\n`;
+    message += `📍 *Address:* Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar\n`;
     message += `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n`;
     message += `Please confirm this order and provide estimated delivery time. Thank you! 🙏`;
     

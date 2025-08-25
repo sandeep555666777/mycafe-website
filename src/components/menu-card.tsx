@@ -52,7 +52,7 @@ export function MenuCard({
 							`📋 *Item:* ${name}\n` +
 							`💰 *Price:* ${price}\n` +
 							`📝 *Description:* ${description}\n\n` +
-							`📍 *Location:* The Crafty Bean Cafe\n` +
+							`📍 *Address:* Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar\n` +
 							`⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
 							`Please confirm this order and provide your delivery address. Thank you! 🙏`;
 			

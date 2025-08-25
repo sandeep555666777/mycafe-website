@@ -1421,9 +1421,6 @@ export default function MenuPage() {
             <p className="text-muted-foreground">
               Art in Every Sip. Soul in Every Bite.
             </p>
-            <p className="text-muted-foreground mt-2">
-             📍 {cafeAddress}
-           </p>
           </div>
           <div className="flex justify-center space-x-6 mb-6">
             <Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link>

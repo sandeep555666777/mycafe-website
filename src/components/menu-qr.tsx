@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Download, Printer, QrCode, Smartphone, ExternalLink, Share2, Copy, Check, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { cafeAddress } from '@/lib/config';
 import Link from 'next/link';
 
 export function MenuQR() {
@@ -20,7 +21,7 @@ export function MenuQR() {
     setWhatsappUrl(`https://wa.me/918770149314?text=${encodeURIComponent(
       `🍽️ *The Crafty Bean - Menu Access*\n\n` +
       `Hi! I'd like to view your menu and place an order.\n\n` +
-      `📍 *Location:* The Crafty Bean Cafe\n` +
+      `📍 *Address:* ${cafeAddress}\n` +
       `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
       `Please share your menu and help me place an order. Thank you! 🙏`
     )}`);
@@ -108,7 +109,7 @@ export function MenuQR() {
               <p>4. Browse and place your order!</p>
             </div>
             <div class="contact-info">
-              <p><strong>📍 Location:</strong> Gobrahwa Bazar Road, Near Hotel Aashiyana, Siddharth Nagar, UP</p>
+              <p><strong>📍 Address:</strong> ${cafeAddress}</p>
               <p><strong>📱 WhatsApp:</strong> +91 8770149314</p>
               <p><strong>⏰ Hours:</strong> Open Daily 8AM-8PM</p>
             </div>

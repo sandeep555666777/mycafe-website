@@ -93,7 +93,7 @@ export function Navigation() {
                   onClick={() => {
                     const message = `🍽️ *The Crafty Bean - Quick Order*\n\n` +
                                   `Hi! I'd like to place an order.\n\n` +
-                                  `📍 *Location:* The Crafty Bean Cafe\n` +
+                                  `📍 *Address:* Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar\n` +
                                   `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                                   `Please help me place an order. Thank you! 🙏`;
                     
