@@ -34,27 +34,27 @@ const menuItems = {
   ],
   maggiPasta: [
     { 
-      name: 'Plain Maggi', 
-      price: '₹80', 
-      description: 'Simple, soulful & satisfying - Classic comfort noodles cooked to perfection.', 
+      name: 'Plain Maggie', 
+      price: '₹39', 
+      description: 'Simple, homely & forever loved. 👉 "The 2-minute hug in a bowl!"', 
       image: '/images/Plain Maggi.jpg', // Perfect match - actual plain maggi image
       rating: 4.5,
       popular: false,
       vegetarian: true
     },
     { 
-      name: 'Veg Maggi', 
-      price: '₹100', 
-      description: 'A healthy twist on nostalgia - Loaded with fresh vegetables.', 
+      name: 'Veg Maggie', 
+      price: '₹69', 
+      description: 'Colorful veggies tossed with masala magic. 👉 "Veggies that vibe with maggie!"', 
       image: '/images/Veg Maggi.jpg', // Perfect match - actual veg maggi image
       rating: 4.6,
       popular: false,
       vegetarian: true
     },
     { 
-      name: 'Cheese Maggi', 
-      price: '₹120', 
-      description: 'Cheese makes everything better - Creamy cheesy goodness with Maggi.', 
+      name: 'Cheese Maggie', 
+      price: '₹89', 
+      description: 'Gooey cheese meets desi masala. 👉 "Cheesy twist to your childhood favorite!"', 
       image: '/images/Cheese Maggi.jpg', // Perfect match - actual cheese maggi image
       rating: 4.7,
       popular: true,
@@ -62,8 +62,8 @@ const menuItems = {
     },
     { 
       name: 'White Sauce Pasta', 
-      price: '₹180', 
-      description: 'Silky, creamy, dreamy - Pasta in rich white sauce.', 
+      price: '₹129', 
+      description: 'Creamy, rich & oh-so-satisfying. 👉 "Silky smooth bite of joy!"', 
       image: '/images/White Sauce Pasta.jpg', // Perfect match - actual white sauce pasta image
       rating: 4.8,
       popular: true,
@@ -71,8 +71,8 @@ const menuItems = {
     },
     { 
       name: 'Red Sauce Pasta', 
-      price: '₹160', 
-      description: 'A tangy Italian romance - Tomato-based pasta with herbs.', 
+      price: '₹119', 
+      description: 'Tangy tomato base with herby touch. 👉 "The saucy Italian romance!"', 
       image: '/images/Red Sauce Pasta.jpg', // Perfect match - actual red sauce pasta image
       rating: 4.6,
       popular: false,
@@ -80,8 +80,8 @@ const menuItems = {
     },
     { 
       name: 'Cheese Baked Pasta', 
-      price: '₹200', 
-      description: 'Cheese lava on your plate - Baked till golden, oozing with cheese.', 
+      price: '₹149', 
+      description: 'Oven baked pasta topped with golden cheese. 👉 "Baked to cheesy perfection!"', 
       image: '/images/Cheese Baked Pasta.jpg', // Perfect match - actual cheese baked pasta image
       rating: 4.9,
       popular: true,
@@ -91,37 +91,82 @@ const menuItems = {
   pizzas: [
     { 
       name: 'Margherita Pizza', 
-      price: '₹350', 
-      description: 'Simplicity at its cheesiest - Tomato, mozzarella & basil.', 
+      price: '₹129', 
+      description: 'Simple cheese magic in every bite. 👉 "Because classics never go out of style!"', 
       image: '/images/margherita.jpg', // Perfect match - existing margherita pizza image
       rating: 4.8,
       popular: true,
       vegetarian: true
     },
     { 
-      name: 'Veggie Overload Pizza', 
-      price: '₹380', 
-      description: 'Every bite, a garden party - Bell peppers, onions, corn & olives.', 
+      name: 'OTC Pizza (Onion, Tomato, Capsicum)', 
+      price: '₹149', 
+      description: 'A crunchy mix of fresh veggies with melted cheese. 👉 "The trio of taste!"', 
+      image: '/images/veggie.jpg', // Using veggie pizza image as placeholder
+      rating: 4.7,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Veggie Delight Pizza', 
+      price: '₹179', 
+      description: 'Loaded with onion, capsicum, tomato, sweet corn & mushroom. 👉 "More veggies, more joy!"', 
       image: '/images/veggie.jpg', // Perfect match - existing veggie pizza image
       rating: 4.7,
       popular: false,
       vegetarian: true
     },
     { 
-      name: 'Paneer Tikka Pizza', 
-      price: '₹400', 
-      description: 'When Italy meets India - Tikka-flavored paneer on a cheesy base.', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder for paneer tikka
+      name: 'Farmhouse Pizza', 
+      price: '₹179', 
+      description: 'Topped with olives & jalapeños for a bold bite. 👉 "Where freshness meets spice!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'India Peri Peri Spicy Pizza', 
+      price: '₹199', 
+      description: 'A fiery desi twist with peri peri magic. 👉 "Spice that ignites your soul!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Paneer Pizza', 
+      price: '₹149', 
+      description: 'Soft paneer chunks with creamy cheese. 👉 "A paneer lover\'s dream!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder for paneer pizza
       rating: 4.9,
       popular: true,
       vegetarian: true
+    },
+    { 
+      name: 'Chicken Pizza', 
+      price: '₹179', 
+      description: 'Juicy chicken with melted cheese topping. 👉 "One bite = pure delight!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: false
+    },
+    { 
+      name: 'Kabab Pizza', 
+      price: '₹149', 
+      description: 'Smoky kebab chunks on a cheesy base. 👉 "Desi kebab meets Italian base!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: false
     },
   ],
   burgers: [
     { 
       name: 'Aloo Tikki Burger', 
-      price: '₹150', 
-      description: 'Street-style desi bite - Crispy potato patty with tangy sauces.', 
+      price: '₹69', 
+      description: 'Crispy tikki tucked in soft buns. 👉 "Desi bite, global delight!"', 
       image: '/images/Aloo Tikki Burger.jpg', // Perfect match - actual aloo tikki burger image
       rating: 4.6,
       popular: false,
@@ -129,8 +174,8 @@ const menuItems = {
     },
     { 
       name: 'Veg Patty Burger', 
-      price: '₹160', 
-      description: 'Classic, hearty & filling - Veg patty with cheese & lettuce.', 
+      price: '₹79', 
+      description: 'Loaded veg patty with creamy sauces. 👉 "Full veg, full swag!"', 
       image: '/images/Veg Patty Burger.jpg', // Perfect match - actual veg patty burger image
       rating: 4.5,
       popular: false,
@@ -138,26 +183,17 @@ const menuItems = {
     },
     { 
       name: 'Cheese Veg Grilled Burger', 
-      price: '₹180', 
-      description: 'Melted cheese magic - Grilled to perfection with gooey cheese.', 
+      price: '₹89', 
+      description: 'Grilled layers of cheese & veggies. 👉 "Grilled to thrill!"', 
       image: '/images/Cheese Veg Grilled Burger.jpg', // Perfect match - actual cheese veg grilled burger image
       rating: 4.7,
       popular: true,
       vegetarian: true
     },
     { 
-      name: 'Paneer Burger', 
-      price: '₹200', 
-      description: 'Paneer lovers paradise - Juicy paneer patty in soft buns.', 
-      image: '/images/Paneer Burger.jpg', // Perfect match - actual paneer burger image
-      rating: 4.8,
-      popular: true,
-      vegetarian: true
-    },
-    { 
       name: 'Chicken Patty Burger', 
-      price: '₹220', 
-      description: 'For the meat lovers - Classic chicken burger with sauces.', 
+      price: '₹99', 
+      description: 'Juicy chicken patty with crunchy veggies. 👉 "Bite full of boldness!"', 
       image: '/images/Chicken Patty Burger.jpg', // Perfect match - actual chicken patty burger image
       rating: 4.6,
       popular: false,
@@ -165,19 +201,122 @@ const menuItems = {
     },
     { 
       name: 'Crispy Burger', 
-      price: '₹170', 
-      description: 'Crunch that speaks louder - Crispy patty, fresh veggies & mayo.', 
+      price: '₹110', 
+      description: 'Crispy outside, soft inside. 👉 "The crunch that speaks!"', 
       image: '/images/Crispy Burger.jpg', // Perfect match - actual crispy burger image
       rating: 4.5,
       popular: false,
       vegetarian: false
     },
   ],
+  sandwiches: [
+    { 
+      name: 'Bombay Kaccha Sandwich', 
+      price: '₹69', 
+      description: 'Street-style flavors in every layer. 👉 "Mumbai\'s love in a bite!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Veg Cheese Sandwich', 
+      price: '₹89', 
+      description: 'Cheese-loaded classic veggie sandwich. 👉 "Cheesy & breezy!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Aloo Masala Sandwich', 
+      price: '₹69', 
+      description: 'Spiced potato filling with buttered bread. 👉 "Simple, spicy, satisfying!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.5,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Cheese Chutney Sandwich', 
+      price: '₹85', 
+      description: 'Cheese paired with mint chutney. 👉 "Fresh zing meets cheese king!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Tandoori Sandwich', 
+      price: '₹99', 
+      description: 'Tandoori flavored filling with melted cheese. 👉 "Bold, smoky & irresistible!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Paneer Masala Sandwich', 
+      price: '₹99', 
+      description: 'Paneer chunks with desi masala twist. 👉 "The royal sandwich of India!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+  ],
+  fries: [
+    { 
+      name: 'French Fries (Plain Salted)', 
+      price: '₹79', 
+      description: 'Crispy golden fries, just right. 👉 "Simple but addictive!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.5,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Cheese Fries', 
+      price: '₹79', 
+      description: 'Fries smothered with molten cheese. 👉 "Say cheese, eat fries!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Baked Cheese Fries', 
+      price: '₹95', 
+      description: 'Oven-baked, cheesy & guilt-free. 👉 "Baked, not fried – pure delight!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: true
+    },
+    { 
+      name: 'Peri Peri Masala Fries', 
+      price: '₹85', 
+      description: 'Hot & spicy peri peri seasoning. 👉 "One bite, spice ignite!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+    { 
+      name: 'Appam (6 pcs)', 
+      price: '₹46', 
+      description: 'Soft, fluffy South Indian snack. 👉 "Little clouds of joy!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.4,
+      popular: false,
+      vegetarian: true
+    },
+  ],
   hotCoffee: [
     { 
       name: 'Cappuccino', 
-      price: '₹120', 
-      description: 'Foam that feels like a hug - Espresso with steamed milk & foam.', 
+      price: '₹99', 
+      description: 'Foamy, creamy, coffee hug. 👉 "Love at first sip!"', 
       image: '/images/Cappuccino.jpg', // Perfect match - actual cappuccino image
       rating: 4.7,
       popular: true,
@@ -185,8 +324,8 @@ const menuItems = {
     },
     { 
       name: 'Latte', 
-      price: '₹130', 
-      description: 'Smoothness in every sip - Espresso & steamed milk.', 
+      price: '₹119', 
+      description: 'Smooth milk & bold coffee. 👉 "Latte is always a good idea!"', 
       image: '/images/Latte.jpg', // Perfect match - actual latte image
       rating: 4.6,
       popular: false,
@@ -194,8 +333,8 @@ const menuItems = {
     },
     { 
       name: 'Mocha', 
-      price: '₹140', 
-      description: 'Chocolates coffee affair - Espresso with cocoa & milk.', 
+      price: '₹129', 
+      description: 'Chocolate + coffee = heaven. 👉 "Sip the sweet side of coffee!"', 
       image: '/images/Mocha.jpg', // Perfect match - actual mocha image
       rating: 4.8,
       popular: true,
@@ -203,8 +342,8 @@ const menuItems = {
     },
     { 
       name: 'Americano', 
-      price: '₹100', 
-      description: 'For the bold & strong - Espresso with hot water.', 
+      price: '₹99', 
+      description: 'Strong, black, bold. 👉 "For the real coffee lover!"', 
       image: '/images/Americano.jpg', // Perfect match - actual americano image
       rating: 4.5,
       popular: false,
@@ -212,8 +351,8 @@ const menuItems = {
     },
     { 
       name: 'Espresso', 
-      price: '₹80', 
-      description: 'Small shot, big kick - Pure intense coffee shot.', 
+      price: '₹69', 
+      description: 'Shot of pure energy. 👉 "Small cup, big kick!"', 
       image: '/images/Espresso.jpg', // Perfect match - actual espresso image
       rating: 4.4,
       popular: false,
@@ -223,8 +362,8 @@ const menuItems = {
   coldCoffee: [
     { 
       name: 'Cold Coffee', 
-      price: '₹140', 
-      description: 'Chill, sip, repeat - Classic iced cold coffee.', 
+      price: '₹99', 
+      description: 'Chilled, creamy & refreshing. 👉 "Cool your coffee cravings!"', 
       image: '/images/Cold Coffee.jpg', // Perfect match - actual cold coffee image
       rating: 4.7,
       popular: true,
@@ -232,68 +371,37 @@ const menuItems = {
     },
     { 
       name: 'Cold Coffee with Ice Cream', 
-      price: '₹180', 
-      description: 'The creamy upgrade - Coffee topped with a scoop of ice cream.', 
+      price: '₹139', 
+      description: 'Coffee topped with a scoop of ice cream. 👉 "Spoon & sip happiness!"', 
       image: '/images/Cold Coffee with Ice Cream.jpg', // Perfect match - actual cold coffee with ice cream image
       rating: 4.9,
       popular: true,
       vegetarian: true
     },
     { 
-      name: 'Butterscotch Cold Coffee', 
-      price: '₹160', 
-      description: 'Nutty-sweet delight - Icy coffee with butterscotch flavor.', 
+      name: 'Flavoured Cold Coffee (Butterscotch/Vanilla/Hazelnut)', 
+      price: '₹115', 
+      description: 'Cold coffee with a twist of flavors. 👉 "Every sip a new story!"', 
       image: '/images/Butterscotch Cold Coffee.jpg', // Perfect match - actual butterscotch cold coffee image
       rating: 4.8,
       popular: true,
       vegetarian: true
     },
-    { 
-      name: 'Vanilla Cold Coffee', 
-      price: '₹150', 
-      description: 'Smooth, subtle, sweet - Coffee with vanilla twist.', 
-      image: '/images/Vanilla Cold Coffee.jpg', // Perfect match - actual vanilla cold coffee image
-      rating: 4.6,
-      vegetarian: true
-    },
-    { 
-      name: 'Hazelnut Cold Coffee', 
-      price: '₹160', 
-      description: 'Nutty meets creamy - Hazelnut flavored chilled coffee.', 
-      image: '/images/Hazelnut Cold Coffee,jpg.jfif', // Perfect match - actual hazelnut cold coffee image
-      rating: 4.7,
-      vegetarian: true
-    },
   ],
   teaTime: [
     { 
-      name: 'Ice Tea', 
-      price: '₹80', 
-      description: 'Coolness in a glass - Refreshing chilled tea.', 
+      name: 'Ice Tea (Classic/Peach/Lemon)', 
+      price: '₹79', 
+      description: 'Refreshing iced tea variants. 👉 "Cool down with a twist!"', 
       image: '/images/Ice Tea.jpg', // Perfect match - actual ice tea image
       rating: 4.5,
+      popular: false,
       vegetarian: true
     },
     { 
-      name: 'Peach Ice Tea', 
-      price: '₹100', 
-      description: 'Fruity, tangy, peachy - Perfect summer sip.', 
-      image: '/images/Peach Ice Tea.jpg', // Perfect match - actual peach ice tea image
-      rating: 4.6,
-      vegetarian: true
-    },
-    { 
-      name: 'Lemon Ice Tea', 
-      price: '₹90', 
-      description: 'Citrus chill - Lemon twist with iced tea.', 
-      image: '/images/Lemon Ice Tea.jpg', // Perfect match - actual lemon ice tea image
-      rating: 4.5,
-      vegetarian: true
-    },
-    { 
-      name: 'Sparkling Ice Tea (Orange/Cranberry)', 
-      price: '₹120', 
-      description: 'Fizz that refreshes - Iced tea with sparkling water & fruity zest.', 
+      name: 'Iced Tea with Sparkling Water (Orange/Cranberry)', 
+      price: '₹99', 
+      description: 'Zesty fizz with fruity punch. 👉 "Fizz that refreshes!"', 
       image: '/images/Sparkling Ice Tea Orange Cranberry.jpg', // Perfect match - actual sparkling ice tea image
       rating: 4.7,
       popular: true,
@@ -301,8 +409,8 @@ const menuItems = {
     },
     { 
       name: 'Boba Tea', 
-      price: '₹150', 
-      description: 'Fun in every bubble - Sweet milk tea with tapioca pearls.', 
+      price: '₹115', 
+      description: 'Trendy bubble tea with chewy pearls. 👉 "Pop, sip & smile!"', 
       image: '/images/Boba Tea.jpg', // Perfect match - actual boba tea image
       rating: 4.8,
       popular: true,
@@ -310,8 +418,8 @@ const menuItems = {
     },
     { 
       name: 'Matcha Tea', 
-      price: '₹130', 
-      description: 'The green powerhouse - Earthy Japanese green tea.', 
+      price: '₹129', 
+      description: 'Earthy green tea packed with health. 👉 "Sip the Zen energy!"', 
       image: '/images/matcha-tea.jpg', // Perfect match - actual matcha tea image
       rating: 4.6,
       vegetarian: true
@@ -333,6 +441,7 @@ const menuItems = {
       description: 'Tangy & refreshing - A ruby-red herbal infusion.', 
       image: '/images/Red Hibiscus Tea.jpg', // Perfect match - actual red hibiscus tea image
       rating: 4.6,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -352,6 +461,7 @@ const menuItems = {
       description: 'A simple, elegant waffle served with maple syrup and butter. Perfect for a sweet breakfast or dessert.', 
       image: '/images/Classic Waffle.jpg', // Perfect match - actual classic waffle image
       rating: 4.5,
+      popular: false,
       vegetarian: true
     },
     { 
@@ -380,6 +490,8 @@ const categories = [
   { id: 'maggiPasta', name: 'Maggi & Pasta', count: menuItems.maggiPasta.length, icon: Utensils },
   { id: 'pizzas', name: 'Pizzas', count: menuItems.pizzas.length, icon: Pizza },
   { id: 'burgers', name: 'Burgers', count: menuItems.burgers.length, icon: Sandwich },
+  { id: 'sandwiches', name: 'Sandwiches', count: menuItems.sandwiches.length, icon: Sandwich },
+  { id: 'fries', name: 'Fries', count: menuItems.fries.length, icon: Utensils },
   { id: 'hotCoffee', name: 'Hot Coffee', count: menuItems.hotCoffee.length, icon: Coffee },
   { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
@@ -496,7 +608,7 @@ export default function MenuPage() {
 
         {/* Menu Tabs */}
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-8 overflow-x-auto">
+          <TabsList className="flex w-full mb-8 overflow-x-auto">
             {categories.map((category) => (
               <TabsTrigger 
                 key={category.id} 
@@ -577,6 +689,40 @@ export default function MenuPage() {
                       key={item.name}
                       {...item}
                       category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Sandwich className="text-primary h-8 w-8" />
+                  Between the Bread - Sandwiches
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.sandwiches.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="burger"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Utensils className="text-primary h-8 w-8" />
+                  Crunchy Cravings - Fries
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.fries.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="burger"
                       onOrder={() => handleWhatsAppOrder(item)}
                     />
                   ))}
@@ -750,6 +896,42 @@ export default function MenuPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {menuItems.burgers.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="burger"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Sandwiches Only */}
+          <TabsContent value="sandwiches" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Sandwich className="text-primary h-8 w-8" />
+              Between the Bread - Sandwiches
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.sandwiches.map((item) => (
+                <MenuCard
+                  key={item.name}
+                  {...item}
+                  category="burger"
+                  onOrder={() => handleWhatsAppOrder(item)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Fries Only */}
+          <TabsContent value="fries" className="space-y-8">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Utensils className="text-primary h-8 w-8" />
+              Crunchy Cravings - Fries
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {menuItems.fries.map((item) => (
                 <MenuCard
                   key={item.name}
                   {...item}
