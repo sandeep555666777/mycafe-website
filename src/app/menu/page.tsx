@@ -22,7 +22,7 @@ const menuItems = {
       name: 'Onion Pakoda', 
       price: '₹120', 
       description: 'Crispy bites of tradition - Golden-fried onion fritters with spices.', 
-      image: '/images/Onion Pakoda.jpg', // Perfect match - actual onion pakoda image
+      image: '/images/onion-pakoda.jpg', // kebab-case filename
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -31,7 +31,7 @@ const menuItems = {
       name: 'Paneer Pakoda', 
       price: '₹150', 
       description: 'Soft inside, crunchy outside - Juicy paneer cubes in spiced batter, deep-fried.', 
-      image: '/images/Paneer Pakoda.jpg', // Perfect match - actual paneer pakoda image
+      image: '/images/paneer-pakoda.jpg', // kebab-case filename
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -42,7 +42,7 @@ const menuItems = {
       name: 'Plain Maggie', 
       price: '₹39', 
       description: 'Simple, homely & forever loved. 👉 "The 2-minute hug in a bowl!"', 
-      image: '/images/Plain Maggi.jpg', // Perfect match - actual plain maggi image
+      image: '/images/plain-maggi.jpg', // kebab-case filename
       rating: 4.5,
       popular: false,
       vegetarian: true
@@ -51,7 +51,7 @@ const menuItems = {
       name: 'Veg Maggie', 
       price: '₹69', 
       description: 'Colorful veggies tossed with masala magic. 👉 "Veggies that vibe with maggie!"', 
-      image: '/images/Veg Maggi.jpg', // Perfect match - actual veg maggi image
+      image: '/images/veg-maggi.jpg', // kebab-case filename
       rating: 4.6,
       popular: false,
       vegetarian: true
@@ -60,7 +60,7 @@ const menuItems = {
       name: 'Cheese Maggie', 
       price: '₹89', 
       description: 'Gooey cheese meets desi masala. 👉 "Cheesy twist to your childhood favorite!"', 
-      image: '/images/Cheese Maggi.jpg', // Perfect match - actual cheese maggi image
+      image: '/images/cheese-maggi.jpg', // kebab-case filename
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -69,7 +69,7 @@ const menuItems = {
       name: 'White Sauce Pasta', 
       price: '₹129', 
       description: 'Creamy, rich & oh-so-satisfying. 👉 "Silky smooth bite of joy!"', 
-      image: '/images/White Sauce Pasta.jpg', // Perfect match - actual white sauce pasta image
+      image: '/images/white-sauce-pasta.jpg', // kebab-case filename
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -78,7 +78,7 @@ const menuItems = {
       name: 'Red Sauce Pasta', 
       price: '₹119', 
       description: 'Tangy tomato base with herby touch. 👉 "The saucy Italian romance!"', 
-      image: '/images/Red Sauce Pasta.jpg', // Perfect match - actual red sauce pasta image
+      image: '/images/red-sauce-pasta.jpg', // kebab-case filename
       rating: 4.6,
       popular: false,
       vegetarian: true
@@ -87,7 +87,7 @@ const menuItems = {
       name: 'Cheese Baked Pasta', 
       price: '₹149', 
       description: 'Oven baked pasta topped with golden cheese. 👉 "Baked to cheesy perfection!"', 
-      image: '/images/Cheese Baked Pasta.jpg', // Perfect match - actual cheese baked pasta image
+      image: '/images/cheese-baked-pasta.jpg', // kebab-case filename
       rating: 4.9,
       popular: true,
       vegetarian: true
