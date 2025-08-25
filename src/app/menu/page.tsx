@@ -1,12 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle, Coffee, Utensils, Sandwich, CupSoda, Flame, Leaf, GraduationCap } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle, Coffee, Utensils, Sandwich, CupSoda, Flame, Leaf, GraduationCap, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { MenuCard } from '@/components/menu-card';
 import { WhatsAppOrder } from '@/components/whatsapp-order';
@@ -625,6 +630,12 @@ const categories = [
 export default function MenuPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('name');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [showVegetarianOnly, setShowVegetarianOnly] = useState(false);
+  const [showPopularOnly, setShowPopularOnly] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   const handleWhatsAppOrder = (item: any) => {
     const message = `🍽️ *The Crafty Bean - Quick Order*\n\n` +
@@ -650,22 +661,118 @@ export default function MenuPage() {
     window.open(whatsappUrl, '_blank');
   };
 
+  // Get all items and apply filters
   const allItems = Object.values(menuItems).flat();
-  const filteredItems = allItems.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || 
-                           (selectedCategory === 'desiBites' && menuItems.desiBites.includes(item)) ||
-                           (selectedCategory === 'maggiPasta' && menuItems.maggiPasta.includes(item)) ||
-                           (selectedCategory === 'pizzas' && menuItems.pizzas.includes(item)) ||
-                           (selectedCategory === 'burgers' && menuItems.burgers.includes(item)) ||
-                           (selectedCategory === 'hotCoffee' && menuItems.hotCoffee.includes(item)) ||
-                           (selectedCategory === 'coldCoffee' && menuItems.coldCoffee.includes(item)) ||
-                           (selectedCategory === 'teaTime' && menuItems.teaTime.includes(item)) ||
-                           (selectedCategory === 'flowerTeas' && menuItems.flowerTeas.includes(item)) ||
-                           (selectedCategory === 'waffles' && menuItems.waffles.includes(item));
-    return matchesSearch && matchesCategory;
-  });
+  
+  const filteredAndSortedItems = useMemo(() => {
+    let filtered = allItems.filter(item => {
+      // Search filter
+      const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           item.description.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      // Category filter
+      const matchesCategory = selectedCategory === 'all' || 
+                             (selectedCategory === 'desiBites' && menuItems.desiBites.includes(item)) ||
+                             (selectedCategory === 'maggiPasta' && menuItems.maggiPasta.includes(item)) ||
+                             (selectedCategory === 'pizzas' && menuItems.pizzas.includes(item)) ||
+                             (selectedCategory === 'burgers' && menuItems.burgers.includes(item)) ||
+                             (selectedCategory === 'sandwiches' && menuItems.sandwiches.includes(item)) ||
+                             (selectedCategory === 'fries' && menuItems.fries.includes(item)) ||
+                             (selectedCategory === 'hotCoffee' && menuItems.hotCoffee.includes(item)) ||
+                             (selectedCategory === 'coldCoffee' && menuItems.coldCoffee.includes(item)) ||
+                             (selectedCategory === 'teaTime' && menuItems.teaTime.includes(item)) ||
+                             (selectedCategory === 'flowerTeas' && menuItems.flowerTeas.includes(item)) ||
+                             (selectedCategory === 'waffles' && menuItems.waffles.includes(item)) ||
+                             (selectedCategory === 'studentOffers' && menuItems.studentOffers.includes(item));
+      
+      // Price filter
+      const price = parseInt(item.price.replace('₹', ''));
+      const matchesPrice = price >= priceRange[0] && price <= priceRange[1];
+      
+      // Vegetarian filter
+      const matchesVegetarian = !showVegetarianOnly || item.vegetarian;
+      
+      // Popular filter
+      const matchesPopular = !showPopularOnly || item.popular;
+      
+      return matchesSearch && matchesCategory && matchesPrice && matchesVegetarian && matchesPopular;
+    });
+
+    // Sort items
+    filtered.sort((a, b) => {
+      let aValue: any, bValue: any;
+      
+      switch (sortBy) {
+        case 'name':
+          aValue = a.name.toLowerCase();
+          bValue = b.name.toLowerCase();
+          break;
+        case 'price':
+          aValue = parseInt(a.price.replace('₹', ''));
+          bValue = parseInt(b.price.replace('₹', ''));
+          break;
+        case 'rating':
+          aValue = a.rating;
+          bValue = b.rating;
+          break;
+        case 'popular':
+          aValue = a.popular ? 1 : 0;
+          bValue = b.popular ? 1 : 0;
+          break;
+        default:
+          aValue = a.name.toLowerCase();
+          bValue = b.name.toLowerCase();
+      }
+      
+      if (sortOrder === 'asc') {
+        return aValue > bValue ? 1 : -1;
+      } else {
+        return aValue < bValue ? 1 : -1;
+      }
+    });
+
+    return filtered;
+  }, [searchTerm, selectedCategory, sortBy, sortOrder, priceRange, showVegetarianOnly, showPopularOnly]);
+
+  // Get items for specific category
+  const getCategoryItems = (categoryId: string) => {
+    if (categoryId === 'all') {
+      return filteredAndSortedItems;
+    }
+    return filteredAndSortedItems.filter(item => {
+      return (categoryId === 'desiBites' && menuItems.desiBites.includes(item)) ||
+             (categoryId === 'maggiPasta' && menuItems.maggiPasta.includes(item)) ||
+             (categoryId === 'pizzas' && menuItems.pizzas.includes(item)) ||
+             (categoryId === 'burgers' && menuItems.burgers.includes(item)) ||
+             (categoryId === 'sandwiches' && menuItems.sandwiches.includes(item)) ||
+             (categoryId === 'fries' && menuItems.fries.includes(item)) ||
+             (categoryId === 'hotCoffee' && menuItems.hotCoffee.includes(item)) ||
+             (categoryId === 'coldCoffee' && menuItems.coldCoffee.includes(item)) ||
+             (categoryId === 'teaTime' && menuItems.teaTime.includes(item)) ||
+             (categoryId === 'flowerTeas' && menuItems.flowerTeas.includes(item)) ||
+             (categoryId === 'waffles' && menuItems.waffles.includes(item)) ||
+             (categoryId === 'studentOffers' && menuItems.studentOffers.includes(item));
+    });
+  };
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setSelectedCategory('all');
+    setSortBy('name');
+    setSortOrder('asc');
+    setPriceRange([0, 1000]);
+    setShowVegetarianOnly(false);
+    setShowPopularOnly(false);
+  };
+
+  const activeFiltersCount = [
+    searchTerm ? 1 : 0,
+    selectedCategory !== 'all' ? 1 : 0,
+    sortBy !== 'name' || sortOrder !== 'asc' ? 1 : 0,
+    priceRange[0] !== 0 || priceRange[1] !== 1000 ? 1 : 0,
+    showVegetarianOnly ? 1 : 0,
+    showPopularOnly ? 1 : 0,
+  ].reduce((a, b) => a + b, 0);
 
   return (
     <div className="bg-background text-foreground font-body min-h-screen">
@@ -718,15 +825,164 @@ export default function MenuPage() {
             </div>
             
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" className="btn-modern">
-                <Filter className="w-4 h-4 mr-2" />
-                Filters
+              {/* Sort Dropdown */}
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-[140px] btn-modern">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="name">Name</SelectItem>
+                  <SelectItem value="price">Price</SelectItem>
+                  <SelectItem value="rating">Rating</SelectItem>
+                  <SelectItem value="popular">Popular</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Sort Order */}
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="btn-modern"
+                onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+              >
+                {sortOrder === 'asc' ? '↑' : '↓'}
               </Button>
-              <Button variant="outline" size="sm" className="btn-modern">
-                Sort by
-              </Button>
+
+              {/* Filters Button */}
+              <Sheet open={showFilters} onOpenChange={setShowFilters}>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="sm" className="btn-modern relative">
+                    <Filter className="w-4 h-4 mr-2" />
+                    Filters
+                    {activeFiltersCount > 0 && (
+                      <Badge variant="destructive" className="ml-1 h-5 w-5 p-0 text-xs">
+                        {activeFiltersCount}
+                      </Badge>
+                    )}
+                  </Button>
+                </SheetTrigger>
+                <SheetContent className="w-[400px] sm:w-[540px]">
+                  <SheetHeader>
+                    <SheetTitle>Filter Menu Items</SheetTitle>
+                  </SheetHeader>
+                  <div className="py-6 space-y-6">
+                    {/* Price Range */}
+                    <div>
+                      <Label className="text-base font-semibold">Price Range</Label>
+                      <div className="flex items-center gap-2 mt-2">
+                        <Input
+                          type="number"
+                          placeholder="Min"
+                          value={priceRange[0]}
+                          onChange={(e) => setPriceRange([parseInt(e.target.value) || 0, priceRange[1]])}
+                          className="w-20"
+                        />
+                        <span>-</span>
+                        <Input
+                          type="number"
+                          placeholder="Max"
+                          value={priceRange[1]}
+                          onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value) || 1000])}
+                          className="w-20"
+                        />
+                      </div>
+                    </div>
+
+                    <Separator />
+
+                    {/* Dietary Preferences */}
+                    <div className="space-y-3">
+                      <Label className="text-base font-semibold">Dietary Preferences</Label>
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="vegetarian" 
+                          checked={showVegetarianOnly}
+                          onCheckedChange={(checked) => setShowVegetarianOnly(checked as boolean)}
+                        />
+                        <Label htmlFor="vegetarian">Vegetarian Only</Label>
+                      </div>
+                    </div>
+
+                    <Separator />
+
+                    {/* Popular Items */}
+                    <div className="space-y-3">
+                      <Label className="text-base font-semibold">Popularity</Label>
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="popular" 
+                          checked={showPopularOnly}
+                          onCheckedChange={(checked) => setShowPopularOnly(checked as boolean)}
+                        />
+                        <Label htmlFor="popular">Popular Items Only</Label>
+                      </div>
+                    </div>
+
+                    <Separator />
+
+                    {/* Clear Filters */}
+                    <Button 
+                      variant="outline" 
+                      onClick={clearFilters}
+                      className="w-full"
+                    >
+                      <X className="w-4 h-4 mr-2" />
+                      Clear All Filters
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
+
+          {/* Active Filters Display */}
+          {activeFiltersCount > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {searchTerm && (
+                <Badge variant="secondary" className="flex items-center gap-1">
+                  Search: "{searchTerm}"
+                  <X 
+                    className="w-3 h-3 cursor-pointer" 
+                    onClick={() => setSearchTerm('')}
+                  />
+                </Badge>
+              )}
+              {selectedCategory !== 'all' && (
+                <Badge variant="secondary" className="flex items-center gap-1">
+                  Category: {categories.find(c => c.id === selectedCategory)?.name}
+                  <X 
+                    className="w-3 h-3 cursor-pointer" 
+                    onClick={() => setSelectedCategory('all')}
+                  />
+                </Badge>
+              )}
+              {showVegetarianOnly && (
+                <Badge variant="secondary" className="flex items-center gap-1">
+                  Vegetarian Only
+                  <X 
+                    className="w-3 h-3 cursor-pointer" 
+                    onClick={() => setShowVegetarianOnly(false)}
+                  />
+                </Badge>
+              )}
+              {showPopularOnly && (
+                <Badge variant="secondary" className="flex items-center gap-1">
+                  Popular Only
+                  <X 
+                    className="w-3 h-3 cursor-pointer" 
+                    onClick={() => setShowPopularOnly(false)}
+                  />
+                </Badge>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Results Count */}
+        <div className="mb-6">
+          <p className="text-muted-foreground">
+            Showing {filteredAndSortedItems.length} of {allItems.length} items
+          </p>
         </div>
 
         {/* Menu Tabs */}
@@ -741,7 +997,7 @@ export default function MenuPage() {
                 {category.icon && <category.icon className="w-4 h-4" />}
                 {category.name}
                 <Badge variant="secondary" className="ml-1">
-                  {category.count}
+                  {getCategoryItems(category.id).length}
                 </Badge>
               </TabsTrigger>
             ))}
@@ -749,484 +1005,63 @@ export default function MenuPage() {
 
           {/* All Items */}
           <TabsContent value="all" className="space-y-12">
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Flame className="text-primary h-8 w-8" />
-                  Desi Twist Bites
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.desiBites.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
+            {filteredAndSortedItems.length === 0 ? (
+              <div className="text-center py-12">
+                <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-semibold mb-2">No items found</h3>
+                <p className="text-muted-foreground mb-4">
+                  Try adjusting your search terms or filters
+                </p>
+                <Button onClick={clearFilters} variant="outline">
+                  Clear Filters
+                </Button>
               </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Utensils className="text-primary h-8 w-8" />
-                  Maggi & Pasta Tales
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.maggiPasta.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredAndSortedItems.map((item) => (
+                  <MenuCard
+                    key={item.name}
+                    {...item}
+                    category="pizza"
+                    onOrder={() => handleWhatsAppOrder(item)}
+                  />
+                ))}
               </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Pizza className="text-primary h-8 w-8" />
-                  Pizzas
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.pizzas.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Sandwich className="text-primary h-8 w-8" />
-                  Bun & Fun - Burgers
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.burgers.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Sandwich className="text-primary h-8 w-8" />
-                  Between the Bread - Sandwiches
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.sandwiches.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="burger"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Utensils className="text-primary h-8 w-8" />
-                  Crunchy Cravings - Fries
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.fries.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="burger"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Coffee className="text-primary h-8 w-8" />
-                  Bloom in a Cup - Hot Coffee
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.hotCoffee.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Coffee className="text-primary h-8 w-8" />
-                  Cold Café Creations
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.coldCoffee.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <CupSoda className="text-primary h-8 w-8" />
-                  Tea Time Bliss
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.teaTime.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Leaf className="text-primary h-8 w-8" />
-                  Blooming Flower Teas
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.flowerTeas.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="pizza"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Cookie className="text-primary h-8 w-8" />
-                  Waffles
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.waffles.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="waffle"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <GraduationCap className="text-primary h-8 w-8" />
-                  👨‍🎓 Student Saver Combos
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {menuItems.studentOffers.map((item) => (
-                    <MenuCard
-                      key={item.name}
-                      {...item}
-                      category="burger"
-                      onOrder={() => handleWhatsAppOrder(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+            )}
           </TabsContent>
 
-          {/* Pizzas Only */}
-          <TabsContent value="pizzas" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Pizza className="text-primary h-8 w-8" />
-              Our Pizzas
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.pizzas.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="pizza"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Waffles Only */}
-          <TabsContent value="waffles" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Cookie className="text-primary h-8 w-8" />
-              Our Waffles
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.waffles.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="waffle"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Student Offers Only */}
-          <TabsContent value="studentOffers" className="space-y-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
-                <GraduationCap className="text-primary h-8 w-8" />
-                👨‍🎓 Student Saver Combos
+          {/* Individual Category Tabs */}
+          {categories.slice(1).map((category) => (
+            <TabsContent key={category.id} value={category.id} className="space-y-8">
+              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                {category.icon && <category.icon className="text-primary h-8 w-8" />}
+                {category.name}
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Special offers designed for students! Perfect combos at unbeatable prices. 
-                Show your student ID for additional discounts!
-              </p>
-            </div>
-            
-            {/* Student Saver Combos */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold mb-6 text-center">Student Saver Combos</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {menuItems.studentOffers.slice(0, 3).map((item) => (
-                  <MenuCard
-                    key={item.name}
-                    {...item}
-                    category="burger"
-                    onOrder={() => handleWhatsAppOrder(item)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Meal for One */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold mb-6 text-center">🍔 Meal for One</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {menuItems.studentOffers.slice(3, 6).map((item) => (
-                  <MenuCard
-                    key={item.name}
-                    {...item}
-                    category="combo"
-                    onOrder={() => handleWhatsAppOrder(item)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Duo Delight */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold mb-6 text-center">👯 Duo Delight (For Two)</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {menuItems.studentOffers.slice(6, 9).map((item) => (
-                  <MenuCard
-                    key={item.name}
-                    {...item}
-                    category="combo"
-                    onOrder={() => handleWhatsAppOrder(item)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Family Feast */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold mb-6 text-center">👨‍👩‍👧‍👦 Family Feast</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {menuItems.studentOffers.slice(9, 12).map((item) => (
-                  <MenuCard
-                    key={item.name}
-                    {...item}
-                    category="combo"
-                    onOrder={() => handleWhatsAppOrder(item)}
-                  />
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-
-          {/* Desi Twist Bites Only */}
-          <TabsContent value="desiBites" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Flame className="text-primary h-8 w-8" />
-              Desi Twist Bites
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.desiBites.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="desi"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Maggi & Pasta Only */}
-          <TabsContent value="maggiPasta" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Utensils className="text-primary h-8 w-8" />
-              Maggi & Pasta Tales
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.maggiPasta.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="pasta"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Burgers Only */}
-          <TabsContent value="burgers" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Sandwich className="text-primary h-8 w-8" />
-              Bun & Fun - Burgers
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.burgers.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="burger"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Sandwiches Only */}
-          <TabsContent value="sandwiches" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Sandwich className="text-primary h-8 w-8" />
-              Between the Bread - Sandwiches
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.sandwiches.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="burger"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Fries Only */}
-          <TabsContent value="fries" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Utensils className="text-primary h-8 w-8" />
-              Crunchy Cravings - Fries
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.fries.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="burger"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Hot Coffee Only */}
-          <TabsContent value="hotCoffee" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Coffee className="text-primary h-8 w-8" />
-              Bloom in a Cup - Hot Coffee
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.hotCoffee.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="coffee"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Cold Coffee Only */}
-          <TabsContent value="coldCoffee" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Coffee className="text-primary h-8 w-8" />
-              Cold Café Creations
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.coldCoffee.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="coffee"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Tea Time Only */}
-          <TabsContent value="teaTime" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <CupSoda className="text-primary h-8 w-8" />
-              Tea Time Bliss
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.teaTime.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="tea"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Flower Teas Only */}
-          <TabsContent value="flowerTeas" className="space-y-8">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Leaf className="text-primary h-8 w-8" />
-              Blooming Flower Teas
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.flowerTeas.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  {...item}
-                  category="tea"
-                  onOrder={() => handleWhatsAppOrder(item)}
-                />
-              ))}
-            </div>
-          </TabsContent>
+              {getCategoryItems(category.id).length === 0 ? (
+                <div className="text-center py-12">
+                  <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">No items found in this category</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Try adjusting your search terms or filters
+                  </p>
+                  <Button onClick={clearFilters} variant="outline">
+                    Clear Filters
+                  </Button>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {getCategoryItems(category.id).map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="pizza"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+          ))}
         </Tabs>
 
         {/* WhatsApp Order Section */}
@@ -1256,7 +1091,7 @@ export default function MenuPage() {
                   <p className="text-muted-foreground mb-4">
                     Click below to open WhatsApp and place your order
                   </p>
-                                    <div className="space-y-3">
+                  <div className="space-y-3">
                     <Button 
                       onClick={handleWhatsAppOrderWithAddress}
                       className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 w-full"
@@ -1292,8 +1127,8 @@ export default function MenuPage() {
         <div className="text-center mt-12 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl">
           <h3 className="text-xl font-bold mb-4">Other Ways to Connect</h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                         <Button asChild size="lg" className="btn-modern bg-green-600 hover:bg-green-700 text-white">
-               <a href="https://wa.me/918770149314" target="_blank" rel="noopener noreferrer">
+            <Button asChild size="lg" className="btn-modern bg-green-600 hover:bg-green-700 text-white">
+              <a href="https://wa.me/918770149314" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp Us
               </a>
