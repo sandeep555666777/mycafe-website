@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle, Coffee, Utensils, Sandwich, CupSoda, Flame, Leaf } from 'lucide-react';
+import { Pizza, Cookie, Filter, Search, Star, Clock, TrendingUp, MessageCircle, Coffee, Utensils, Sandwich, CupSoda, Flame, Leaf, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -482,6 +482,128 @@ const menuItems = {
       vegetarian: true
     },
   ],
+  studentOffers: [
+    { 
+      name: 'Combo 1 – Plain Maggie + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹139', 
+      description: 'Quick fix for hunger & energy! 👉 "Quick fix for hunger & energy!"', 
+      image: '/images/Plain Maggi.jpg', // Using plain maggi image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 2 – Aloo Tikki Burger + French Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹169', 
+      description: 'Snack attack sorted! 👉 "Snack attack sorted!"', 
+      image: '/images/Aloo Tikki Burger.jpg', // Using aloo tikki burger image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 3 – Veg Cheese Sandwich + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹159', 
+      description: 'Cheese & chill in every sip & bite! 👉 "Cheese & chill in every sip & bite!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 4 – Paneer Pizza (Small) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹209', 
+      description: 'Slice & sip happiness! 👉 "Slice & sip happiness!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 5 – Chicken Patty Burger + Peri Peri Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹229', 
+      description: 'Crispy, spicy, juicy – all in one! 👉 "Crispy, spicy, juicy – all in one!"', 
+      image: '/images/Chicken Patty Burger.jpg', // Using chicken patty burger image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 6 – Red Sauce Pasta + Burger + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹199', 
+      description: 'Italian cravings, desi price! 👉 "Italian cravings, desi price!"', 
+      image: '/images/Red Sauce Pasta.jpg', // Using red sauce pasta image as placeholder
+      rating: 4.6,
+      popular: false,
+      vegetarian: false,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 7 – Farmhouse Pizza + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹309', 
+      description: 'Share the slice, double the love! 👉 "Share the slice, double the love!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.9,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 8 – Tandoori Sandwich + Cheese Maggie + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹279', 
+      description: 'For friends who share bites & gossips! 👉 "For friends who share bites & gossips!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.7,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 9 – Paneer Masala Sandwich + Aloo Masala Sandwich + Fries + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹299', 
+      description: 'Sandwich stories for two! 👉 "Sandwich stories for two!"', 
+      image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 10 – 1 Veggie Delight Pizza + 1 Kabab Pizza + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹619', 
+      description: 'Family happiness in every slice & sip! 👉 "Family happiness in every slice & sip!"', 
+      image: '/images/veggie.jpg', // Using veggie pizza image as placeholder
+      rating: 4.9,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 11 – 2 Burgers (Veg + Chicken) + Cheese Baked Pasta + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹569', 
+      description: 'Burger-pasta love for the whole gang! 👉 "Burger-pasta love for the whole gang!"', 
+      image: '/images/Cheese Baked Pasta.jpg', // Using cheese baked pasta image as placeholder
+      rating: 4.8,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+    { 
+      name: 'Combo 12 – 1 India Peri Peri Pizza + Paneer Pizza + Crispy Burger + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      price: '₹659', 
+      description: 'Full table, full smiles! 👉 "Full table, full smiles!"', 
+      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      rating: 4.9,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+  ],
 };
 
 const categories = [
@@ -497,6 +619,7 @@ const categories = [
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
   { id: 'waffles', name: 'Waffles', count: menuItems.waffles.length, icon: Cookie },
+  { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
 ];
 
 export default function MenuPage() {
@@ -813,6 +936,23 @@ export default function MenuPage() {
                   ))}
                 </div>
               </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <GraduationCap className="text-primary h-8 w-8" />
+                  👨‍🎓 Student Saver Combos
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {menuItems.studentOffers.map((item) => (
+                    <MenuCard
+                      key={item.name}
+                      {...item}
+                      category="burger"
+                      onOrder={() => handleWhatsAppOrder(item)}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </TabsContent>
 
@@ -849,6 +989,80 @@ export default function MenuPage() {
                   onOrder={() => handleWhatsAppOrder(item)}
                 />
               ))}
+            </div>
+          </TabsContent>
+
+          {/* Student Offers Only */}
+          <TabsContent value="studentOffers" className="space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
+                <GraduationCap className="text-primary h-8 w-8" />
+                👨‍🎓 Student Saver Combos
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Special offers designed for students! Perfect combos at unbeatable prices. 
+                Show your student ID for additional discounts!
+              </p>
+            </div>
+            
+            {/* Student Saver Combos */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-center">Student Saver Combos</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {menuItems.studentOffers.slice(0, 3).map((item) => (
+                  <MenuCard
+                    key={item.name}
+                    {...item}
+                    category="burger"
+                    onOrder={() => handleWhatsAppOrder(item)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Meal for One */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-center">🍔 Meal for One</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {menuItems.studentOffers.slice(3, 6).map((item) => (
+                  <MenuCard
+                    key={item.name}
+                    {...item}
+                    category="combo"
+                    onOrder={() => handleWhatsAppOrder(item)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Duo Delight */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-center">👯 Duo Delight (For Two)</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {menuItems.studentOffers.slice(6, 9).map((item) => (
+                  <MenuCard
+                    key={item.name}
+                    {...item}
+                    category="combo"
+                    onOrder={() => handleWhatsAppOrder(item)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Family Feast */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-center">👨‍👩‍👧‍👦 Family Feast</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {menuItems.studentOffers.slice(9, 12).map((item) => (
+                  <MenuCard
+                    key={item.name}
+                    {...item}
+                    category="combo"
+                    onOrder={() => handleWhatsAppOrder(item)}
+                  />
+                ))}
+              </div>
             </div>
           </TabsContent>
 
