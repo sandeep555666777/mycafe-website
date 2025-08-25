@@ -405,7 +405,7 @@ const menuItems = {
       name: 'Hazelnut Cold Coffee', 
       price: '₹115', 
       description: 'Cold coffee with hazelnut flavor. 👉 "Every sip a new story!"', 
-      image: '/images/Hazelnut Cold Coffee,jpg.jfif', // Perfect match - actual hazelnut cold coffee image
+      image: '/images/Hazelnut Cold Coffee.jpg', // Perfect match - actual hazelnut cold coffee image
       rating: 4.8,
       popular: true,
       vegetarian: true
