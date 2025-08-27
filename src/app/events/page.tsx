@@ -57,19 +57,7 @@ const events = [
         features: ['Poetry Readings', 'Coffee Tasting', 'Discussion', 'Book Exchange'],
         highlights: ['Open mic poetry', 'Coffee education', 'Literary discussions', 'Community building']
     },
-    {
-        title: 'Creative Writing Workshop',
-        date: 'Second Sunday Monthly',
-        time: '10:00 AM - 12:00 PM',
-        description: 'Unlock your writing potential in our creative writing workshop. Learn new techniques, get feedback on your work, and connect with fellow writers. Perfect for aspiring authors and anyone who loves to write.',
-        image: '/images/event-art.jpg',
-        imageHint: 'writing workshop',
-        category: 'Creative',
-        price: '₹400',
-        capacity: '20 people',
-        features: ['Writing Exercises', 'Peer Feedback', 'Expert Tips', 'Coffee & Pastries'],
-        highlights: ['Published author instructor', 'Small group size', 'Personal attention', 'Writing prompts']
-    }
+    
 ];
 
 const categories = [
