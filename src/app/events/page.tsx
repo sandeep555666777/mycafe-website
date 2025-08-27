@@ -14,7 +14,7 @@ const events = [
         imageHint: 'open mic stage',
         category: 'Performance',
         price: 'Free Entry',
-        capacity: '50 people',
+        capacity: '20 people (reservation basis)',
         features: ['Live Music', 'Poetry', 'Comedy', 'Coffee & Snacks'],
         highlights: ['First-time performers welcome', 'Professional sound system', 'Cozy atmosphere', 'Networking opportunities']
     },
