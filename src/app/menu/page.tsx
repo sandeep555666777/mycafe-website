@@ -466,7 +466,7 @@ const menuItems = {
   waffles: [],
   studentOffers: [
     { 
-      name: 'Combo 1 – Plain Maggie + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Plain Maggie + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹139', 
       description: 'Quick fix for hunger & energy! 👉 "Quick fix for hunger & energy!"', 
       image: '/images/Plain Maggi.jpg', // Using plain maggi image as placeholder
@@ -476,7 +476,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 2 – Aloo Tikki Burger + French Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Aloo Tikki Burger + French Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹169', 
       description: 'Snack attack sorted! 👉 "Snack attack sorted!"', 
       image: '/images/Aloo Tikki Burger.jpg', // Using aloo tikki burger image as placeholder
@@ -486,7 +486,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 3 – Veg Cheese Sandwich + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Veg Cheese Sandwich + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹159', 
       description: 'Cheese & chill in every sip & bite! 👉 "Cheese & chill in every sip & bite!"', 
       image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
@@ -496,7 +496,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 4 – Paneer Pizza (Small) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Paneer Pizza (Small) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹209', 
       description: 'Slice & sip happiness! 👉 "Slice & sip happiness!"', 
       image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
@@ -506,7 +506,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 5 – Chicken Patty Burger + Peri Peri Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Chicken Patty Burger + Peri Peri Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹229', 
       description: 'Crispy, spicy, juicy – all in one! 👉 "Crispy, spicy, juicy – all in one!"', 
       image: '/images/Chicken Patty Burger.jpg', // Using chicken patty burger image as placeholder
@@ -516,7 +516,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 6 – Red Sauce Pasta + Burger + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Red Sauce Pasta + Burger + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹199', 
       description: 'Italian cravings, desi price! 👉 "Italian cravings, desi price!"', 
       image: '/images/Red Sauce Pasta.jpg', // Using red sauce pasta image as placeholder
@@ -526,7 +526,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 7 – Farmhouse Pizza + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Farmhouse Pizza + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹309', 
       description: 'Share the slice, double the love! 👉 "Share the slice, double the love!"', 
       image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
@@ -536,7 +536,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 8 – Tandoori Sandwich + Cheese Maggie + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Tandoori Sandwich + Cheese Maggie + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹279', 
       description: 'For friends who share bites & gossips! 👉 "For friends who share bites & gossips!"', 
       image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
@@ -546,7 +546,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 9 – Paneer Masala Sandwich + Aloo Masala Sandwich + Fries + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Paneer Masala Sandwich + Aloo Masala Sandwich + Fries + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹299', 
       description: 'Sandwich stories for two! 👉 "Sandwich stories for two!"', 
       image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
@@ -556,7 +556,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 10 – 1 Veggie Delight Pizza + 1 Kabab Pizza + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – 1 Veggie Delight Pizza + 1 Kabab Pizza + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹619', 
       description: 'Family happiness in every slice & sip! 👉 "Family happiness in every slice & sip!"', 
       image: '/images/veggie.jpg', // Using veggie pizza image as placeholder
@@ -566,7 +566,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 11 – 2 Burgers (Veg + Chicken) + Cheese Baked Pasta + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – 2 Burgers (Veg + Chicken) + Cheese Baked Pasta + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹569', 
       description: 'Burger-pasta love for the whole gang! 👉 "Burger-pasta love for the whole gang!"', 
       image: '/images/Cheese Baked Pasta.jpg', // Using cheese baked pasta image as placeholder
@@ -576,7 +576,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo 12 – 1 India Peri Peri Pizza + Paneer Pizza + Crispy Burger + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – 1 India Peri Peri Pizza + Paneer Pizza + Crispy Burger + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹659', 
       description: 'Full table, full smiles! 👉 "Full table, full smiles!"', 
       image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
