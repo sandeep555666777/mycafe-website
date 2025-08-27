@@ -443,15 +443,17 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-3 text-slate-300">
                   <span className="text-amber-400">📞</span>
-                  <a href="tel:918770149314" className="text-sm hover:text-amber-400 transition-colors">
-                    +91 8770149314
-                  </a>
+                  <div className="text-sm space-x-2">
+                    <a href="tel:918770149314" className="hover:text-amber-400 transition-colors">+91 8770149314</a>
+                    <span>•</span>
+                    <a href="tel:918130770794" className="hover:text-amber-400 transition-colors">+91 8130770794</a>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-3 text-slate-300">
                   <span className="text-amber-400">⏰</span>
                   <div className="text-sm">
                     <p>Open Daily</p>
-                    <p>8AM - 8PM</p>
+                    <p>11:30 AM - 11:00 PM</p>
                   </div>
                 </div>
               </div>

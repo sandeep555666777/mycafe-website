@@ -110,8 +110,8 @@ export function MenuQR() {
             </div>
             <div class="contact-info">
               <p><strong>📍 Address:</strong> ${cafeAddress}</p>
-              <p><strong>📱 WhatsApp:</strong> +91 8770149314</p>
-              <p><strong>⏰ Hours:</strong> Open Daily 8AM-8PM</p>
+              <p><strong>📱 Phone:</strong> +91 8770149314, +91 8130770794</p>
+              <p><strong>⏰ Hours:</strong> Open Daily 11:30 AM - 11:00 PM</p>
             </div>
           </body>
         </html>
@@ -275,7 +275,7 @@ export function MenuQR() {
         {/* Contact Info */}
         <div className="text-center text-sm text-muted-foreground">
           <p>📍 {cafeAddress}</p>
-          <p>📱 +91 8770149314 | ⏰ Open Daily 8AM-8PM</p>
+          <p>📱 +91 8770149314, +91 8130770794 | ⏰ Open Daily 11:30 AM - 11:00 PM</p>
         </div>
       </CardContent>
     </Card>

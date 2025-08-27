@@ -20,7 +20,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91 8770149314",
+      details: "+91 8770149314, +91 8130770794",
       color: "from-green-500 to-emerald-500",
       action: "Call Now"
     },
@@ -34,7 +34,7 @@ export default function ContactPage() {
     {
       icon: Clock,
       title: "Opening Hours",
-      details: "Daily: 8:00 AM - 8:00 PM",
+      details: "Daily: 11:30 AM - 11:00 PM",
       color: "from-amber-500 to-orange-500",
       action: "View Menu"
     }

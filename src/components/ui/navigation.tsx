@@ -203,7 +203,7 @@ export function Navigation() {
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">+91 8770149314</span>
+                  <span className="text-muted-foreground">+91 8770149314, +91 8130770794</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-primary" />
@@ -221,7 +221,7 @@ export function Navigation() {
                 </Button>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">Open Daily 8AM-8PM</span>
+                  <span className="text-muted-foreground">Open Daily 11:30 AM - 11:00 PM</span>
                 </div>
               </div>
             </div>
