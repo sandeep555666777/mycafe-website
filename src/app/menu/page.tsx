@@ -20,26 +20,7 @@ import { cafeAddress } from '@/lib/config';
 // address comes from centralized config
 
 const menuItems = {
-  desiBites: [
-    { 
-      name: 'Onion Pakoda', 
-      price: '₹120', 
-      description: 'Crispy bites of tradition - Golden-fried onion fritters with spices.', 
-      image: '/images/onion-pakoda.jpg', // kebab-case filename
-      rating: 4.7,
-      popular: true,
-      vegetarian: true
-    },
-    { 
-      name: 'Paneer Pakoda', 
-      price: '₹150', 
-      description: 'Soft inside, crunchy outside - Juicy paneer cubes in spiced batter, deep-fried.', 
-      image: '/images/paneer-pakoda.jpg', // kebab-case filename
-      rating: 4.8,
-      popular: true,
-      vegetarian: true
-    },
-  ],
+  desiBites: [],
   maggiPasta: [
     { 
       name: 'Plain Maggie', 
@@ -237,15 +218,6 @@ const menuItems = {
       vegetarian: true
     },
     { 
-      name: 'Aloo Masala Sandwich', 
-      price: '₹69', 
-      description: 'Spiced potato filling with buttered bread. 👉 "Simple, spicy, satisfying!"', 
-      image: '/images/Aloo Masala Sandwich.jpg', // Perfect match - actual aloo masala sandwich image
-      rating: 4.5,
-      popular: false,
-      vegetarian: true
-    },
-    { 
       name: 'Cheese Chutney Sandwich', 
       price: '₹85', 
       description: 'Cheese paired with mint chutney. 👉 "Fresh zing meets cheese king!"', 
@@ -254,15 +226,7 @@ const menuItems = {
       popular: false,
       vegetarian: true
     },
-    { 
-      name: 'Tandoori Sandwich', 
-      price: '₹99', 
-      description: 'Tandoori flavored filling with melted cheese. 👉 "Bold, smoky & irresistible!"', 
-      image: '/images/Tandoori Sandwich.jpg', // Perfect match - actual tandoori sandwich image
-      rating: 4.8,
-      popular: true,
-      vegetarian: true
-    },
+    
     { 
       name: 'Paneer Masala Sandwich', 
       price: '₹99', 
@@ -499,34 +463,7 @@ const menuItems = {
       vegetarian: true
     },
   ],
-  waffles: [
-    { 
-      name: 'Classic Waffle', 
-      price: '₹180', 
-      description: 'A simple, elegant waffle served with maple syrup and butter. Perfect for a sweet breakfast or dessert.', 
-      image: '/images/Classic Waffle.jpg', // Perfect match - actual classic waffle image
-      rating: 4.5,
-      popular: false,
-      vegetarian: true
-    },
-    { 
-      name: 'Chocolate Overload Waffle', 
-      price: '₹250', 
-      description: 'For the chocolate lovers! A rich waffle with chocolate chips, chocolate sauce, and chocolate ice cream.', 
-      image: '/images/Chocolate Overload Waffle.jpg', // Perfect match - actual chocolate overload waffle image
-      rating: 4.9,
-      popular: true,
-      vegetarian: true
-    },
-    { 
-      name: 'Berry Blast Waffle', 
-      price: '₹220', 
-      description: 'A fruity delight with fresh berries, whipped cream, and a drizzle of berry coulis.', 
-      image: '/images/Berry Blast Waffle.jpg', // Perfect match - actual berry blast waffle image
-      rating: 4.6,
-      vegetarian: true
-    },
-  ],
+  waffles: [],
   studentOffers: [
     { 
       name: 'Combo 1 – Plain Maggie + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
@@ -663,7 +600,6 @@ const categories = [
   { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
-  { id: 'waffles', name: 'Waffles', count: menuItems.waffles.length, icon: Cookie },
   { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
 ];
 
@@ -702,7 +638,21 @@ export default function MenuPage() {
   };
 
   // Get all items and apply filters
-  const allItems = Object.values(menuItems).flat();
+  const allItems = (
+    [
+      ...menuItems.desiBites,
+      ...menuItems.maggiPasta,
+      ...menuItems.pizzas,
+      ...menuItems.burgers,
+      ...menuItems.sandwiches,
+      ...menuItems.fries,
+      ...menuItems.hotCoffee,
+      ...menuItems.coldCoffee,
+      ...menuItems.teaTime,
+      ...menuItems.flowerTeas,
+      ...menuItems.studentOffers,
+    ] as any[]
+  );
   
   const filteredAndSortedItems = useMemo(() => {
     let filtered = allItems.filter(item => {
@@ -712,18 +662,17 @@ export default function MenuPage() {
       
       // Category filter
       const matchesCategory = selectedCategory === 'all' || 
-                             (selectedCategory === 'desiBites' && menuItems.desiBites.includes(item)) ||
-                             (selectedCategory === 'maggiPasta' && menuItems.maggiPasta.includes(item)) ||
-                             (selectedCategory === 'pizzas' && menuItems.pizzas.includes(item)) ||
-                             (selectedCategory === 'burgers' && menuItems.burgers.includes(item)) ||
-                             (selectedCategory === 'sandwiches' && menuItems.sandwiches.includes(item)) ||
-                             (selectedCategory === 'fries' && menuItems.fries.includes(item)) ||
-                             (selectedCategory === 'hotCoffee' && menuItems.hotCoffee.includes(item)) ||
-                             (selectedCategory === 'coldCoffee' && menuItems.coldCoffee.includes(item)) ||
-                             (selectedCategory === 'teaTime' && menuItems.teaTime.includes(item)) ||
-                             (selectedCategory === 'flowerTeas' && menuItems.flowerTeas.includes(item)) ||
-                             (selectedCategory === 'waffles' && menuItems.waffles.includes(item)) ||
-                             (selectedCategory === 'studentOffers' && menuItems.studentOffers.includes(item));
+                             (selectedCategory === 'desiBites' && (menuItems.desiBites as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'maggiPasta' && (menuItems.maggiPasta as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'pizzas' && (menuItems.pizzas as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'burgers' && (menuItems.burgers as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'sandwiches' && (menuItems.sandwiches as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name));
       
       // Price filter
       const price = parseInt(item.price.replace('₹', ''));
@@ -780,18 +729,17 @@ export default function MenuPage() {
       return filteredAndSortedItems;
     }
     return filteredAndSortedItems.filter(item => {
-      return (categoryId === 'desiBites' && menuItems.desiBites.includes(item)) ||
-             (categoryId === 'maggiPasta' && menuItems.maggiPasta.includes(item)) ||
-             (categoryId === 'pizzas' && menuItems.pizzas.includes(item)) ||
-             (categoryId === 'burgers' && menuItems.burgers.includes(item)) ||
-             (categoryId === 'sandwiches' && menuItems.sandwiches.includes(item)) ||
-             (categoryId === 'fries' && menuItems.fries.includes(item)) ||
-             (categoryId === 'hotCoffee' && menuItems.hotCoffee.includes(item)) ||
-             (categoryId === 'coldCoffee' && menuItems.coldCoffee.includes(item)) ||
-             (categoryId === 'teaTime' && menuItems.teaTime.includes(item)) ||
-             (categoryId === 'flowerTeas' && menuItems.flowerTeas.includes(item)) ||
-             (categoryId === 'waffles' && menuItems.waffles.includes(item)) ||
-             (categoryId === 'studentOffers' && menuItems.studentOffers.includes(item));
+      return (categoryId === 'desiBites' && (menuItems.desiBites as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'maggiPasta' && (menuItems.maggiPasta as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'pizzas' && (menuItems.pizzas as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'burgers' && (menuItems.burgers as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'sandwiches' && (menuItems.sandwiches as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name));
     });
   };
 
@@ -828,7 +776,7 @@ export default function MenuPage() {
           </h1>
           <p className="text-responsive-md text-muted-foreground max-w-2xl mx-auto mb-8">
             Discover our carefully curated selection of Desi Twist Bites, Maggi & Pasta, Pizzas, Burgers, 
-            Hot & Cold Coffee, Tea Time Bliss, Blooming Flower Teas, and delectable Waffles - 
+            Hot & Cold Coffee, Tea Time Bliss, and Blooming Flower Teas — 
             each crafted with the finest ingredients and a passion for flavor.
           </p>
           
@@ -1150,7 +1098,7 @@ export default function MenuPage() {
                         <MenuCard
                           key={item.name}
                           {...item}
-                          category="sandwich"
+                          category="desi"
                           onOrder={() => handleWhatsAppOrder(item)}
                         />
                       ))}
@@ -1170,7 +1118,7 @@ export default function MenuPage() {
                         <MenuCard
                           key={item.name}
                           {...item}
-                          category="fries"
+                          category="desi"
                           onOrder={() => handleWhatsAppOrder(item)}
                         />
                       ))}
@@ -1258,25 +1206,7 @@ export default function MenuPage() {
                   </div>
                 )}
 
-                {/* Waffles */}
-                {getCategoryItems('waffles').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Cookie className="text-primary h-8 w-8" />
-                      Waffles
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('waffles').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="waffle"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
+                
 
                 {/* Student Offers */}
                 {getCategoryItems('studentOffers').length > 0 && (
@@ -1325,7 +1255,17 @@ export default function MenuPage() {
                     <MenuCard
                       key={item.name}
                       {...item}
-                      category="pizza"
+                      category={
+                        category.id === 'pizzas' ? 'pizza' :
+                        category.id === 'maggiPasta' ? 'pasta' :
+                        category.id === 'burgers' ? 'burger' :
+                        category.id === 'sandwiches' ? 'desi' :
+                        category.id === 'fries' ? 'desi' :
+                        category.id === 'hotCoffee' ? 'coffee' :
+                        category.id === 'coldCoffee' ? 'coffee' :
+                        category.id === 'teaTime' ? 'tea' :
+                        category.id === 'flowerTeas' ? 'tea' : 'pizza'
+                      }
                       onOrder={() => handleWhatsAppOrder(item)}
                     />
                   ))}
