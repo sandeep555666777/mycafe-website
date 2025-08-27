@@ -408,7 +408,7 @@ const menuItems = {
     },
     { 
       name: 'Iced Tea with Sparkling Water (Orange/Cranberry)', 
-      price: '₹99', 
+      price: '₹119', 
       description: 'Zesty fizz with fruity punch. 👉 "Fizz that refreshes!"', 
       image: '/images/Sparkling Ice Tea Orange Cranberry.jpg', // Perfect match - actual sparkling ice tea image
       rating: 4.7,
