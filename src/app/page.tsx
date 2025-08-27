@@ -350,7 +350,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg" className="btn-modern bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-base">
-                <a href="https://wa.me/918770149314" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/918130770794" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Order via WhatsApp
                 </a>
@@ -443,11 +443,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-3 text-slate-300">
                   <span className="text-amber-400">📞</span>
-                  <div className="text-sm space-x-2">
-                    <a href="tel:918770149314" className="hover:text-amber-400 transition-colors">+91 8770149314</a>
-                    <span>•</span>
-                    <a href="tel:918130770794" className="hover:text-amber-400 transition-colors">+91 8130770794</a>
-                  </div>
+                  <a href="tel:918130770794" className="text-sm hover:text-amber-400 transition-colors">+91 8130770794</a>
                 </div>
                 <div className="flex items-center space-x-3 text-slate-300">
                   <span className="text-amber-400">⏰</span>

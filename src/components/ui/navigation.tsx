@@ -98,7 +98,7 @@ export function Navigation() {
                                   `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                                   `Please help me place an order. Thank you! 🙏`;
                     
-                    const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+                    const whatsappUrl = `https://wa.me/918130770794?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                   }}
                 >
@@ -161,8 +161,8 @@ export function Navigation() {
                         <Link href="/order">Order Now</Link>
                       </Button>
                       <div className="text-center text-sm text-muted-foreground">
-                        <p>Open Daily: 8AM - 8PM</p>
-                        <p>Call: +91 8770149314</p>
+                        <p>Open Daily: 11:30 AM - 11:00 PM</p>
+                        <p>Call: +91 8130770794</p>
                       </div>
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export function Navigation() {
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">+91 8770149314, +91 8130770794</span>
+                  <span className="text-muted-foreground">+91 8130770794</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-primary" />

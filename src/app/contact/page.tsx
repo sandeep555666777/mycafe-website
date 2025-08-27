@@ -20,7 +20,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91 8770149314, +91 8130770794",
+      details: "+91 8130770794",
       color: "from-green-500 to-emerald-500",
       action: "Call Now"
     },

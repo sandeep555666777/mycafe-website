@@ -18,7 +18,7 @@ export function MenuQR() {
   useEffect(() => {
     // Set URLs only on client side
     setMenuUrl(`${window.location.origin}/menu`);
-    setWhatsappUrl(`https://wa.me/918770149314?text=${encodeURIComponent(
+    setWhatsappUrl(`https://wa.me/918130770794?text=${encodeURIComponent(
       `🍽️ *The Crafty Bean - Menu Access*\n\n` +
       `Hi! I'd like to view your menu and place an order.\n\n` +
       `📍 *Address:* ${cafeAddress}\n` +
@@ -110,7 +110,7 @@ export function MenuQR() {
             </div>
             <div class="contact-info">
               <p><strong>📍 Address:</strong> ${cafeAddress}</p>
-              <p><strong>📱 Phone:</strong> +91 8770149314, +91 8130770794</p>
+              <p><strong>📱 Phone:</strong> +91 8130770794</p>
               <p><strong>⏰ Hours:</strong> Open Daily 11:30 AM - 11:00 PM</p>
             </div>
           </body>
@@ -275,7 +275,7 @@ export function MenuQR() {
         {/* Contact Info */}
         <div className="text-center text-sm text-muted-foreground">
           <p>📍 {cafeAddress}</p>
-          <p>📱 +91 8770149314, +91 8130770794 | ⏰ Open Daily 11:30 AM - 11:00 PM</p>
+          <p>📱 +91 8130770794 | ⏰ Open Daily 11:30 AM - 11:00 PM</p>
         </div>
       </CardContent>
     </Card>

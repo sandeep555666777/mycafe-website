@@ -286,11 +286,11 @@ export default function EventsPage() {
                         </div>
                         <div className="flex items-center gap-2">
                             <Phone className="w-4 h-4 text-primary" />
-                            <span>+91 98765 43210</span>
+                            <span>+91 8130770794</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <Clock className="w-4 h-4 text-primary" />
-                            <span>Open Daily 7AM-11PM</span>
+                            <span>Open Daily 11:30 AM - 11:00 PM</span>
                         </div>
                     </div>
                     <p className="text-muted-foreground mt-6">

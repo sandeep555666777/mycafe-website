@@ -686,7 +686,7 @@ export default function MenuPage() {
                    `⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                    `Please confirm this order and provide your delivery address. Thank you! 🙏`;
     
-    const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/918130770794?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -697,7 +697,7 @@ export default function MenuPage() {
                    `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                    `Please share your menu and help me place an order with delivery address. Thank you! 🙏`;
     
-    const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/918130770794?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -1378,7 +1378,7 @@ export default function MenuPage() {
                                       `⏰ *Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
                                       `Please share your menu and help me place an order. Thank you! 🙏`;
                         
-                        const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+                        const whatsappUrl = `https://wa.me/918130770794?text=${encodeURIComponent(message)}`;
                         window.open(whatsappUrl, '_blank');
                       }}
                       variant="outline"
@@ -1399,7 +1399,7 @@ export default function MenuPage() {
           <h3 className="text-xl font-bold mb-4">Other Ways to Connect</h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="btn-modern bg-green-600 hover:bg-green-700 text-white">
-              <a href="https://wa.me/918770149314" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/918130770794" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp Us
               </a>

@@ -57,7 +57,7 @@ export function MenuCard({
 							`⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
 							`Please confirm this order and provide your delivery address. Thank you! 🙏`;
 			
-			const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+			const whatsappUrl = `https://wa.me/918130770794?text=${encodeURIComponent(message)}`;
 			window.open(whatsappUrl, '_blank');
 		}
 	};
@@ -81,7 +81,7 @@ export function MenuCard({
 						`⏰ *Order Time:* ${new Date().toLocaleString('en-IN')}\n\n` +
 						`Please confirm this order and provide estimated delivery time. Thank you! 🙏`;
 		
-		const whatsappUrl = `https://wa.me/918770149314?text=${encodeURIComponent(message)}`;
+		const whatsappUrl = `https://wa.me/918130770794?text=${encodeURIComponent(message)}`;
 		window.open(whatsappUrl, '_blank');
 		
 		// Reset form
