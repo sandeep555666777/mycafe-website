@@ -8,8 +8,7 @@ import { Pizza } from "lucide-react";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const cafeAddress = "Gobrahwa bazar road shastri nagar in front of little angle play school tettri bazar siddharth nagar";
+import { cafeAddress } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "The Crafty Bean - Artistic Café",

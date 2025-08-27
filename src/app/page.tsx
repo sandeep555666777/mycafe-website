@@ -3,6 +3,7 @@ import { Coffee, Pizza, Book, Wifi, Mic, Star, Clock, MapPin, Phone, ArrowRight,
 import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
+import { cafeAddress } from '@/lib/config';
 import { MenuQR } from '@/components/menu-qr';
 
 export default function Home() {
@@ -120,7 +121,7 @@ export default function Home() {
                 Classic delight with 100% real mozzarella cheese, fresh basil, and our signature tomato sauce
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-primary">₹350</span>
+                <span className="text-xl font-bold text-primary">₹129</span>
                 <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
                   <Link href="/menu">View Details</Link>
                 </Button>
@@ -438,11 +439,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex items-start space-x-3 text-slate-300">
                   <span className="text-amber-400 mt-1">📍</span>
-                  <div className="text-sm">
-                    <p>Gobrahwa Bazar Road</p>
-                    <p>Near Hotel Aashiyana</p>
-                    <p>Siddharth Nagar, UP</p>
-                  </div>
+                  <div className="text-sm">{cafeAddress}</div>
                 </div>
                 <div className="flex items-center space-x-3 text-slate-300">
                   <span className="text-amber-400">📞</span>

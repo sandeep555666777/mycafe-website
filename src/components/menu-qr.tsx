@@ -274,7 +274,7 @@ export function MenuQR() {
 
         {/* Contact Info */}
         <div className="text-center text-sm text-muted-foreground">
-          <p>📍 Gobrahwa Bazar Road, Siddharth Nagar, UP</p>
+          <p>📍 {cafeAddress}</p>
           <p>📱 +91 8770149314 | ⏰ Open Daily 8AM-8PM</p>
         </div>
       </CardContent>
