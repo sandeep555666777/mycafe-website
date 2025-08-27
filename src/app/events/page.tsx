@@ -58,19 +58,6 @@ const events = [
         highlights: ['Open mic poetry', 'Coffee education', 'Literary discussions', 'Community building']
     },
     {
-        title: 'Jazz Night',
-        date: 'First Saturday Monthly',
-        time: '9:00 PM - 12:00 AM',
-        description: 'Experience the smooth sounds of jazz in our intimate setting. Professional jazz musicians create the perfect ambiance for a sophisticated evening. Enjoy craft cocktails and gourmet snacks while listening to timeless jazz classics.',
-        image: '/images/event-acoustic.jpg',
-        imageHint: 'jazz performance',
-        category: 'Music',
-        price: '₹300 Entry',
-        capacity: '35 people',
-        features: ['Live Jazz Music', 'Craft Cocktails', 'Gourmet Snacks', 'Sophisticated Atmosphere'],
-        highlights: ['Professional jazz musicians', 'Craft cocktail menu', 'Elegant setting', 'Monthly themes']
-    },
-    {
         title: 'Creative Writing Workshop',
         date: 'Second Sunday Monthly',
         time: '10:00 AM - 12:00 PM',
