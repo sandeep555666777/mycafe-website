@@ -114,7 +114,7 @@ export default function AboutPage() {
           </p>
           
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 mt-12 max-w-2xl mx-auto">
             {stats.map((stat, index) => (
               <div key={index} className="text-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-amber-200/50">
                 <stat.icon className="w-8 h-8 text-primary mx-auto mb-2" />

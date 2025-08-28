@@ -71,7 +71,7 @@ export default function Home() {
       {/* Stats Section - Compact */}
       <section className="py-8 bg-primary/5">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-6">
             {[
               { icon: Star, number: "4.9", label: "Rating" },
               { icon: Heart, number: "100%", label: "Fresh Ingredients" },
