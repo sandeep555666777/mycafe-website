@@ -1182,124 +1182,32 @@ export default function MenuPage() {
             ) : (
               <div className="space-y-8">
                 {/* Drinks first - USP */}
-                {/* Hot Coffee */}
-                {getCategoryItems('hotCoffee').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Coffee className="text-primary h-8 w-8" />
-                      Bloom in a Cup - Hot Coffee
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('hotCoffee').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="coffee"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
+                
+                {/* Drinks first */}
+                {['hotCoffee','coldCoffee','sweetSips','teaTime','flowerTeas'].map(id => (
+                  getCategoryItems(id).length > 0 && (
+                    <div key={id}>
+                      <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                        {id==='hotCoffee' || id==='coldCoffee' ? <Coffee className="text-primary h-8 w-8" /> : id==='flowerTeas' ? <Leaf className="text-primary h-8 w-8" /> : <CupSoda className="text-primary h-8 w-8" />}
+                        {id==='hotCoffee' && 'Bloom in a Cup - Hot Coffee'}
+                        {id==='coldCoffee' && 'Cold Café Creations'}
+                        {id==='sweetSips' && '🥤 Sweet Sips – Shakes'}
+                        {id==='teaTime' && 'Tea Time Bliss'}
+                        {id==='flowerTeas' && 'Blooming Flower Teas'}
+                      </h2>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {getCategoryItems(id).map((item) => (
+                          <MenuCard
+                            key={item.name}
+                            {...(item as any)}
+                            category={id==='hotCoffee' || id==='coldCoffee' ? 'coffee' : 'tea'}
+                            onOrder={() => handleWhatsAppOrder(item)}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-
-                {/* Cold Coffee */}
-                {getCategoryItems('coldCoffee').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Coffee className="text-primary h-8 w-8" />
-                      Cold Café Creations
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('coldCoffee').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="coffee"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Sweet Sips – Shakes */}
-                {getCategoryItems('sweetSips').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <CupSoda className="text-primary h-8 w-8" />
-                      🥤 Sweet Sips – Shakes
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('sweetSips').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="tea"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Tea Time */}
-                {getCategoryItems('teaTime').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <CupSoda className="text-primary h-8 w-8" />
-                      Tea Time Bliss
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('teaTime').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="tea"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Flower Teas */}
-                {getCategoryItems('flowerTeas').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Leaf className="text-primary h-8 w-8" />
-                      Blooming Flower Teas
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('flowerTeas').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="tea"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {/* Desi Twist Bites */}
-                {getCategoryItems('desiBites').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Flame className="text-primary h-8 w-8" />
-                      Desi Twist Bites
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('desiBites').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...(item as any)}
-                          category="desi"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
+                  )
+                ))}
 
                 {/* Maggi & Pasta */}
                 {getCategoryItems('maggiPasta').length > 0 && (
