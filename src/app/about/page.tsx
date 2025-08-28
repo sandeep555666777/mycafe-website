@@ -167,6 +167,9 @@ export default function AboutPage() {
                   </Link>
                 </Button>
                 
+                <Button variant="outline" asChild>
+                  <Link href="/events">View Events</Link>
+                </Button>
               </div>
             </div>
             

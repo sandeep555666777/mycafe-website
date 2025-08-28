@@ -28,6 +28,7 @@ export function Navigation() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Menu', href: '/menu' },
+    { name: 'Events', href: '/events' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];

@@ -176,6 +176,9 @@ export default function ContactPage() {
                   </div>
                 </div>
                 
+                <Button asChild variant="outline" size="lg" className="px-8 py-4 text-lg">
+                  <Link href="/events">View Events</Link>
+                </Button>
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
                   <Input 

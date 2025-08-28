@@ -49,6 +49,12 @@ export default function Home() {
               </Link>
             </Button>
             
+            <Button asChild variant="outline" size="lg" className="btn-modern px-6 py-3 text-base">
+              <Link href="/events" className="flex items-center gap-2">
+                <Mic className="w-4 h-4" />
+                View Events
+              </Link>
+            </Button>
           </div>
           
           {/* Quick Access */}
@@ -303,6 +309,9 @@ export default function Home() {
                   <Link href="/about">Learn More</Link>
                 </Button>
                 
+                <Button asChild variant="outline" size="lg" className="btn-modern">
+                  <Link href="/events">View Events</Link>
+                </Button>
               </div>
             </div>
             
@@ -425,6 +434,7 @@ export default function Home() {
               <div className="space-y-3">
                 {[
                   { name: 'Menu', href: '/menu', icon: '🍽️' },
+                  { name: 'Events', href: '/events', icon: '🎭' },
                   { name: 'About', href: '/about', icon: 'ℹ️' },
                   { name: 'Contact', href: '/contact', icon: '📞' },
                 ].map((link) => (
