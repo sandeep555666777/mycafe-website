@@ -618,6 +618,38 @@ const menuItems = {
       isCombo: true
     },
   ],
+  familyFeast: [
+    {
+      name: 'Family – 1 Veggie Delight Pizza + 1 Kabab Pizza + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹619',
+      description: 'Family happiness in every slice & sip! 👉 "Family happiness in every slice & sip!"',
+      image: '/images/Veggie Delight Pizza.jpg',
+      rating: 4.9,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+    {
+      name: 'Family – 2 Burgers (Veg + Chicken) + Cheese Baked Pasta + Fries + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹569',
+      description: 'Burger-pasta love for the whole gang! 👉 "Burger-pasta love for the whole gang!"',
+      image: '/images/Cheese Baked Pasta.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+    {
+      name: 'Family – 1 India Peri Peri Pizza + Paneer Pizza + Crispy Burger + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹659',
+      description: 'Full table, full smiles! 👉 "Full table, full smiles!"',
+      image: '/images/India Peri Peri Spicy Pizza.jpg',
+      rating: 4.9,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+  ],
   duoDelight: [
     {
       name: 'Duo – Farmhouse Pizza + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
@@ -665,7 +697,7 @@ const categories = [
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
   { id: 'mealForOne', name: 'Meal for One', count: menuItems.mealForOne.length, icon: Utensils },
-  { id: 'duoDelight', name: 'Duo Delight', count: menuItems.duoDelight.length, icon: Sandwich },
+  { id: 'familyFeast', name: 'Family Feast', count: (menuItems as any).familyFeast?.length || 0, icon: Pizza },
   { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
 ];
 
@@ -718,7 +750,8 @@ export default function MenuPage() {
       ...menuItems.flowerTeas,
       ...menuItems.studentOffers,
       ...menuItems.mealForOne,
-      ...menuItems.duoDelight,
+      ...((menuItems as any).duoDelight || []),
+      ...((menuItems as any).familyFeast || []),
     ] as any[]
   );
   
@@ -730,19 +763,20 @@ export default function MenuPage() {
       
       // Category filter
       const matchesCategory = selectedCategory === 'all' || 
-                             (selectedCategory === 'desiBites' && (menuItems.desiBites as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'maggiPasta' && (menuItems.maggiPasta as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'pizzas' && (menuItems.pizzas as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'burgers' && (menuItems.burgers as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'sandwiches' && (menuItems.sandwiches as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'duoDelight' && (menuItems.duoDelight as any[]).some((si: any) => si.name === (item as any).name));
+                              (selectedCategory === 'desiBites' && (menuItems.desiBites as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'maggiPasta' && (menuItems.maggiPasta as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'pizzas' && (menuItems.pizzas as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'burgers' && (menuItems.burgers as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'sandwiches' && (menuItems.sandwiches as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'duoDelight' && ((menuItems as any).duoDelight || []).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'familyFeast' && ((menuItems as any).familyFeast || []).some((si: any) => si.name === (item as any).name));
       
       // Price filter
       const price = parseInt(item.price.replace('₹', ''));
@@ -811,6 +845,7 @@ export default function MenuPage() {
              (categoryId === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'familyFeast' && (menuItems.familyFeast as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'duoDelight' && (menuItems.duoDelight as any[]).some((si: any) => si.name === (item as any).name));
     });
   };
@@ -1289,6 +1324,26 @@ export default function MenuPage() {
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {getCategoryItems('mealForOne').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="combo"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Family Feast */}
+                {getCategoryItems('familyFeast').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Pizza className="text-primary h-8 w-8" />
+                      👨‍👩‍👧‍👦 Family Feast
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('familyFeast').map((item) => (
                         <MenuCard
                           key={item.name}
                           {...item}
