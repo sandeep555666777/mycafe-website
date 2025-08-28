@@ -1331,65 +1331,7 @@ export default function MenuPage() {
 
                 
 
-                {/* Sweet Sips – Shakes */}
-                {getCategoryItems('sweetSips').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <CupSoda className="text-primary h-8 w-8" />
-                      🥤 Sweet Sips – Shakes
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('sweetSips').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="tea"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Tea Time */}
-                {getCategoryItems('teaTime').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <CupSoda className="text-primary h-8 w-8" />
-                      Tea Time Bliss
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('teaTime').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="tea"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Flower Teas */}
-                {getCategoryItems('flowerTeas').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Leaf className="text-primary h-8 w-8" />
-                      Blooming Flower Teas
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('flowerTeas').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="tea"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
+                
 
                 
 
