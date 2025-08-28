@@ -587,7 +587,7 @@ const menuItems = {
       name: 'Combo – Farmhouse Pizza + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹309', 
       description: 'Share the slice, double the love! 👉 "Share the slice, double the love!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/Farmhouse Pizza.jpg', // Use farmhouse pizza image
       rating: 4.9,
       popular: true,
       vegetarian: true,
@@ -637,7 +637,7 @@ const menuItems = {
       name: 'Combo – 1 India Peri Peri Pizza + Paneer Pizza + Crispy Burger + 4 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹659', 
       description: 'Full table, full smiles! 👉 "Full table, full smiles!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/India Peri Peri Spicy Pizza.jpg', // Use peri peri pizza image
       rating: 4.9,
       popular: true,
       vegetarian: false,
