@@ -155,7 +155,7 @@ export function MenuCard({
 			{/* Content Section */}
 			<CardHeader className="pb-3">
 				<div className="flex items-start justify-between mb-2">
-					<CardTitle className="text-lg font-semibold line-clamp-1 group-hover:text-primary transition-colors">
+					<CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors break-words">
 						{name}
 					</CardTitle>
 					<span className="text-lg font-bold text-primary">{price}</span>
@@ -181,7 +181,7 @@ export function MenuCard({
 					<span className="text-xs text-muted-foreground">({rating})</span>
 				</div>
 
-				<CardDescription className="text-sm text-muted-foreground line-clamp-2">
+				<CardDescription className="text-sm text-muted-foreground whitespace-pre-line break-words">
 					{description}
 				</CardDescription>
 			</CardHeader>
