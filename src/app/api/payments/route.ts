@@ -2,14 +2,26 @@ import { NextRequest, NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
 import { prisma } from '@/lib/db';
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || '',
-  key_secret: process.env.RAZORPAY_KEY_SECRET || '',
-});
+// Initialize Razorpay lazily inside the request handler to avoid build-time errors
+function createRazorpayClient() {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
+  if (!keyId || !keySecret) {
+    return null;
+  }
+  return { client: new Razorpay({ key_id: keyId, key_secret: keySecret }), keyId } as const;
+}
 
 export async function POST(request: NextRequest) {
   try {
     const { orderId, amount } = await request.json();
+
+    const razorpayBundle = createRazorpayClient();
+    if (!razorpayBundle) {
+      console.error('Razorpay environment variables are not configured');
+      return NextResponse.json({ error: 'Payment gateway not configured' }, { status: 500 });
+    }
+    const { client: razorpay, keyId } = razorpayBundle;
 
     const options = {
       amount: amount, // amount in smallest currency unit
@@ -25,7 +37,7 @@ export async function POST(request: NextRequest) {
       data: { paymentGateway: 'RAZORPAY', gatewayId: razorpayOrder.id },
     });
 
-    return NextResponse.json({ paymentUrl: `https://checkout.razorpay.com/v1/checkout.js?key_id=${razorpay.key_id}&order_id=${razorpayOrder.id}` });
+    return NextResponse.json({ paymentUrl: `https://checkout.razorpay.com/v1/checkout.js?key_id=${keyId}&order_id=${razorpayOrder.id}` });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Failed to create Razorpay order' }, { status: 500 });
