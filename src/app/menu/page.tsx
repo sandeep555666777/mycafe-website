@@ -513,7 +513,7 @@ const menuItems = {
     },
     { 
       name: 'Butterfly Pea Tea (Purple)', 
-      price: '₹150', 
+      price: '₹50', 
       description: 'Magic in your cup - Color-changing tea with lemon drops.', 
       image: '/images/Butterfly Pea Tea.jpg', // Perfect match - actual butterfly pea tea image
       rating: 4.8,
