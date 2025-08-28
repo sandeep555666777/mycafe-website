@@ -289,7 +289,7 @@ const menuItems = {
       name: 'Steamed Momos (6 pcs)',
       price: '₹50',
       description: 'Soft, juicy dumplings served with spicy chutney. 👉 "Little pockets of joy!"',
-      image: '/images/Steamed Momos.jpg',
+      image: '/images/Steamed Momos .jpg',
       rating: 4.6,
       popular: true,
       vegetarian: true
@@ -298,7 +298,7 @@ const menuItems = {
       name: 'Kurkure Momos (6 pcs)',
       price: '₹70',
       description: 'Crispy on the outside, juicy on the inside. 👉 "Crunch that craves more!"',
-      image: '/images/Kurkure Momos.jpg',
+      image: '/images/Kurkure Momos .jpg',
       rating: 4.7,
       popular: true,
       vegetarian: true
@@ -307,7 +307,7 @@ const menuItems = {
       name: 'Fried Momos (6 pcs)',
       price: '₹70',
       description: 'Golden fried and crunchy, with a flavorful filling. 👉 "Fry-day favorite!"',
-      image: '/images/Fried Momos.jpg',
+      image: '/images/Fried Momos .jpg',
       rating: 4.5,
       popular: false,
       vegetarian: true
@@ -316,7 +316,7 @@ const menuItems = {
       name: 'Tandoori Momos (8 pcs)',
       price: '₹70',
       description: 'Smoky, spicy, and grilled to perfection. 👉 "Tandoori twist with every bite!"',
-      image: '/images/Tandoori Momos.jpg',
+      image: '/images/Tandoori Momos .jpg',
       rating: 4.8,
       popular: true,
       vegetarian: true
@@ -557,7 +557,7 @@ const menuItems = {
       name: 'Combo – Paneer Pizza (Small) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹209', 
       description: 'Slice & sip happiness! 👉 "Slice & sip happiness!"', 
-      image: '/images/pepperoni.jpg', // Using pepperoni image as placeholder
+      image: '/images/Paneer Pizza.jpg', // Using paneer pizza image as placeholder
       rating: 4.8,
       popular: true,
       vegetarian: true,
