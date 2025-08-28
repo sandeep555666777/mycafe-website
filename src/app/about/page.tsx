@@ -166,9 +166,7 @@ export default function AboutPage() {
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/events">View Events</Link>
-                </Button>
+                
               </div>
             </div>
             

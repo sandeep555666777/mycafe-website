@@ -346,9 +346,7 @@ export default function ContactPage() {
                     <Star className="w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="px-8 py-4 text-lg">
-                  <Link href="/events">View Events</Link>
-                </Button>
+                
               </div>
             </div>
           </div>
