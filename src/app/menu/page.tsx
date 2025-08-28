@@ -632,8 +632,8 @@ const categories = [
   { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
-  { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
   { id: 'mealForOne', name: 'Meal for One', count: menuItems.mealForOne.length, icon: Utensils },
+  { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
 ];
 
 export default function MenuPage() {
@@ -1243,15 +1243,15 @@ export default function MenuPage() {
 
                 
 
-                {/* Student Offers */}
-                {getCategoryItems('studentOffers').length > 0 && (
+                {/* Meal for One */}
+                {getCategoryItems('mealForOne').length > 0 && (
                   <div>
                     <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <GraduationCap className="text-primary h-8 w-8" />
-                      👨‍🎓 Student Saver Combos
+                      <Utensils className="text-primary h-8 w-8" />
+                      🍔 Meal for One
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('studentOffers').map((item) => (
+                      {getCategoryItems('mealForOne').map((item) => (
                         <MenuCard
                           key={item.name}
                           {...item}
@@ -1263,15 +1263,15 @@ export default function MenuPage() {
                   </div>
                 )}
 
-                {/* Meal for One */}
-                {getCategoryItems('mealForOne').length > 0 && (
+                {/* Student Offers */}
+                {getCategoryItems('studentOffers').length > 0 && (
                   <div>
                     <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Utensils className="text-primary h-8 w-8" />
-                      🍔 Meal for One
+                      <GraduationCap className="text-primary h-8 w-8" />
+                      👨‍🎓 Student Saver Combos
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('mealForOne').map((item) => (
+                      {getCategoryItems('studentOffers').map((item) => (
                         <MenuCard
                           key={item.name}
                           {...item}
