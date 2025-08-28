@@ -618,6 +618,38 @@ const menuItems = {
       isCombo: true
     },
   ],
+  duoDelight: [
+    {
+      name: 'Duo – Farmhouse Pizza + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹309',
+      description: 'Share the slice, double the love! 👉 "Share the slice, double the love!"',
+      image: '/images/Farmhouse Pizza.jpg',
+      rating: 4.9,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    {
+      name: 'Duo – Cheese Sandwich + Cheese Maggie + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹279',
+      description: 'For friends who share bites & gossips! 👉 "For friends who share bites & gossips!"',
+      image: '/images/Veg Cheese Sandwich.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    {
+      name: 'Duo – Paneer Masala Sandwich + Veg Sandwich + Fries + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹299',
+      description: 'Sandwich stories for two! 👉 "Sandwich stories for two!"',
+      image: '/images/Paneer Masala Sandwich.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+  ],
 };
 
 const categories = [
@@ -633,6 +665,7 @@ const categories = [
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
   { id: 'mealForOne', name: 'Meal for One', count: menuItems.mealForOne.length, icon: Utensils },
+  { id: 'duoDelight', name: 'Duo Delight', count: menuItems.duoDelight.length, icon: Sandwich },
   { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
 ];
 
@@ -685,6 +718,7 @@ export default function MenuPage() {
       ...menuItems.flowerTeas,
       ...menuItems.studentOffers,
       ...menuItems.mealForOne,
+      ...menuItems.duoDelight,
     ] as any[]
   );
   
@@ -707,7 +741,8 @@ export default function MenuPage() {
                              (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
                              (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
                              (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name));
+                             (selectedCategory === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'duoDelight' && (menuItems.duoDelight as any[]).some((si: any) => si.name === (item as any).name));
       
       // Price filter
       const price = parseInt(item.price.replace('₹', ''));
@@ -774,7 +809,9 @@ export default function MenuPage() {
              (categoryId === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
-             (categoryId === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name));
+             (categoryId === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'duoDelight' && (menuItems.duoDelight as any[]).some((si: any) => si.name === (item as any).name));
     });
   };
 
@@ -1252,6 +1289,26 @@ export default function MenuPage() {
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {getCategoryItems('mealForOne').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="combo"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Duo Delight */}
+                {getCategoryItems('duoDelight').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Sandwich className="text-primary h-8 w-8" />
+                      👯 Duo Delight (For Two)
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('duoDelight').map((item) => (
                         <MenuCard
                           key={item.name}
                           {...item}
