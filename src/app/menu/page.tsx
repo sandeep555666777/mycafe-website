@@ -1329,45 +1329,7 @@ export default function MenuPage() {
                   </div>
                 )}
 
-                {/* Hot Coffee */}
-                {getCategoryItems('hotCoffee').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Coffee className="text-primary h-8 w-8" />
-                      Bloom in a Cup - Hot Coffee
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('hotCoffee').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="coffee"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Cold Coffee */}
-                {getCategoryItems('coldCoffee').length > 0 && (
-                  <div>
-                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                      <Coffee className="text-primary h-8 w-8" />
-                      Cold Café Creations
-                    </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {getCategoryItems('coldCoffee').map((item) => (
-                        <MenuCard
-                          key={item.name}
-                          {...item}
-                          category="coffee"
-                          onOrder={() => handleWhatsAppOrder(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
+                
 
                 {/* Sweet Sips – Shakes */}
                 {getCategoryItems('sweetSips').length > 0 && (
