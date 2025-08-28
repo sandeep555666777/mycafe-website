@@ -284,6 +284,44 @@ const menuItems = {
       vegetarian: true
     },
   ],
+  momosSnacks: [
+    {
+      name: 'Steamed Momos (6 pcs)',
+      price: '₹50',
+      description: 'Soft, juicy dumplings served with spicy chutney. 👉 "Little pockets of joy!"',
+      image: '/images/Steamed Momos.jpg',
+      rating: 4.6,
+      popular: true,
+      vegetarian: true
+    },
+    {
+      name: 'Kurkure Momos (6 pcs)',
+      price: '₹70',
+      description: 'Crispy on the outside, juicy on the inside. 👉 "Crunch that craves more!"',
+      image: '/images/Kurkure Momos.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true
+    },
+    {
+      name: 'Fried Momos (6 pcs)',
+      price: '₹70',
+      description: 'Golden fried and crunchy, with a flavorful filling. 👉 "Fry-day favorite!"',
+      image: '/images/Fried Momos.jpg',
+      rating: 4.5,
+      popular: false,
+      vegetarian: true
+    },
+    {
+      name: 'Tandoori Momos (8 pcs)',
+      price: '₹70',
+      description: 'Smoky, spicy, and grilled to perfection. 👉 "Tandoori twist with every bite!"',
+      image: '/images/Tandoori Momos.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true
+    },
+  ],
   hotCoffee: [
     { 
       name: 'Cappuccino', 
@@ -711,6 +749,7 @@ const categories = [
   { id: 'pizzas', name: 'Pizzas', count: menuItems.pizzas.length, icon: Pizza },
   { id: 'burgers', name: 'Burgers', count: menuItems.burgers.length, icon: Sandwich },
   { id: 'sandwiches', name: 'Sandwiches', count: menuItems.sandwiches.length, icon: Sandwich },
+  { id: 'momosSnacks', name: 'Little Bites of Joy – Momos & Snacks', count: (menuItems as any).momosSnacks?.length || 0, icon: Utensils },
   { id: 'fries', name: 'Fries', count: menuItems.fries.length, icon: Utensils },
   { id: 'hotCoffee', name: 'Hot Coffee', count: menuItems.hotCoffee.length, icon: Coffee },
   { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
@@ -764,6 +803,7 @@ export default function MenuPage() {
       ...menuItems.pizzas,
       ...menuItems.burgers,
       ...menuItems.sandwiches,
+      ...((menuItems as any).momosSnacks || []),
       ...menuItems.fries,
       ...menuItems.hotCoffee,
       ...menuItems.coldCoffee,
@@ -790,16 +830,17 @@ export default function MenuPage() {
                               (selectedCategory === 'pizzas' && (menuItems.pizzas as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'burgers' && (menuItems.burgers as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'sandwiches' && (menuItems.sandwiches as any[]).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'momosSnacks' && ((menuItems as any).momosSnacks || []).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'sweetSips' && ((menuItems as any).sweetSips || []).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'sweetSips' && ((menuItems as any).sweetSips || []).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'duoDelight' && ((menuItems as any).duoDelight || []).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'familyFeast' && ((menuItems as any).familyFeast || []).some((si: any) => si.name === (item as any).name));
+                              (selectedCategory === 'duoDelight' && ((menuItems as any).duoDelight || []).some((si: any) => si.name === (item as any).name)) ||
+                              (selectedCategory === 'familyFeast' && ((menuItems as any).familyFeast || []).some((si: any) => si.name === (item as any).name));
       
       // Price filter
       const price = parseInt(item.price.replace('₹', ''));
@@ -861,6 +902,7 @@ export default function MenuPage() {
              (categoryId === 'pizzas' && (menuItems.pizzas as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'burgers' && (menuItems.burgers as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'sandwiches' && (menuItems.sandwiches as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'momosSnacks' && ((menuItems as any).momosSnacks || []).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
@@ -1226,6 +1268,26 @@ export default function MenuPage() {
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {getCategoryItems('sandwiches').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="desi"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Little Bites of Joy – Momos & Snacks */}
+                {getCategoryItems('momosSnacks').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Utensils className="text-primary h-8 w-8" />
+                      🥟 Little Bites of Joy – Momos & Snacks
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('momosSnacks').map((item) => (
                         <MenuCard
                           key={item.name}
                           {...item}
