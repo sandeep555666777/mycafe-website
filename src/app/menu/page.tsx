@@ -744,20 +744,22 @@ const menuItems = {
 
 const categories = [
   { id: 'all', name: 'All Items', count: Object.values(menuItems).flat().length },
-  { id: 'desiBites', name: 'Desi Twist Bites', count: menuItems.desiBites.length, icon: Flame },
-  { id: 'maggiPasta', name: 'Maggi & Pasta', count: menuItems.maggiPasta.length, icon: Utensils },
+  // Drinks first (USP)
+  { id: 'hotCoffee', name: 'Hot Coffee', count: menuItems.hotCoffee.length, icon: Coffee },
+  { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
+  { id: 'sweetSips', name: 'Sweet Sips – Shakes', count: (menuItems as any).sweetSips?.length || 0, icon: CupSoda },
+  { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
+  // Food after
   { id: 'pizzas', name: 'Pizzas', count: menuItems.pizzas.length, icon: Pizza },
   { id: 'burgers', name: 'Burgers', count: menuItems.burgers.length, icon: Sandwich },
   { id: 'sandwiches', name: 'Sandwiches', count: menuItems.sandwiches.length, icon: Sandwich },
   { id: 'momosSnacks', name: 'Little Bites of Joy – Momos & Snacks', count: (menuItems as any).momosSnacks?.length || 0, icon: Utensils },
   { id: 'fries', name: 'Fries', count: menuItems.fries.length, icon: Utensils },
-  { id: 'hotCoffee', name: 'Hot Coffee', count: menuItems.hotCoffee.length, icon: Coffee },
-  { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
-  { id: 'sweetSips', name: 'Sweet Sips – Shakes', count: (menuItems as any).sweetSips?.length || 0, icon: CupSoda },
-  { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
+  { id: 'maggiPasta', name: 'Maggi & Pasta', count: menuItems.maggiPasta.length, icon: Utensils },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
+  // Combos
   { id: 'mealForOne', name: 'Meal for One', count: menuItems.mealForOne.length, icon: Utensils },
-  { id: 'familyFeast', name: 'Family Feast', count: (menuItems as any).familyFeast?.length || 0, icon: Pizza },
+  { id: 'duoDelight', name: 'Duo Delight', count: menuItems.duoDelight.length, icon: Sandwich },
   { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
 ];
 

@@ -125,7 +125,75 @@ export default function Home() {
                 </Button>
               </div>
             </div>
+            {/* Best Selling Drinks */}
+            <div className="group bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="relative h-40 mb-3 overflow-hidden rounded-xl">
+                <img 
+                  src="/images/Cold Coffee.jpg" 
+                  alt="Cold Coffee" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-amber-500 text-white border-0 text-xs">🔥 Popular</Badge>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Cold Coffee</h3>
+              <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                Chilled, creamy & refreshing. 👉 "Cool your coffee cravings!"
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-primary">₹99</span>
+                <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
+                  <Link href="/menu">View Details</Link>
+                </Button>
+              </div>
+            </div>
 
+            <div className="group bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="relative h-40 mb-3 overflow-hidden rounded-xl">
+                <img 
+                  src="/images/Peach Ice Tea.jpg" 
+                  alt="Peach Ice Tea" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-amber-500 text-white border-0 text-xs">🔥 Popular</Badge>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Peach Ice Tea</h3>
+              <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                Refreshing peach iced tea. 👉 "Cool down with a twist!"
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-primary">₹79</span>
+                <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
+                  <Link href="/menu">View Details</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="group bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="relative h-40 mb-3 overflow-hidden rounded-xl">
+                <img 
+                  src="/images/Cappuccino.jpg" 
+                  alt="Cappuccino" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-amber-500 text-white border-0 text-xs">🔥 Popular</Badge>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Cappuccino</h3>
+              <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                Foamy, creamy, coffee hug. 👉 "Love at first sip!"
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-primary">₹99</span>
+                <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
+                  <Link href="/menu">View Details</Link>
+                </Button>
+              </div>
+            </div>
             
           </div>
 
