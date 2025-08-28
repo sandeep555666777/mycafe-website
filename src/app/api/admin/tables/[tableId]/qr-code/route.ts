@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { generateQRCodePNG, generateTableURL } from '@/lib/qr-generator';
 
+// Ensure this API runs on the Node.js runtime and is not prerendered at build time
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { tableId: string } }
