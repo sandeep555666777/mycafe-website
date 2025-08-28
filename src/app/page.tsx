@@ -260,10 +260,10 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
-              { src: "/images/margherita.jpg", alt: "Delicious Margherita Pizza - Our Signature Dish" },
-              { src: "/images/pepperoni.jpg", alt: "Spicy Pepperoni Pizza - Classic American Taste" },
-              { src: "/images/waffle-classic.jpg", alt: "Classic Waffle - Perfect Breakfast Choice" },
-              { src: "/images/waffle-chocolate.jpg", alt: "Chocolate Overload Waffle - Sweet Indulgence" },
+              { src: "/images/Paneer Pizza.jpg", alt: "Paneer Pizza - Cafe Special" },
+              { src: "/images/Veggie Delight Pizza.jpg", alt: "Veggie Delight Pizza - Loaded with Fresh Veggies" },
+              { src: "/images/waffle-berry.jpg", alt: "Berry Blast Waffle - Fresh and Fruity" },
+              { src: "/images/waffle-classic.jpg", alt: "Classic Waffle - Golden and Crispy" },
             ].map((image, index) => (
               <div key={index} className="h-40 md:h-48 w-full relative rounded-xl overflow-hidden shadow-soft group">
                 <img 
