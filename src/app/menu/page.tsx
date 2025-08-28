@@ -378,6 +378,26 @@ const menuItems = {
       vegetarian: true
     },
   ],
+  sweetSips: [
+    {
+      name: 'KitKat Shake',
+      price: '₹99',
+      description: 'Thick and creamy shake blended with crunchy KitKat. 👉 "Crunch, sip, repeat!"',
+      image: '/images/KitKat Shake.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: true,
+    },
+    {
+      name: 'Oreo Shake',
+      price: '₹99',
+      description: 'Smooth and rich, with a twist of your favorite Oreo cookies. 👉 "Cookie bliss in every sip!"',
+      image: '/images/Oreo Shake.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true,
+    },
+  ],
   teaTime: [
     { 
       name: 'Ice Tea (Classic/Peach/Lemon)', 
@@ -694,6 +714,7 @@ const categories = [
   { id: 'fries', name: 'Fries', count: menuItems.fries.length, icon: Utensils },
   { id: 'hotCoffee', name: 'Hot Coffee', count: menuItems.hotCoffee.length, icon: Coffee },
   { id: 'coldCoffee', name: 'Cold Coffee', count: menuItems.coldCoffee.length, icon: Coffee },
+  { id: 'sweetSips', name: 'Sweet Sips – Shakes', count: (menuItems as any).sweetSips?.length || 0, icon: CupSoda },
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
   { id: 'mealForOne', name: 'Meal for One', count: menuItems.mealForOne.length, icon: Utensils },
@@ -746,6 +767,7 @@ export default function MenuPage() {
       ...menuItems.fries,
       ...menuItems.hotCoffee,
       ...menuItems.coldCoffee,
+      ...((menuItems as any).sweetSips || []),
       ...menuItems.teaTime,
       ...menuItems.flowerTeas,
       ...menuItems.studentOffers,
@@ -771,6 +793,7 @@ export default function MenuPage() {
                               (selectedCategory === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'sweetSips' && ((menuItems as any).sweetSips || []).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
                               (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
@@ -841,6 +864,7 @@ export default function MenuPage() {
              (categoryId === 'fries' && (menuItems.fries as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'hotCoffee' && (menuItems.hotCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
+             (categoryId === 'sweetSips' && ((menuItems as any).sweetSips || []).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
              (categoryId === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
@@ -1273,6 +1297,26 @@ export default function MenuPage() {
                   </div>
                 )}
 
+                {/* Sweet Sips – Shakes */}
+                {getCategoryItems('sweetSips').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <CupSoda className="text-primary h-8 w-8" />
+                      🥤 Sweet Sips – Shakes
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('sweetSips').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="tea"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Tea Time */}
                 {getCategoryItems('teaTime').length > 0 && (
                   <div>
@@ -1430,6 +1474,7 @@ export default function MenuPage() {
                         category.id === 'fries' ? 'desi' :
                         category.id === 'hotCoffee' ? 'coffee' :
                         category.id === 'coldCoffee' ? 'coffee' :
+                        category.id === 'sweetSips' ? 'sweet' :
                         category.id === 'teaTime' ? 'tea' :
                         category.id === 'flowerTeas' ? 'tea' : 'pizza'
                       }
