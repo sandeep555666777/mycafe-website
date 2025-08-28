@@ -66,13 +66,13 @@ export default function AboutPage() {
     {
       name: "Rahil",
       role: "Founder & Creative Director",
-      image: "/images/event-art.jpg",
+      image: "/images/rahil.jpg.jpeg",
       description: "The visionary behind our creative concept, passionate about bringing art and community together."
     },
     {
       name: "Shabina",
       role: "Founder & Operations Manager",
-      image: "/images/event-mic.jpg",
+      image: "/images/shabina.jpg.jpeg",
       description: "Ensuring every detail is perfect, from the coffee beans to the customer experience."
     }
   ];
