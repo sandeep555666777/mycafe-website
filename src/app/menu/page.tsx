@@ -495,7 +495,7 @@ const menuItems = {
   flowerTeas: [
     { 
       name: 'Blue Tea', 
-      price: '₹140', 
+      price: '₹40', 
       description: 'Sip the sky - Butterfly pea flowers brewed into calming tea.', 
       image: '/images/Blue Tea.jpg', // Perfect match - actual blue tea image
       rating: 4.7,
