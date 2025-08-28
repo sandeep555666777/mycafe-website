@@ -126,53 +126,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Pepperoni Pizza */}
-            <div className="group bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="relative h-40 mb-3 overflow-hidden rounded-xl">
-                <img 
-                  src="/images/pepperoni.jpg" 
-                  alt="Pepperoni Pizza" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute top-2 right-2">
-                  <Badge className="bg-red-500 text-white border-0 text-xs">🌶️ Spicy</Badge>
-                </div>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Pepperoni Pizza</h3>
-              <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
-                A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-primary">₹400</span>
-                <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
-                  <Link href="/menu">View Details</Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* Classic Waffle */}
-            <div className="group bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 md:col-span-2 lg:col-span-1">
-              <div className="relative h-40 mb-3 overflow-hidden rounded-xl">
-                <img 
-                  src="/images/waffle-classic.jpg" 
-                  alt="Classic Waffle" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute top-2 right-2">
-                  <Badge className="bg-green-500 text-white border-0 text-xs">🌱 Veg</Badge>
-                </div>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Classic Waffle</h3>
-              <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
-                A simple, elegant waffle served with maple syrup and butter. Perfect for a sweet breakfast or dessert
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-primary">₹180</span>
-                <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
-                  <Link href="/menu">View Details</Link>
-                </Button>
-              </div>
-            </div>
+            
           </div>
 
           <div className="text-center">
