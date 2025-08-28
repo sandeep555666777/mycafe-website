@@ -73,9 +73,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {[
-              { icon: Users, number: "500+", label: "Happy Customers" },
               { icon: Star, number: "4.9", label: "Rating" },
-              { icon: Award, number: "3+", label: "Years Experience" },
               { icon: Heart, number: "100%", label: "Fresh Ingredients" },
             ].map((stat, index) => (
               <div key={index} className="text-center p-3 bg-white/50 rounded-xl backdrop-blur-sm">
@@ -301,12 +299,7 @@ export default function Home() {
                   className="w-full h-full object-cover" 
                 />
               </div>
-              <div className="absolute -bottom-3 -right-3 bg-primary text-primary-foreground p-3 rounded-2xl shadow-strong">
-                <div className="text-center">
-                  <div className="text-xl font-bold">500+</div>
-                  <div className="text-xs">Happy Customers</div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>

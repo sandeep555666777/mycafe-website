@@ -58,9 +58,7 @@ export default function AboutPage() {
   ];
 
   const stats = [
-    { number: "500+", label: "Happy Customers", icon: Users },
     { number: "4.9", label: "Rating", icon: Star },
-    { number: "3+", label: "Years Experience", icon: Award },
     { number: "100%", label: "Fresh Ingredients", icon: Heart }
   ];
 

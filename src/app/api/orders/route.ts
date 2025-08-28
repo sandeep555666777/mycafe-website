@@ -1,113 +1,118 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-// In-memory storage for demo purposes
-// In production, use a database like PostgreSQL, MongoDB, or Firebase
-let orders: any[] = [
-  {
-    id: '1',
-    tableNumber: 1,
-    customerName: 'John Doe',
-    customerPhone: '+91 98765 43210',
-    items: [
-      { id: '1', name: 'Margherita Pizza', price: 299, quantity: 1 },
-      { id: '4', name: 'Classic Waffle', price: 199, quantity: 2 }
-    ],
-    total: 697,
-    status: 'preparing',
-    timestamp: '2024-01-15T14:30:00Z',
-    estimatedTime: '15-20 min',
-    paymentStatus: 'paid',
-    paymentMethod: 'card'
-  }
-];
-
-export async function GET() {
-  return NextResponse.json({ orders });
-}
+import { prisma } from '@/lib/db';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const newOrder = {
-      id: Date.now().toString(),
-      ...body,
-      timestamp: new Date().toISOString(),
-      status: 'pending',
-      paymentStatus: 'pending'
-    };
-    
-    orders.unshift(newOrder);
-    
-    return NextResponse.json({ 
-      success: true, 
-      order: newOrder,
-      message: 'Order created successfully' 
-    });
-  } catch (error) {
-    return NextResponse.json(
-      { success: false, message: 'Failed to create order' },
-      { status: 500 }
-    );
-  }
-}
+    const { tableId, sessionId, customerName, customerPhone, items, total } = await request.json();
 
-export async function PUT(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { orderId, status, paymentStatus } = body;
-    
-    const orderIndex = orders.findIndex(order => order.id === orderId);
-    if (orderIndex === -1) {
+    // Validate table exists
+    const table = await prisma.table.findUnique({
+      where: { id: tableId },
+    });
+
+    if (!table) {
       return NextResponse.json(
-        { success: false, message: 'Order not found' },
+        { error: 'Table not found' },
         { status: 404 }
       );
     }
-    
-    orders[orderIndex] = { ...orders[orderIndex], ...body };
-    
-    return NextResponse.json({ 
-      success: true, 
-      order: orders[orderIndex],
-      message: 'Order updated successfully' 
+
+    // Generate order number
+    const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
+
+    // Calculate totals
+    const subtotal = total;
+    const taxAmount = subtotal * 0.05; // 5% tax
+    const discountAmount = 0; // No discount for now
+    const finalTotal = subtotal + taxAmount - discountAmount;
+
+    // Create order with items
+    const order = await prisma.order.create({
+      data: {
+        tableId,
+        orderNumber,
+        customerName,
+        customerPhone,
+        subtotal,
+        taxAmount,
+        discountAmount,
+        total: finalTotal,
+        status: 'PENDING',
+        paymentStatus: 'PENDING',
+        items: {
+          create: items.map((item: any) => ({
+            menuItemId: item.id,
+            quantity: item.quantity,
+            unitPrice: item.price,
+            totalPrice: item.price * item.quantity,
+            notes: item.notes,
+          })),
+        },
+      },
+      include: {
+        items: {
+          include: {
+            menuItem: true,
+          },
+        },
+        table: true,
+      },
     });
+
+    // Clear the session cart
+    if (sessionId) {
+      await prisma.tableSession.deleteMany({
+        where: { sessionId },
+      });
+    }
+
+    return NextResponse.json(order);
   } catch (error) {
+    console.error('Error creating order:', error);
     return NextResponse.json(
-      { success: false, message: 'Failed to update order' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }
 }
 
-export async function DELETE(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const orderId = searchParams.get('id');
+    const status = searchParams.get('status');
+    const tableId = searchParams.get('tableId');
+
+    const where: any = {};
     
-    if (!orderId) {
-      return NextResponse.json(
-        { success: false, message: 'Order ID is required' },
-        { status: 400 }
-      );
+    if (status && status !== 'all') {
+      where.status = status;
     }
     
-    const orderIndex = orders.findIndex(order => order.id === orderId);
-    if (orderIndex === -1) {
-      return NextResponse.json(
-        { success: false, message: 'Order not found' },
-        { status: 404 }
-      );
+    if (tableId) {
+      where.tableId = tableId;
     }
-    
-    orders.splice(orderIndex, 1);
-    
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Order deleted successfully' 
+
+    const orders = await prisma.order.findMany({
+      where,
+      include: {
+        items: {
+          include: {
+            menuItem: true,
+          },
+        },
+        table: true,
+        payment: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
+
+    return NextResponse.json(orders);
   } catch (error) {
+    console.error('Error fetching orders:', error);
     return NextResponse.json(
-      { success: false, message: 'Failed to delete order' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }

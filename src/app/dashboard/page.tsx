@@ -24,6 +24,7 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 interface Order {
   id: string;
@@ -88,9 +89,50 @@ const mockOrders: Order[] = [
 ];
 
 export default function DashboardPage() {
-  const [orders, setOrders] = useState<Order[]>(mockOrders);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('all');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
+
+  const loadOrders = async () => {
+    try {
+      const response = await fetch('/api/orders');
+      if (response.ok) {
+        const data = await response.json();
+        // Transform the data to match our interface
+        const transformedOrders = data.map((order: any) => ({
+          id: order.id,
+          tableNumber: order.table.tableNumber,
+          customerName: order.customerName || 'Anonymous',
+          customerPhone: order.customerPhone || 'N/A',
+          items: order.items.map((item: any) => ({
+            id: item.menuItem.id,
+            name: item.menuItem.name,
+            price: item.unitPrice,
+            quantity: item.quantity,
+          })),
+          total: order.total,
+          status: order.status.toLowerCase(),
+          timestamp: order.createdAt,
+          estimatedTime: order.estimatedTime || '15-20 min',
+        }));
+        setOrders(transformedOrders);
+      }
+    } catch (error) {
+      console.error('Error loading orders:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load orders",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const filteredOrders = orders.filter(order => {
     const matchesSearch = order.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -100,10 +142,35 @@ export default function DashboardPage() {
     return matchesSearch && matchesStatus;
   });
 
-  const updateOrderStatus = (orderId: string, newStatus: Order['status']) => {
-    setOrders(prev => prev.map(order => 
-      order.id === orderId ? { ...order, status: newStatus } : order
-    ));
+  const updateOrderStatus = async (orderId: string, newStatus: Order['status']) => {
+    try {
+      const response = await fetch(`/api/orders/${orderId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      if (response.ok) {
+        const updatedOrder = await response.json();
+        setOrders(prev => prev.map(order => 
+          order.id === orderId ? updatedOrder : order
+        ));
+        
+        toast({
+          title: "Order Updated",
+          description: `Order status updated to ${newStatus}`,
+        });
+      } else {
+        throw new Error('Failed to update order');
+      }
+    } catch (error) {
+      console.error('Error updating order:', error);
+      toast({
+        title: "Error",
+        description: "Failed to update order status",
+        variant: "destructive",
+      });
+    }
   };
 
   const getStatusColor = (status: Order['status']) => {
@@ -143,6 +210,17 @@ export default function DashboardPage() {
     completed: orders.filter(o => o.status === 'completed').length,
     totalRevenue: orders.filter(o => o.status === 'completed').reduce((sum, o) => sum + o.total, 0)
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto mb-4"></div>
+          <p className="text-amber-700">Loading orders...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 p-4">
