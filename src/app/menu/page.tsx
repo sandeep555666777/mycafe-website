@@ -516,13 +516,13 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo – Red Sauce Pasta + Burger + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Red Sauce Pasta + Garlic Bread (2 pc) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹199', 
       description: 'Italian cravings, desi price! 👉 "Italian cravings, desi price!"', 
       image: '/images/Red Sauce Pasta.jpg', // Using red sauce pasta image as placeholder
       rating: 4.6,
       popular: false,
-      vegetarian: false,
+      vegetarian: true,
       isCombo: true
     },
     { 
@@ -536,7 +536,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo – Tandoori Sandwich + Cheese Maggie + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Cheese Sandwich + Cheese Maggie + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹279', 
       description: 'For friends who share bites & gossips! 👉 "For friends who share bites & gossips!"', 
       image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
@@ -546,7 +546,7 @@ const menuItems = {
       isCombo: true
     },
     { 
-      name: 'Combo – Paneer Masala Sandwich + Aloo Masala Sandwich + Fries + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
+      name: 'Combo – Paneer Masala Sandwich + Veg Sandwich + Fries + 2 (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)', 
       price: '₹299', 
       description: 'Sandwich stories for two! 👉 "Sandwich stories for two!"', 
       image: '/images/Classic Waffle.jpg', // Using waffle image as placeholder
@@ -586,6 +586,38 @@ const menuItems = {
       isCombo: true
     },
   ],
+  mealForOne: [
+    {
+      name: 'Meal – Paneer Pizza (Small) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹209',
+      description: 'Slice & sip happiness! 👉 "Slice & sip happiness!"',
+      image: '/images/Paneer Pizza.jpg',
+      rating: 4.8,
+      popular: true,
+      vegetarian: true,
+      isCombo: true
+    },
+    {
+      name: 'Meal – Chicken Patty Burger + Peri Peri Fries + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹229',
+      description: 'Crispy, spicy, juicy – all in one! 👉 "Crispy, spicy, juicy – all in one!"',
+      image: '/images/Chicken Patty Burger.jpg',
+      rating: 4.7,
+      popular: true,
+      vegetarian: false,
+      isCombo: true
+    },
+    {
+      name: 'Meal – Red Sauce Pasta + Garlic Bread (2 pc) + (Cold Coffee / Peach Iced Tea / Lemon Iced Tea)',
+      price: '₹199',
+      description: 'Italian cravings, desi price! 👉 "Italian cravings, desi price!"',
+      image: '/images/Red Sauce Pasta.jpg',
+      rating: 4.6,
+      popular: false,
+      vegetarian: true,
+      isCombo: true
+    },
+  ],
 };
 
 const categories = [
@@ -601,6 +633,7 @@ const categories = [
   { id: 'teaTime', name: 'Tea Time', count: menuItems.teaTime.length, icon: CupSoda },
   { id: 'flowerTeas', name: 'Flower Teas', count: menuItems.flowerTeas.length, icon: Leaf },
   { id: 'studentOffers', name: 'Student Offers', count: menuItems.studentOffers.length, icon: GraduationCap },
+  { id: 'mealForOne', name: 'Meal for One', count: menuItems.mealForOne.length, icon: Utensils },
 ];
 
 export default function MenuPage() {
@@ -651,6 +684,7 @@ export default function MenuPage() {
       ...menuItems.teaTime,
       ...menuItems.flowerTeas,
       ...menuItems.studentOffers,
+      ...menuItems.mealForOne,
     ] as any[]
   );
   
@@ -672,7 +706,8 @@ export default function MenuPage() {
                              (selectedCategory === 'coldCoffee' && (menuItems.coldCoffee as any[]).some((si: any) => si.name === (item as any).name)) ||
                              (selectedCategory === 'teaTime' && (menuItems.teaTime as any[]).some((si: any) => si.name === (item as any).name)) ||
                              (selectedCategory === 'flowerTeas' && (menuItems.flowerTeas as any[]).some((si: any) => si.name === (item as any).name)) ||
-                             (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name));
+                             (selectedCategory === 'studentOffers' && (menuItems.studentOffers as any[]).some((si: any) => si.name === (item as any).name)) ||
+                             (selectedCategory === 'mealForOne' && (menuItems.mealForOne as any[]).some((si: any) => si.name === (item as any).name));
       
       // Price filter
       const price = parseInt(item.price.replace('₹', ''));
@@ -1217,6 +1252,26 @@ export default function MenuPage() {
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {getCategoryItems('studentOffers').map((item) => (
+                        <MenuCard
+                          key={item.name}
+                          {...item}
+                          category="combo"
+                          onOrder={() => handleWhatsAppOrder(item)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Meal for One */}
+                {getCategoryItems('mealForOne').length > 0 && (
+                  <div>
+                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                      <Utensils className="text-primary h-8 w-8" />
+                      🍔 Meal for One
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {getCategoryItems('mealForOne').map((item) => (
                         <MenuCard
                           key={item.name}
                           {...item}
