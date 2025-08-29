@@ -35,6 +35,8 @@ export default function AdminDashboardPage() {
 				<h1 className="text-2xl font-bold">Admin Dashboard</h1>
 				<div className="space-x-2">
 					<Button asChild variant="outline"><Link href="/admin/menu">Manage Menu</Link></Button>
+					<Button asChild variant="outline"><Link href="/admin/tables">Manage Tables</Link></Button>
+					<Button asChild variant="outline"><Link href="/admin/orders">View Orders</Link></Button>
 					<Button asChild><Link href="/admin/qr">Generate QRs</Link></Button>
 				</div>
 			</div>
