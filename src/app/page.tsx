@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { cafeAddress } from '@/lib/config';
-import { MenuQR } from '@/components/menu-qr';
+ 
 
 export default function Home() {
   return (
@@ -329,25 +329,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Menu QR Code Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 to-orange-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="mb-3 bg-primary/10 text-primary border-primary/20">
-              📱 Scan & Order
-            </Badge>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3">
-              Quick Menu Access
-            </h2>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              Scan our QR code to instantly view our complete menu and place your order
-            </p>
-          </div>
-          <div className="flex justify-center">
-            <MenuQR />
-          </div>
-        </div>
-      </section>
+      
 
 
 
