@@ -14,7 +14,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx scripts/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "fs:seed": "tsx scripts/seed-firestore.ts"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.14.1",
